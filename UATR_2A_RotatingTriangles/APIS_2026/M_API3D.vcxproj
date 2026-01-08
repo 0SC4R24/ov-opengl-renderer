@@ -156,12 +156,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="APIS3D_2026.cpp" />
+    <ClCompile Include="Entity.cpp" />
     <ClCompile Include="GLFWKeyManager.cpp" />
+    <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="Object.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Entity.h" />
     <ClInclude Include="GLFWKeyManager.h" />
     <ClInclude Include="mapi\common.h" />
+    <ClInclude Include="Mesh.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="vertex.h" />
   </ItemGroup>

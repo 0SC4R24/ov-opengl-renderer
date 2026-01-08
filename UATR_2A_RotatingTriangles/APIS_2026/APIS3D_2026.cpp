@@ -81,33 +81,19 @@ void updateObjects(float timeStep)
 		
 		glDisableClientState(GL_VERTEX_ARRAY);
 		glDisableClientState(GL_COLOR_ARRAY);
-
-		/*
-		//por cada vertice
-		glBegin(GL_TRIANGLES);
-		for(auto idVertex: obj->vertexIndexList){
-			//multiplicar matriz
-			vertex_t v=obj->vertexList[idVertex];
-			v.vPosition = model*v.vPosition;
-			//añadir a lista de dibujado
-			glVertex3f(v.vPosition.x, v.vPosition.y, v.vPosition.z);
-		}
-		glEnd();*/
 	}
 }
 
 
 int main(int argc, char** argv)
 {
-	
 	if (glfwInit() != GLFW_TRUE)
 	{	
-		std::cout << "ERROR iniciando glfw\n";
+		std::cout << "ERROR while initializing GLFW\n";
 	}
-	else {
-	
-		
-		//iniciar opengl
+	else 
+	{
+		// Initialize OpenGL
 #ifdef __APPLE__
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
@@ -115,56 +101,55 @@ int main(int argc, char** argv)
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 #endif
 		
-		GLFWwindow* window= glfwCreateWindow(640, 480, "Tutorial APIS3D",nullptr, nullptr);
+		GLFWwindow* window= glfwCreateWindow(600, 400, "MO Rotating Triangles",nullptr, nullptr);
 		glfwMakeContextCurrent(window);
-
 		
 		gladLoadGL(glfwGetProcAddress);
 		
 		glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 
-		//iniciar eventos
+		// Initialize events
 		GLFWKeyManager::initKeyManager(window);
-		//bucle principal
 
+		// Main loop variables
 		float newTime = static_cast<float>(glfwGetTime());
 		float deltaTime = 0;
 		float lastTime = newTime;
 
+		bool exit = false;
 
-		bool salir = false;
-
-		objectList.push_back(new Object()); //añadir un nuevo objeto generico
-		//por cada objeto
-			//copiar a GPU
+		// Add generic object
+		objectList.push_back(new Object()); 
+		
+		// Copy each object to GPU
 		for (auto& obj : objectList)
 		{
 			setupObject(obj);
 		}
 
-		while (!salir)
+		while (!exit)
 		{
 			newTime = static_cast<float>(glfwGetTime());
 			deltaTime = newTime - lastTime;
 			lastTime = newTime;
 
-			//capturar eventos
+			// Get events
 			GLFWKeyManager::updateEvents();
-			//actualizar estado aplicacion
-			//limpiar buffer de imagen
+
+			// Clean image buffer
 			glClear(GL_COLOR_BUFFER_BIT);
+
+			// Update and draw objects
 			updateObjects(deltaTime);
-			//dibujar
 
-			glfwSwapBuffers(window);//una vez dibujado, intercambiar buffer de imagen en ventana
-			salir = glfwWindowShouldClose(window);
-			
+			// Swap display buffers
+			glfwSwapBuffers(window);
+
+			exit = glfwWindowShouldClose(window);
 		}
-		//cerrar librerías gráficas
 
+		// Close GLFW
 		glfwTerminate();
-	
 	}
 	return 0;
-
 }

@@ -1,5 +1,10 @@
 #include "Object.h"
 #include "GLFWKeyManager.h"
+
+/// <summary>
+/// RECTANGLE DUMMY OBJECT
+/// </summary>
+
 Object::Object()
 {
     this->objectId = objectCounter++;
@@ -36,6 +41,7 @@ glm::mat4 Object::getModelMatrix()
     return model;
 }
 
+// Move transform with keyboard
 void Object::step(float timeStep)
 {
     float vel = 0.1f; //unidadesGl segundo

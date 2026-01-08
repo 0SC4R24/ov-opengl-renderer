@@ -1,10 +1,19 @@
+//
+// U-TAD. Master en Computacion Grafica, Simulacion y Realidad Virtual.
+// 2025-2026
+// Miguel Gutierrez Ruano miguel.gutierrez@live.u-tad.com
+// Oscar Viudez Cuevas oscar.viudez@live.u-tad.com
+//
+
 #pragma once
 #include "mapi/common.h"
 #include "vertex.h"
+
 class Object
 {
 
-public:
+public: 
+
     static inline int objectCounter = 0;
 
     int objectId;

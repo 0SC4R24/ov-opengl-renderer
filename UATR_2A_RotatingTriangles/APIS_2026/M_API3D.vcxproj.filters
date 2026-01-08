@@ -1,57 +1,69 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Archivos de origen">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Archivos de encabezado">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Archivos de recursos">
+    <Filter Include="resources">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Archivos de recursos\data">
+    <Filter Include="resources\data">
       <UniqueIdentifier>{7966902b-36d0-4d69-9f51-49031cab7bbe}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Archivos de origen\VK">
+    <Filter Include="sources">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="sources\VK">
       <UniqueIdentifier>{c477e1d2-fff0-4f33-b63b-5e7d82a68bc6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Archivos de origen\GLSL">
+    <Filter Include="sources\GLSL">
       <UniqueIdentifier>{5ac15606-4fdd-4f49-ad21-5f1c8e4a4009}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Archivos de encabezado\VK">
+    <Filter Include="headers">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="headers\VK">
       <UniqueIdentifier>{9dfe4245-fd60-4707-a7c3-4a2d6da8a666}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Archivos de encabezado\GLSL">
+    <Filter Include="headers\GLSL">
       <UniqueIdentifier>{8163de99-2fee-487b-92b7-91d0ebab7582}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="APIS3D_2026.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>sources</Filter>
     </ClCompile>
     <ClCompile Include="GLFWKeyManager.cpp">
-      <Filter>Archivos de origen\GLSL</Filter>
+      <Filter>sources\GLSL</Filter>
     </ClCompile>
     <ClCompile Include="Object.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mapi\common.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>headers</Filter>
     </ClInclude>
     <ClInclude Include="GLFWKeyManager.h">
-      <Filter>Archivos de encabezado\GLSL</Filter>
+      <Filter>headers\GLSL</Filter>
     </ClInclude>
     <ClInclude Include="vertex.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>headers</Filter>
     </ClInclude>
     <ClInclude Include="Object.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>headers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
