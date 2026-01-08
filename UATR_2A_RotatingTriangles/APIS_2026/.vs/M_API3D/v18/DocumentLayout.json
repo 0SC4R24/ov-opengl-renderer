@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\MG\\Educational\\UTAD\\UATR\\Assignments\\UATR_2A_RotatingTriangles\\plantilla_apis\\APIS_2026\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0922AA6F-C848-4EAB-8F02-F6E0C3376F91}|M_API3D.vcxproj|C:\\MG\\Educational\\UTAD\\UATR\\Assignments\\UATR_2A_RotatingTriangles\\plantilla_apis\\APIS_2026\\APIS3D_2026.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{0922AA6F-C848-4EAB-8F02-F6E0C3376F91}|M_API3D.vcxproj|solutionrelative:APIS3D_2026.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "APIS3D_2026.cpp",
+              "DocumentMoniker": "C:\\MG\\Educational\\UTAD\\UATR\\Assignments\\UATR_2A_RotatingTriangles\\plantilla_apis\\APIS_2026\\APIS3D_2026.cpp",
+              "RelativeDocumentMoniker": "APIS3D_2026.cpp",
+              "ToolTip": "C:\\MG\\Educational\\UTAD\\UATR\\Assignments\\UATR_2A_RotatingTriangles\\plantilla_apis\\APIS_2026\\APIS3D_2026.cpp",
+              "RelativeToolTip": "APIS3D_2026.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-01-08T18:40:27.452Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
