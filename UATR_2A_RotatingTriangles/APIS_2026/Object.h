@@ -1,34 +1,29 @@
-//
-// U-TAD. Master en Computacion Grafica, Simulacion y Realidad Virtual.
-// 2025-2026
-// Miguel Gutierrez Ruano miguel.gutierrez@live.u-tad.com
-// Oscar Viudez Cuevas oscar.viudez@live.u-tad.com
-//
-
 #pragma once
+
 #include "mapi/common.h"
 #include "vertex.h"
+#include "GLFWKeyManager.h"
+#include "Program.h"
 
 class Object
 {
+public:
+	static inline int objectCounter = 0;
 
-public: 
+	int objectId;
 
-    static inline int objectCounter = 0;
+	glm::vec4 position;
+	glm::vec4 rotation;
+	glm::vec4 scale;
 
-    int objectId;
+	std::vector<vertex_t> vertexList;
+	std::vector<int> vertexIndexList;
 
-    glm::vec4  pos;
-    glm::vec4  rot;
-    glm::vec4  scaling;
+	Program* renderProgram;
 
-    std::vector<vertex_t> vertexList;
-    std::vector<int>      vertexIndexList;
+	Object();
 
-    Object();
+	glm::mat4 getModelMatrix();
 
-    glm::mat4 getModelMatrix();
-
-    void step(float timeStep);
+	void step(float timeStep);
 };
-

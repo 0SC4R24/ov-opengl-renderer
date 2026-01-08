@@ -45,6 +45,15 @@
     <ClCompile Include="Entity.cpp">
       <Filter>sources</Filter>
     </ClCompile>
+    <ClCompile Include="APIS3D_2025.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Program.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mapi\common.h">
@@ -65,5 +74,19 @@
     <ClInclude Include="Entity.h">
       <Filter>headers</Filter>
     </ClInclude>
+    <ClInclude Include="Program.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\UtilizacionApis\CodigoClase\APIS_2025\data\shader.frag">
+      <Filter>resources\data</Filter>
+    </None>
+    <None Include="..\..\..\UtilizacionApis\CodigoClase\APIS_2025\data\shader.vert">
+      <Filter>resources\data</Filter>
+    </None>
   </ItemGroup>
 </Project>

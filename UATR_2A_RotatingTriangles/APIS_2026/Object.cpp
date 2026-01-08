@@ -1,67 +1,65 @@
 #include "Object.h"
-#include "GLFWKeyManager.h"
-
-/// <summary>
-/// RECTANGLE DUMMY OBJECT
-/// </summary>
 
 Object::Object()
 {
-    this->objectId = objectCounter++;
+	this->objectId = objectCounter++;
 
-    this->vertexList = 
-    { 
-      {{ 0.5f, 0.5f,0.0f,1.0f},{ 1.0f,0.0f,0.0f,1.0f}},//superior derecha
-      {{-0.5f, 0.5f,0.0f,1.0f},{ 1.0f,0.0f,0.0f,1.0f}},//superior izquierda
-      {{-0.5f,-0.5f,0.0f,1.0f},{ 1.0f,0.0f,1.0f,1.0f}},//inferior izquierda 
-      {{ 0.5f,-0.5f,0.0f,1.0f},{ 0.0f,0.0f,1.0f,1.0f}} //inferior derecha
-    }; //posiciones de vertices
+	this->vertexList = {
+		{
+			glm::vec4(0.5f, 0.5f, 0.0f, 1.0f),
+			glm::vec4(1.0f, 0.0f, 0.0f, 1.0f)
+		},
+		{
+			glm::vec4(-0.5f, 0.5f, 0.0f, 1.0f),
+			glm::vec4(0.0f, 1.0f, 0.0f, 1.0f)
+		},
+		{
+			glm::vec4(-0.5f, -0.5f, 0.0f, 1.0f),
+			glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)
+		},
+		{
+			glm::vec4(0.5f, -0.5f, 0.0f, 1.0f),
+			glm::vec4(1.0f, 0.0f, 1.0f, 1.0f)
+		}
+	};
 
-    this->vertexIndexList = { 2,1,0, 2,0,3 };
+	this->vertexIndexList = { 2, 1, 0, 2, 0, 3 };
 
-    this->pos = { 0.0f,0.0f,0.0f,1.0f };
-    this->rot = { 0.0f,0.0f,0.0f,1.0f };
-    this->scaling = { 1.0f,1.0f,1.0f,1.0f };
+	this->position = glm::vec4(0.0f, 0.0f, 0.0f, 1.0f);
+	this->rotation = glm::vec4(0.0f, 0.0f, 0.0f, 1.0f);
+	this->scale = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
 
+	this->renderProgram = new Program();
+	this->renderProgram->addShader("data/shader.vert");
+	this->renderProgram->addShader("data/shader.frag");
+	this->renderProgram->linkProgram();
 }
 
 glm::mat4 Object::getModelMatrix()
 {
-    glm::mat4  model= glm::mat4(1.0f);
+	glm::mat4 modelMatrix = glm::mat4(1.0f);
 
-    model = glm::translate(model, glm::vec3(pos));//aplicar posicion
+	modelMatrix = glm::translate(modelMatrix, glm::vec3(this->position));
 
-    model = glm::rotate(model, glm::radians(rot.x), glm::vec3(1.0f, 0.0f, 0.0f)); //rotar x
-    model = glm::rotate(model, glm::radians(rot.y), glm::vec3(0.0f, 1.0f, 0.0f)); //rotar y
-    model = glm::rotate(model, glm::radians(rot.z), glm::vec3(0.0f, 0.0f, 1.0f)); //rotar z
+	modelMatrix = glm::rotate(modelMatrix, glm::radians(this->rotation.x), glm::vec3(1.0f, 0.0f, 0.0f));
+	modelMatrix = glm::rotate(modelMatrix, glm::radians(this->rotation.y), glm::vec3(0.0f, 1.0f, 0.0f));
+	modelMatrix = glm::rotate(modelMatrix, glm::radians(this->rotation.z), glm::vec3(0.0f, 0.0f, 1.0f));
 
-    model = glm::scale(model, glm::vec3(scaling));//aplicar posicion
+	modelMatrix = glm::scale(modelMatrix, glm::vec3(this->scale));
 
-
-    return model;
+	return modelMatrix;
 }
 
-// Move transform with keyboard
 void Object::step(float timeStep)
 {
-    float vel = 0.1f; //unidadesGl segundo
-    float velRot = 40.0f;
-    if (GLFWKeyManager::keyboardState[GLFW_KEY_D])
-        this->pos.x += vel * timeStep;
-    if (GLFWKeyManager::keyboardState[GLFW_KEY_A])
-        this->pos.x -= vel * timeStep;
-    if (GLFWKeyManager::keyboardState[GLFW_KEY_W])
-        this->pos.y += vel * timeStep;
-    if (GLFWKeyManager::keyboardState[GLFW_KEY_S])
-        this->pos.y -= vel * timeStep;
+	float speed = 0.1f;
+	float rotSpeed = 60.0f;
 
-    if (GLFWKeyManager::keyboardState[GLFW_KEY_R])
-        this->rot.x += velRot * timeStep;
-    if (GLFWKeyManager::keyboardState[GLFW_KEY_T])
-        this->rot.x -= velRot * timeStep;
+	if (GLFWKeyManager::keyboardState[GLFW_KEY_D]) this->position.x += speed * timeStep;
+	if (GLFWKeyManager::keyboardState[GLFW_KEY_A]) this->position.x -= speed * timeStep;
+	if (GLFWKeyManager::keyboardState[GLFW_KEY_W]) this->position.y += speed * timeStep;
+	if (GLFWKeyManager::keyboardState[GLFW_KEY_S]) this->position.y -= speed * timeStep;
 
+	if (GLFWKeyManager::keyboardState[GLFW_KEY_Q]) this->rotation.x += rotSpeed * timeStep;
+	if (GLFWKeyManager::keyboardState[GLFW_KEY_E]) this->rotation.x -= rotSpeed * timeStep;
 }
-
-
-
-
