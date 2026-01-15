@@ -56,9 +56,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GLFWKeyManager.h">
-      <Filter>Archivos de encabezado\GLSL</Filter>
-    </ClInclude>
     <ClInclude Include="mapi\Camera.h">
       <Filter>Archivos de encabezado\mapi</Filter>
     </ClInclude>
@@ -76,6 +73,9 @@
     </ClInclude>
     <ClInclude Include="mapi\vertex.h">
       <Filter>Archivos de encabezado\mapi</Filter>
+    </ClInclude>
+    <ClInclude Include="mapi\GLFWKeyManager.h">
+      <Filter>Archivos de encabezado\GLSL</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

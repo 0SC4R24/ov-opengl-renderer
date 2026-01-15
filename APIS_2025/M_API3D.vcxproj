@@ -163,9 +163,9 @@
     <ClCompile Include="mapi\Shader.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GLFWKeyManager.h" />
     <ClInclude Include="mapi\Camera.h" />
     <ClInclude Include="mapi\common.h" />
+    <ClInclude Include="mapi\GLFWKeyManager.h" />
     <ClInclude Include="mapi\Object.h" />
     <ClInclude Include="mapi\Program.h" />
     <ClInclude Include="mapi\Shader.h" />
