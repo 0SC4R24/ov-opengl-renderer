@@ -77,6 +77,9 @@
     <ClInclude Include="mapi\vertex.h">
       <Filter>Archivos de encabezado\mapi</Filter>
     </ClInclude>
+    <ClInclude Include="mapi\Render.h">
+      <Filter>Archivos de encabezado\mapi</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="data\shader.vert">

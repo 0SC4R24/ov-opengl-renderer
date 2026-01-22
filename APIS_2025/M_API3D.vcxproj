@@ -168,6 +168,7 @@
     <ClInclude Include="mapi\common.h" />
     <ClInclude Include="mapi\Object.h" />
     <ClInclude Include="mapi\Program.h" />
+    <ClInclude Include="mapi\Render.h" />
     <ClInclude Include="mapi\Shader.h" />
     <ClInclude Include="mapi\vertex.h" />
   </ItemGroup>
