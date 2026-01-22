@@ -11,10 +11,10 @@
 #include <memory>
 
 // Forward references
-class Object;
+class old::Object;
 
 // Aliases
-using ObjectPtr = std::shared_ptr<Object>;
+using ObjectPtr = std::shared_ptr<old::Object>;
 
 /// <summary>
 /// Render Interface
@@ -47,10 +47,10 @@ public: // Member functions
 	virtual void init() = 0;
 
 	// Set up object
-	virtual void setupObject(std::shared_ptr<Object> objectPtr) = 0;
+	virtual void setupObject(std::shared_ptr<old::Object> objectPtr) = 0;
 
 	// Remove object
-	virtual void removeObject(std::shared_ptr<Object> objectPtr) = 0;
+	virtual void removeObject(std::shared_ptr<old::Object> objectPtr) = 0;
 
 	// Draw object list
 	virtual void drawObjects(std::vector<ObjectPtr>* objectVectorPtr) = 0;

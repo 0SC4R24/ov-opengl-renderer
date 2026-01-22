@@ -176,6 +176,7 @@
     <ClInclude Include="src\mapi\Shader.h" />
     <ClInclude Include="src\mapi\stb_image.h" />
     <ClInclude Include="src\mapi\vertex.h" />
+    <ClInclude Include="src\mo\BufferObject.h" />
     <ClInclude Include="src\mo\GL4Render.h" />
     <ClInclude Include="src\mo\Render.h" />
   </ItemGroup>

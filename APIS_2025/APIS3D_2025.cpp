@@ -8,13 +8,6 @@
 
 #include "mo/GL4Render.h"
 
-typedef struct
-{
-    unsigned int arrayBufferId;
-    unsigned int vertexArrayId;
-    unsigned int vertexIndexArrayId;
-} bufferObject_t;
-
 std::vector<old::Object*> objectList;
 std::map<int, bufferObject_t> bufferObjectList;
 
@@ -22,11 +15,11 @@ void setupObject(old::Object* obj)
 {
     bufferObject_t bo = { 0, 0, 0 };
 
-    glGenVertexArrays(1, &bo.arrayBufferId);
+    glGenVertexArrays(1, &bo.vertexBufferId);
     glGenBuffers(1, &bo.vertexArrayId);
     glGenBuffers(1, &bo.vertexIndexArrayId);
 
-    glBindVertexArray(bo.arrayBufferId);
+    glBindVertexArray(bo.vertexBufferId);
     glBindBuffer(GL_ARRAY_BUFFER, bo.vertexArrayId);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, bo.vertexIndexArrayId);
 
@@ -41,7 +34,6 @@ void setupObject(old::Object* obj)
 
 void updateObjects(float deltaTime, old::Camera& cam)
 {
-    // std::cout << 1.0f / deltaTime << "fps\n";
     cam.step(deltaTime);
 
     for (auto &obj : objectList)
@@ -61,7 +53,7 @@ void updateObjects(float deltaTime, old::Camera& cam)
         obj->renderProgram->setMVP(cam.cameraProjection * cam.cameraView * model);
 
         bufferObject_t bo = bufferObjectList[obj->objectId];
-        glBindVertexArray(bo.arrayBufferId);
+        glBindVertexArray(bo.vertexBufferId);
         glBindBuffer(GL_ARRAY_BUFFER, bo.vertexArrayId);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, bo.vertexIndexArrayId);
 
@@ -92,9 +84,11 @@ int main(int argc, char** argv)
 
     objectList.push_back(ground);
     objectList.push_back(new old::Object());
+
     for (auto& obj : objectList)
     {
         setupObject(obj);
+        render.setupObject(std::make_shared<old::Object>(*obj));
     }
 
     old::GLFWKeyManager::initKeyManager(window);

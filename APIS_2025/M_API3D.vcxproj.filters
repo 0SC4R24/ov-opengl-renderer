@@ -95,6 +95,9 @@
     <ClInclude Include="src\mo\GL4Render.h">
       <Filter>Archivos de encabezado\mo</Filter>
     </ClInclude>
+    <ClInclude Include="src\mo\BufferObject.h">
+      <Filter>Archivos de encabezado\mo</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="data\shader.vert">
