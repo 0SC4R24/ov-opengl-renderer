@@ -4,6 +4,7 @@
 #include "mapi/GLFWKeyManager.h"
 #include "mapi/Object.h"
 #include "mapi/Camera.h"
+#include "mapi/vertex.h"
 
 typedef struct
 {
@@ -12,10 +13,10 @@ typedef struct
     unsigned int vertexIndexArrayId;
 } bufferObject_t;
 
-std::vector<Object*> objectList;
+std::vector<old::Object*> objectList;
 std::map<int, bufferObject_t> bufferObjectList;
 
-void setupObject(Object* obj)
+void setupObject(old::Object* obj)
 {
     bufferObject_t bo = { 0, 0, 0 };
 
@@ -27,16 +28,16 @@ void setupObject(Object* obj)
     glBindBuffer(GL_ARRAY_BUFFER, bo.vertexArrayId);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, bo.vertexIndexArrayId);
 
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertex_t) * obj->vertexList.size(), obj->vertexList.data(), GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(old::vertex_t) * obj->vertexList.size(), obj->vertexList.data(), GL_STATIC_DRAW);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * obj->vertexIndexList.size(), obj->vertexIndexList.data(), GL_STATIC_DRAW);
 
     bufferObjectList[obj->objectId] = bo;
 
-    obj->renderProgram->setAttributeMetaData("vPos", 4, GL_FLOAT, false, sizeof(vertex_t), (void*)offsetof(vertex_t, vPosition));
-    obj->renderProgram->setAttributeMetaData("vColor", 4, GL_FLOAT, false, sizeof(vertex_t), (void*)offsetof(vertex_t, vColor));
+    obj->renderProgram->setAttributeMetaData("vPos", 4, GL_FLOAT, false, sizeof(old::vertex_t), (void*)offsetof(old::vertex_t, vPosition));
+    obj->renderProgram->setAttributeMetaData("vColor", 4, GL_FLOAT, false, sizeof(old::vertex_t), (void*)offsetof(old::vertex_t, vColor));
 }
 
-void updateObjects(float deltaTime, Camera& cam)
+void updateObjects(float deltaTime, old::Camera& cam)
 {
     // std::cout << 1.0f / deltaTime << "fps\n";
     cam.step(deltaTime);
@@ -90,7 +91,7 @@ int main(int argc, char** argv)
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 #endif
 
-    GLFWwindow* window = glfwCreateWindow(640, 480, "Codigo Clase", nullptr, nullptr);
+    GLFWwindow* window = glfwCreateWindow(640, 480, "MO OpenGL Renderer", nullptr, nullptr);
 
     glfwMakeContextCurrent(window);
     
@@ -100,27 +101,27 @@ int main(int argc, char** argv)
 
     glEnable(GL_DEPTH_TEST);
 
-    Object* ground = new Object();
+    old::Object* ground = new old::Object();
     ground->rotation.x = 90.0f;
     ground->scale = glm::vec4(1000);
     ground->position.y = -1.5f;
 
     objectList.push_back(ground);
-    objectList.push_back(new Object());
+    objectList.push_back(new old::Object());
     for (auto& obj : objectList)
     {
         setupObject(obj);
     }
 
-    GLFWKeyManager::initKeyManager(window);
+    old::GLFWKeyManager::initKeyManager(window);
 
     float newTime = static_cast<float>(glfwGetTime());
     float deltaTime = 0;
     float lastTime = newTime;
 
-    Camera cam(glm::vec4(0, 0, 3, 1), glm::vec4(0, 0, 0, 1));
+    old::Camera cam(glm::vec4(0, 0, 3, 1), glm::vec4(0, 0, 0, 1));
 
-    while (!glfwWindowShouldClose(window) && !GLFWKeyManager::keyboardState[GLFW_KEY_ESCAPE])
+    while (!glfwWindowShouldClose(window) && !old::GLFWKeyManager::keyboardState[GLFW_KEY_ESCAPE])
     {
         newTime = static_cast<float>(glfwGetTime());
         deltaTime = newTime - lastTime;
@@ -131,7 +132,7 @@ int main(int argc, char** argv)
 
         updateObjects(deltaTime, cam);
 
-        GLFWKeyManager::updateEvents();
+        old::GLFWKeyManager::updateEvents();
 
         glfwSwapBuffers(window);
     }

@@ -34,50 +34,59 @@
     <Filter Include="Archivos de encabezado\mapi">
       <UniqueIdentifier>{0e722547-2aca-4f15-a820-e1ffde67967b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\mo">
+      <UniqueIdentifier>{2d024ff4-39da-4dd8-9092-90f344f22bbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\mo">
+      <UniqueIdentifier>{479bf5dc-cdd5-43a5-a915-972377525860}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="APIS3D_2025.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="mapi\Camera.cpp">
+    <ClCompile Include="src\mapi\Camera.cpp">
       <Filter>Archivos de origen\mapi</Filter>
     </ClCompile>
-    <ClCompile Include="mapi\GLFWKeyManager.cpp">
-      <Filter>Archivos de origen\GLSL</Filter>
-    </ClCompile>
-    <ClCompile Include="mapi\Object.cpp">
+    <ClCompile Include="src\mapi\GLFWKeyManager.cpp">
       <Filter>Archivos de origen\mapi</Filter>
     </ClCompile>
-    <ClCompile Include="mapi\Program.cpp">
+    <ClCompile Include="src\mapi\Object.cpp">
       <Filter>Archivos de origen\mapi</Filter>
     </ClCompile>
-    <ClCompile Include="mapi\Shader.cpp">
+    <ClCompile Include="src\mapi\Program.cpp">
+      <Filter>Archivos de origen\mapi</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mapi\Shader.cpp">
       <Filter>Archivos de origen\mapi</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GLFWKeyManager.h">
-      <Filter>Archivos de encabezado\GLSL</Filter>
-    </ClInclude>
-    <ClInclude Include="mapi\Camera.h">
+    <ClInclude Include="src\mapi\Camera.h">
       <Filter>Archivos de encabezado\mapi</Filter>
     </ClInclude>
-    <ClInclude Include="mapi\common.h">
+    <ClInclude Include="src\mapi\common.h">
       <Filter>Archivos de encabezado\mapi</Filter>
     </ClInclude>
-    <ClInclude Include="mapi\Object.h">
+    <ClInclude Include="src\mapi\GLFWKeyManager.h">
       <Filter>Archivos de encabezado\mapi</Filter>
     </ClInclude>
-    <ClInclude Include="mapi\Program.h">
+    <ClInclude Include="src\mapi\Object.h">
       <Filter>Archivos de encabezado\mapi</Filter>
     </ClInclude>
-    <ClInclude Include="mapi\Shader.h">
+    <ClInclude Include="src\mapi\Program.h">
       <Filter>Archivos de encabezado\mapi</Filter>
     </ClInclude>
-    <ClInclude Include="mapi\vertex.h">
+    <ClInclude Include="src\mo\Render.h">
+      <Filter>Archivos de encabezado\mo</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mapi\Shader.h">
       <Filter>Archivos de encabezado\mapi</Filter>
     </ClInclude>
-    <ClInclude Include="mapi\Render.h">
+    <ClInclude Include="src\mapi\vertex.h">
+      <Filter>Archivos de encabezado\mapi</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mapi\stb_image.h">
       <Filter>Archivos de encabezado\mapi</Filter>
     </ClInclude>
   </ItemGroup>
