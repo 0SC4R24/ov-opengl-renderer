@@ -6,6 +6,8 @@
 #include "mapi/Camera.h"
 #include "mapi/vertex.h"
 
+#include "mo/GL4Render.h"
+
 typedef struct
 {
     unsigned int arrayBufferId;
@@ -79,27 +81,9 @@ void updateObjects(float deltaTime, old::Camera& cam)
 
 int main(int argc, char** argv)
 {
-    if (glfwInit() != GLFW_TRUE) {
-        std::cout << "ERROR GLFW no iniciada\n";
-        exit(0);
-    }
+    GL4Render render{ 640, 480 };
 
-#ifdef __APPLE__
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-#endif
-
-    GLFWwindow* window = glfwCreateWindow(640, 480, "MO OpenGL Renderer", nullptr, nullptr);
-
-    glfwMakeContextCurrent(window);
-    
-    gladLoadGL(glfwGetProcAddress);
-
-    glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
-
-    glEnable(GL_DEPTH_TEST);
+    auto window = render.getWindow();
 
     old::Object* ground = new old::Object();
     ground->rotation.x = 90.0f;

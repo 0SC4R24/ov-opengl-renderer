@@ -165,6 +165,7 @@
     <ClCompile Include="src\mapi\Object.cpp" />
     <ClCompile Include="src\mapi\Program.cpp" />
     <ClCompile Include="src\mapi\Shader.cpp" />
+    <ClCompile Include="src\mo\GL4Render.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\mapi\Camera.h" />
@@ -175,6 +176,7 @@
     <ClInclude Include="src\mapi\Shader.h" />
     <ClInclude Include="src\mapi\stb_image.h" />
     <ClInclude Include="src\mapi\vertex.h" />
+    <ClInclude Include="src\mo\GL4Render.h" />
     <ClInclude Include="src\mo\Render.h" />
   </ItemGroup>
   <ItemGroup>
