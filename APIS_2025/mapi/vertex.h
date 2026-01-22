@@ -2,8 +2,11 @@
 
 #include "common.h"
 
-typedef struct
+namespace old
 {
-	glm::vec4 vPosition;
-	glm::vec4 vColor;
-} vertex_t;
+	typedef struct
+	{
+		glm::vec4 vPosition;
+		glm::vec4 vColor;
+	} vertex_t;
+};

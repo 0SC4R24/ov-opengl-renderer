@@ -5,25 +5,28 @@
 #include "GLFWKeyManager.h"
 #include "Program.h"
 
-class Object
+namespace old
 {
-public:
-	static inline int objectCounter = 0;
+	class Object
+	{
+	public:
+		static inline int objectCounter = 0;
 
-	int objectId;
+		int objectId;
 
-	glm::vec4 position;
-	glm::vec4 rotation;
-	glm::vec4 scale;
+		glm::vec4 position;
+		glm::vec4 rotation;
+		glm::vec4 scale;
 
-	std::vector<vertex_t> vertexList;
-	std::vector<int> vertexIndexList;
+		std::vector<vertex_t> vertexList;
+		std::vector<int> vertexIndexList;
 
-	Program* renderProgram;
+		Program* renderProgram;
 
-	Object();
+		Object();
 
-	glm::mat4 getModelMatrix();
+		glm::mat4 getModelMatrix();
 
-	void step(float timeStep);
-};
+		void step(float timeStep);
+	};
+}

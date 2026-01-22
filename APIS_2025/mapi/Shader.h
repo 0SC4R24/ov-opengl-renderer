@@ -2,13 +2,15 @@
 
 #include "common.h"
 
-class Shader
+namespace old
 {
-public:
-	unsigned int shaderID;
-	unsigned int shaderType;
-	bool compiled = false;
+	class Shader
+	{
+	public:
+		unsigned int shaderID;
+		unsigned int shaderType;
+		bool compiled = false;
 	
-	Shader(std::string fileName);
+		Shader(std::string fileName);
+	};
 };
-
