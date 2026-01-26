@@ -87,7 +87,7 @@ int main(int argc, char** argv)
 
     for (auto& obj : objectList)
     {
-        setupObject(obj);
+        //setupObject(obj);
         render.setupObject(std::make_shared<old::Object>(*obj));
     }
 

@@ -168,6 +168,7 @@
     <ClCompile Include="src\mo\GL4Render.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="mo\InputManager.h" />
     <ClInclude Include="src\mapi\Camera.h" />
     <ClInclude Include="src\mapi\common.h" />
     <ClInclude Include="src\mapi\GLFWKeyManager.h" />

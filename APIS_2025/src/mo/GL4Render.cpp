@@ -56,7 +56,10 @@ void GL4Render::setupObject(std::shared_ptr<old::Object> objectPtr)
 	// Get pointer
 	old::Object* obj = objectPtr.get();
 
+	// Fill vertex buffer data
 	glBufferData(GL_ARRAY_BUFFER, sizeof(old::vertex_t) * obj->vertexList.size(), obj->vertexList.data(), GL_STATIC_DRAW);
+
+	// Fill index buffer data
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * obj->vertexIndexList.size(), obj->vertexIndexList.data(), GL_STATIC_DRAW);
 
 	m_bufferObjectMap[obj->objectId] = bo;
