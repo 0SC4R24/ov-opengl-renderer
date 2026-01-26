@@ -1,6 +1,6 @@
 #include "Object.h"
 
-Object::Object()
+old::Object::Object()
 {
 	this->objectId = objectCounter++;
 
@@ -35,7 +35,7 @@ Object::Object()
 	this->renderProgram->linkProgram();
 }
 
-glm::mat4 Object::getModelMatrix()
+glm::mat4 old::Object::getModelMatrix()
 {
 	glm::mat4 modelMatrix = glm::mat4(1.0f);
 
@@ -50,7 +50,7 @@ glm::mat4 Object::getModelMatrix()
 	return modelMatrix;
 }
 
-void Object::step(float timeStep)
+void old::Object::step(float timeStep)
 {
 	float rotSpeed = 60.0f;
 	/*float speed = 0.1f;
@@ -60,6 +60,6 @@ void Object::step(float timeStep)
 	if (GLFWKeyManager::keyboardState[GLFW_KEY_W]) this->position.y += speed * timeStep;
 	if (GLFWKeyManager::keyboardState[GLFW_KEY_S]) this->position.y -= speed * timeStep;*/
 
-	if (GLFWKeyManager::keyboardState[GLFW_KEY_Q]) this->rotation.x += rotSpeed * timeStep;
-	if (GLFWKeyManager::keyboardState[GLFW_KEY_E]) this->rotation.x -= rotSpeed * timeStep;
+	if (old::GLFWKeyManager::keyboardState[GLFW_KEY_Q]) this->rotation.x += rotSpeed * timeStep;
+	if (old::GLFWKeyManager::keyboardState[GLFW_KEY_E]) this->rotation.x -= rotSpeed * timeStep;
 }

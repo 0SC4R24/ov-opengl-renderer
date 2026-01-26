@@ -1,17 +1,17 @@
 #include "GLFWKeyManager.h"
 
-void GLFWKeyManager::initKeyManager(GLFWwindow* window)
+void old::GLFWKeyManager::initKeyManager(GLFWwindow* window)
 {
-	GLFWKeyManager::window = window;
+	old::GLFWKeyManager::window = window;
 
-	glfwSetKeyCallback(window, GLFWKeyManager::windowKeyboardEvent);
-	glfwSetCursorPosCallback(window, GLFWKeyManager::mousePosEvent);
-	glfwSetMouseButtonCallback(window, GLFWKeyManager::mouseButtonEvent);
+	glfwSetKeyCallback(window, old::GLFWKeyManager::windowKeyboardEvent);
+	glfwSetCursorPosCallback(window, old::GLFWKeyManager::mousePosEvent);
+	glfwSetMouseButtonCallback(window, old::GLFWKeyManager::mouseButtonEvent);
 	
-	GLFWKeyManager::setCursorPos(0, 0);
+	old::GLFWKeyManager::setCursorPos(0, 0);
 }
 
-void GLFWKeyManager::windowKeyboardEvent(GLFWwindow* window, int key, int scancode, int action, int mods)
+void old::GLFWKeyManager::windowKeyboardEvent(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
 	switch (action)
 	{
@@ -26,13 +26,13 @@ void GLFWKeyManager::windowKeyboardEvent(GLFWwindow* window, int key, int scanco
 	}
 }
 
-void GLFWKeyManager::mousePosEvent(GLFWwindow* window, double xPos, double yPos)
+void old::GLFWKeyManager::mousePosEvent(GLFWwindow* window, double xPos, double yPos)
 {
 	mouseState.xPos = xPos;
 	mouseState.yPos = yPos;
 }
 
-void GLFWKeyManager::mouseButtonEvent(GLFWwindow* window, int button, int action, int mods)
+void old::GLFWKeyManager::mouseButtonEvent(GLFWwindow* window, int button, int action, int mods)
 {
 	switch (action)
 	{
@@ -47,12 +47,12 @@ void GLFWKeyManager::mouseButtonEvent(GLFWwindow* window, int button, int action
 	}
 }
 
-void GLFWKeyManager::updateEvents()
+void old::GLFWKeyManager::updateEvents()
 {
 	glfwPollEvents();
 }
 
-void GLFWKeyManager::setCursorPos(double x, double y)
+void old::GLFWKeyManager::setCursorPos(double x, double y)
 {
 	mouseState.xPos = x;
 	mouseState.yPos = y;

@@ -21,7 +21,7 @@ namespace old
 		std::vector<vertex_t> vertexList;
 		std::vector<int> vertexIndexList;
 
-		Program* renderProgram;
+		old::Program* renderProgram;
 
 		Object();
 
