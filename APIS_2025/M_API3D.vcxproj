@@ -158,6 +158,10 @@
     <ClCompile Include="APIS3D_2025.cpp" />
     <ClCompile Include="mapi\Camera.cpp" />
     <ClCompile Include="mapi\GLFWKeyManager.cpp" />
+    <ClCompile Include="mapi\GLSLMaterial.cpp" />
+    <ClCompile Include="mapi\GLSLProgram.cpp" />
+    <ClCompile Include="mapi\GLSLShader.cpp" />
+    <ClCompile Include="mapi\Mesh3D.cpp" />
     <ClCompile Include="mapi\Object.cpp" />
     <ClCompile Include="mapi\Program.cpp" />
     <ClCompile Include="mapi\Shader.cpp" />
@@ -165,9 +169,17 @@
   <ItemGroup>
     <ClInclude Include="mapi\Camera.h" />
     <ClInclude Include="mapi\common.h" />
+    <ClInclude Include="mapi\Entity.h" />
     <ClInclude Include="mapi\GLFWKeyManager.h" />
+    <ClInclude Include="mapi\GLSLMaterial.h" />
+    <ClInclude Include="mapi\GLSLProgram.h" />
+    <ClInclude Include="mapi\GLSLShader.h" />
+    <ClInclude Include="mapi\Material.h" />
+    <ClInclude Include="mapi\Mesh3D.h" />
     <ClInclude Include="mapi\Object.h" />
+    <ClInclude Include="mapi\Object3D.h" />
     <ClInclude Include="mapi\Program.h" />
+    <ClInclude Include="mapi\RenderProgram.h" />
     <ClInclude Include="mapi\Shader.h" />
     <ClInclude Include="mapi\vertex.h" />
   </ItemGroup>

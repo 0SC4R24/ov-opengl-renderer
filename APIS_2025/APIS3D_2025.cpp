@@ -5,6 +5,9 @@
 #include "mapi/Object.h"
 #include "mapi/Camera.h"
 
+#include "mapi/Object3D.h"
+#include "mapi/GLSLShader.h"
+
 typedef struct
 {
     unsigned int arrayBufferId;
@@ -90,7 +93,7 @@ int main(int argc, char** argv)
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 #endif
 
-    GLFWwindow* window = glfwCreateWindow(640, 480, "Codigo Clase", nullptr, nullptr);
+    GLFWwindow* window = glfwCreateWindow(640, 480, "MO OpenGL Renderer", nullptr, nullptr);
 
     glfwMakeContextCurrent(window);
     
