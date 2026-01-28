@@ -12,6 +12,5 @@ void GLSLMaterial::loadPrograms(std::vector<std::string> shaderFileNames)
 
 void GLSLMaterial::prepare()
 {
-	// TODO: Metodo virtual que inicializara adecuadamente las variables del
-	//       RenderProgram a partir de los objetos
+	m_program->use();
 }
