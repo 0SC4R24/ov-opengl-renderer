@@ -16,6 +16,7 @@
 class RenderProgram
 {
 protected: // Attributes
+	unsigned int m_idRenderProgram;
 	std::vector<Program*> m_shaders;
 	std::map<std::string, unsigned int> m_varList;
 
@@ -26,10 +27,14 @@ public: // Getters & Setters
 	virtual void setVec3(std::string name, const glm::vec3& vector3) = 0;
 	virtual void setVec4(std::string name, const glm::vec4& vector4) = 0;
 	virtual void setMatrix(std::string name, const glm::mat4& matrix) = 0;
+	
+	virtual unsigned int getVarLocation(std::string varName) = 0;
 
 public: // Virtual methods
+	virtual void readVarList() = 0;
 	virtual void addProgram(std::string fileName) = 0;
 	virtual void linkProgram() = 0;
 	virtual void use() = 0;
 	virtual void checkLinkerErrors() = 0;
+	virtual void clean() = 0;
 };

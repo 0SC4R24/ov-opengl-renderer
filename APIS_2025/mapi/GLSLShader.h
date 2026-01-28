@@ -10,7 +10,7 @@
 #include "common.h"
 #include "Program.h"
 
-class GLSLShader : Program
+class GLSLShader : public Program
 {
 public:
 	GLSLShader(std::string fileName) : Program(fileName) { initialize(); }
@@ -18,4 +18,5 @@ public:
 	void readFile() override;
 	void compile() override;
 	void checkErrors() override;
+	void clean() override;
 };

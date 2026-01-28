@@ -59,6 +59,10 @@ protected: // Attributes
 		checkErrors();
 	}
 
+public: // Getters & Setters
+	const unsigned int& getProgramID()
+	{ return m_idProgram; }
+
 public: // Methods
 	Program(std::string fileName) : m_fileName(fileName) 
 	{
@@ -70,4 +74,5 @@ public: // Methods
 	virtual void readFile() = 0;
 	virtual void compile() = 0;
 	virtual void checkErrors() = 0;
+	virtual void clean() = 0;
 };

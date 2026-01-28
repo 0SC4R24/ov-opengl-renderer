@@ -39,3 +39,8 @@ void GLSLShader::checkErrors()
 		std::cerr << "[ERROR] " << m_fileName << "\n" << message << "\n\n";
 	}
 }
+
+void GLSLShader::clean()
+{
+	glDeleteShader(m_idProgram);
+}

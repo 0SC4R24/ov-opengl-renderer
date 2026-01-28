@@ -54,6 +54,21 @@
     <ClCompile Include="mapi\Shader.cpp">
       <Filter>Archivos de origen\mapi</Filter>
     </ClCompile>
+    <ClCompile Include="mapi\GLSLMaterial.cpp">
+      <Filter>Archivos de origen\GLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="mapi\GLSLProgram.cpp">
+      <Filter>Archivos de origen\GLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="mapi\GLSLShader.cpp">
+      <Filter>Archivos de origen\GLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="mapi\Mesh3D.cpp">
+      <Filter>Archivos de origen\mapi</Filter>
+    </ClCompile>
+    <ClCompile Include="mapi\Object3D.cpp">
+      <Filter>Archivos de origen\mapi</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mapi\Camera.h">
@@ -76,6 +91,30 @@
     </ClInclude>
     <ClInclude Include="mapi\GLFWKeyManager.h">
       <Filter>Archivos de encabezado\GLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="mapi\GLSLMaterial.h">
+      <Filter>Archivos de encabezado\GLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="mapi\GLSLProgram.h">
+      <Filter>Archivos de encabezado\GLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="mapi\GLSLShader.h">
+      <Filter>Archivos de encabezado\GLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="mapi\Entity.h">
+      <Filter>Archivos de encabezado\mapi</Filter>
+    </ClInclude>
+    <ClInclude Include="mapi\Material.h">
+      <Filter>Archivos de encabezado\mapi</Filter>
+    </ClInclude>
+    <ClInclude Include="mapi\Mesh3D.h">
+      <Filter>Archivos de encabezado\mapi</Filter>
+    </ClInclude>
+    <ClInclude Include="mapi\Object3D.h">
+      <Filter>Archivos de encabezado\mapi</Filter>
+    </ClInclude>
+    <ClInclude Include="mapi\RenderProgram.h">
+      <Filter>Archivos de encabezado\mapi</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

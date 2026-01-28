@@ -70,7 +70,7 @@ void updateObjects(float deltaTime, old::Camera& cam)
         glEnableClientState(GL_COLOR_ARRAY);
         glColorPointer(4, GL_FLOAT, sizeof(vertex_t), (void*) offsetof(vertex_t, vColor));*/
         
-        glDrawElements(GL_TRIANGLES, objectList[obj->objectId]->vertexIndexList.size(), GL_UNSIGNED_INT, nullptr);
+        glDrawElements(GL_TRIANGLES, (GLsizei)objectList[obj->objectId]->vertexIndexList.size(), GL_UNSIGNED_INT, nullptr);
         
         //glPopMatrix();
 

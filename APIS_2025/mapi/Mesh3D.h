@@ -17,7 +17,6 @@ private: // Static counter
 	static inline int m_ObjectCounter = 0;
 
 private: // Attributes
-
 	int m_meshID;
 	glm::vec4 m_colorRGBA;
 	std::vector<vertex_t>* m_vVertList;

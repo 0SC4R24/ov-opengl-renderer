@@ -54,7 +54,7 @@ typedef enum
 /// <summary>
 /// Object Interface
 /// </summary>
-class Object : Entity
+class Object : public Entity
 {
 protected: // Attributes
 	Mesh3D* m_mesh;

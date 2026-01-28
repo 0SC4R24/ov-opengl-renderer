@@ -163,6 +163,7 @@
     <ClCompile Include="mapi\GLSLShader.cpp" />
     <ClCompile Include="mapi\Mesh3D.cpp" />
     <ClCompile Include="mapi\Object.cpp" />
+    <ClCompile Include="mapi\Object3D.cpp" />
     <ClCompile Include="mapi\Program.cpp" />
     <ClCompile Include="mapi\Shader.cpp" />
   </ItemGroup>

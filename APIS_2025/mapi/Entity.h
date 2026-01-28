@@ -44,7 +44,20 @@ public: // Getters & Setters
 
 public: // Methods
 	// Compute model matrix
-	virtual void computeModelMatrix() = 0;
+	virtual void computeModelMatrix()
+	{
+		glm::mat4 modelMatrix = glm::mat4(1.0f);
+
+		modelMatrix = glm::translate(modelMatrix, glm::vec3(m_position));
+
+		modelMatrix = glm::rotate(modelMatrix, glm::radians(m_rotation.x), glm::vec3(1.0f, 0.0f, 0.0f));
+		modelMatrix = glm::rotate(modelMatrix, glm::radians(m_rotation.y), glm::vec3(0.0f, 1.0f, 0.0f));
+		modelMatrix = glm::rotate(modelMatrix, glm::radians(m_rotation.z), glm::vec3(0.0f, 0.0f, 1.0f));
+
+		modelMatrix = glm::scale(modelMatrix, glm::vec3(m_scale));
+
+		m_modelMatrix = modelMatrix;
+	}
 
 	// Checks for movement of the entity every frame
 	virtual void step(double deltaTime) = 0;
