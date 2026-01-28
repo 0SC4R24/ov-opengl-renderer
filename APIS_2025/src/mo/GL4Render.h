@@ -31,9 +31,11 @@ private: // Data members
 
 	std::map<int, bufferObject_t> m_bufferObjectMap;
 
-public: // Constructors
+public: // Constructors & Destructor
 
 	GL4Render(const int& width, const int& height);
+
+   ~GL4Render();
 
 public: // Get - Set
 

@@ -19,6 +19,17 @@ GL4Render::GL4Render(const int& width, const int& height)
 	m_window = createGLFWWindow(width, height);
 }
 
+GL4Render::~GL4Render()
+{
+	for (auto& [objectId, bo] : m_bufferObjectMap)
+	{
+		// Delete GPU buffers
+		glDeleteBuffers(1, &bo.vertexBufferId);
+		glDeleteBuffers(1, &bo.vertexIndexArrayId);
+		glDeleteVertexArrays(1, &bo.vertexArrayId);
+	}
+}
+
 void GL4Render::init()
 {
 	// Initialize OpenGL
@@ -41,6 +52,9 @@ void GL4Render::init()
 
 void GL4Render::setupObject(std::shared_ptr<old::Object> objectPtr)
 {
+	if (not objectPtr)
+	{ return; }
+
 	bufferObject_t bo = { 0, 0, 0 };
 
 	// Generate VAO, VBO and IBO
@@ -63,11 +77,31 @@ void GL4Render::setupObject(std::shared_ptr<old::Object> objectPtr)
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * obj->vertexIndexList.size(), obj->vertexIndexList.data(), GL_STATIC_DRAW);
 
 	m_bufferObjectMap[obj->objectId] = bo;
+
+	// Reset bindings
+	glBindVertexArray(0);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
 void GL4Render::removeObject(std::shared_ptr<old::Object> objectPtr)
 {
-	// Free buffers from object
+	if (not objectPtr)
+	{ return; }
+
+	int objectId = objectPtr->objectId;
+	auto bufferObjectMapIterator = m_bufferObjectMap.find(objectId);
+
+	if (bufferObjectMapIterator == m_bufferObjectMap.end())
+	{ return; }
+
+	// Get object buffers
+	bufferObject_t bo = bufferObjectMapIterator->second;
+
+	// Free object buffers
+	glDeleteBuffers(1, &bo.vertexBufferId);
+	glDeleteBuffers(1, &bo.vertexIndexArrayId);
+	glDeleteVertexArrays(1, &bo.vertexArrayId);
 }
 
 void GL4Render::drawObjects(std::vector<ObjectPtr>* objectVectorPtr)

@@ -88,7 +88,9 @@ int main(int argc, char** argv)
     for (auto& obj : objectList)
     {
         //setupObject(obj);
-        render.setupObject(std::make_shared<old::Object>(*obj));
+        auto objPtr = std::make_shared<old::Object>(*obj);
+        render.setupObject(objPtr);
+        render.removeObject(objPtr);
     }
 
     old::GLFWKeyManager::initKeyManager(window);
