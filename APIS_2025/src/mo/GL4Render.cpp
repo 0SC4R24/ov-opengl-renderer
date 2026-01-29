@@ -79,6 +79,10 @@ void GL4Render::setupObject(std::shared_ptr<old::Object> objectPtr)
 
 	m_bufferObjectMap[obj->objectId] = bo;
 
+	// Set shader data. Move to material class
+	obj->renderProgram->setAttributeMetaData("vPos", 4, GL_FLOAT, false, sizeof(old::vertex_t), (void*)offsetof(old::vertex_t, vPosition));
+	obj->renderProgram->setAttributeMetaData("vColor", 4, GL_FLOAT, false, sizeof(old::vertex_t), (void*)offsetof(old::vertex_t, vColor));
+
 	// Reset bindings
 	glBindVertexArray(0);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
