@@ -9,6 +9,7 @@
 #include "mo/GL4Render.h"
 
 std::vector<old::Object*> objectList;
+std::vector<std::shared_ptr<old::Object>> objectPtrList;
 std::map<int, bufferObject_t> bufferObjectList;
 
 void setupObject(old::Object* obj)
@@ -83,14 +84,15 @@ int main(int argc, char** argv)
     ground->position.y = -1.5f;
 
     objectList.push_back(ground);
+	objectPtrList.push_back(std::make_shared<old::Object>(*ground));
     objectList.push_back(new old::Object());
+	objectPtrList.push_back(std::make_shared<old::Object>());
 
-    for (auto& obj : objectList)
+    for (auto& obj : objectPtrList)
     {
         //setupObject(obj);
-        auto objPtr = std::make_shared<old::Object>(*obj);
-        render.setupObject(objPtr);
-        render.removeObject(objPtr);
+        render.setupObject(obj);
+        // render.removeObject(objPtr);
     }
 
     old::GLFWKeyManager::initKeyManager(window);
@@ -100,6 +102,9 @@ int main(int argc, char** argv)
     float lastTime = newTime;
 
     old::Camera cam(glm::vec4(0, 0, 3, 1), glm::vec4(0, 0, 0, 1));
+	render.setCamera(&cam);
+
+    cam.cameraView = glm::lookAt(glm::vec3(cam.position), glm::vec3(cam.lookAt), glm::vec3(0, 1, 0));
 
     while (!glfwWindowShouldClose(window) && !old::GLFWKeyManager::keyboardState[GLFW_KEY_ESCAPE])
     {
@@ -107,14 +112,15 @@ int main(int argc, char** argv)
         deltaTime = newTime - lastTime;
         lastTime = newTime;
 
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        //glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+        //glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        updateObjects(deltaTime, cam);
+        //updateObjects(deltaTime, cam);
+        render.drawObjects(objectPtrList);
 
         old::GLFWKeyManager::updateEvents();
 
-        glfwSwapBuffers(window);
+        //glfwSwapBuffers(window);
     }
 
     glfwTerminate();

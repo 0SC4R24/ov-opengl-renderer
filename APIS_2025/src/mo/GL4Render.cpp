@@ -10,7 +10,8 @@
 
 #include "GL4Render.h"
 
-GL4Render::GL4Render(const int& width, const int& height)
+GL4Render::GL4Render(const int& width, const int& height) :
+	m_camera{ nullptr }
 {
 	// Initialize OpenGL
 	init();
@@ -104,11 +105,42 @@ void GL4Render::removeObject(std::shared_ptr<old::Object> objectPtr)
 	glDeleteVertexArrays(1, &bo.vertexArrayId);
 }
 
-void GL4Render::drawObjects(std::vector<ObjectPtr>* objectVectorPtr)
+void GL4Render::drawObjects(std::vector<ObjectPtr>& objectVectorPtr)
 {
 	// Clean window buffer
-	// Model matrix set (object)
+	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	if (m_camera != nullptr)
+	{
+		for (auto& objPtr : objectVectorPtr)
+		{
+			// Continue if object is not set up
+			auto bufferObjectMapIterator = m_bufferObjectMap.find(objPtr->objectId);
+			if (bufferObjectMapIterator == m_bufferObjectMap.end())
+			{
+				continue;
+			}
+
+			// Calculate projection matrix
+			glm::mat4 model = objPtr->getModelMatrix();
+
+			objPtr->renderProgram->activate();
+			objPtr->renderProgram->setMVP(m_camera->cameraProjection * m_camera->cameraView * model);
+
+			// Bind buffers
+			bufferObject_t bo = m_bufferObjectMap[objPtr->objectId];
+			glBindVertexArray(bo.vertexArrayId);
+			glBindBuffer(GL_ARRAY_BUFFER, bo.vertexBufferId);
+			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, bo.vertexIndexArrayId);
+
+			// Draw call
+			glDrawElements(GL_TRIANGLES, objPtr->vertexIndexList.size(), GL_UNSIGNED_INT, nullptr);
+		}
+	}
+
 	// Swap buffers
+	glfwSwapBuffers(m_window);
 }
 
 GLFWwindow* GL4Render::createGLFWWindow(const int& width, const int& height)

@@ -12,6 +12,7 @@
 
 #include "common.h"
 #include "mo/BufferObject.h"
+#include "mapi/Camera.h"
 
 #include "mo/Render.h"
 
@@ -29,6 +30,8 @@ private: // Data members
 
 	GLFWwindow* m_window;
 
+	old::Camera* m_camera;
+
 	std::map<int, bufferObject_t> m_bufferObjectMap;
 
 public: // Constructors & Destructor
@@ -42,6 +45,9 @@ public: // Get - Set
 	GLFWwindow* getWindow()
 	{ return m_window; }
 
+	void setCamera(old::Camera* camera)
+	{ m_camera = camera; }
+
 public: // Member functions
 
 	// Render init
@@ -54,7 +60,7 @@ public: // Member functions
 	void removeObject(std::shared_ptr<old::Object> objectPtr) override;
 
 	// Render draw objects
-	void drawObjects(std::vector<ObjectPtr>* objectVectorPtr) override;
+	void drawObjects(std::vector<ObjectPtr>& objectVectorPtr) override;
 
 private: // Member functions
 
