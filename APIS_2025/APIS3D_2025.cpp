@@ -10,7 +10,7 @@
 #include "mo/GLFWInputManager.h"
 
 std::vector<old::Object*> objectList;
-std::vector<std::shared_ptr<old::Object>> objectPtrList;
+std::list<std::shared_ptr<old::Object>> objectPtrList;
 std::map<int, bufferObject_t> bufferObjectList;
 
 void setupObject(old::Object* obj)

@@ -109,7 +109,7 @@ void GL4Render::removeObject(std::shared_ptr<old::Object> objectPtr)
 	glDeleteVertexArrays(1, &bo.vertexArrayId);
 }
 
-void GL4Render::drawObjects(std::vector<ObjectPtr>& objectVectorPtr)
+void GL4Render::drawObjects(std::list<ObjectPtr>& objectVectorPtr)
 {
 	// Clean window buffer
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);

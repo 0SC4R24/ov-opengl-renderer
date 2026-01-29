@@ -60,7 +60,7 @@ public: // Member functions
 	void removeObject(std::shared_ptr<old::Object> objectPtr) override;
 
 	// Render draw objects
-	void drawObjects(std::vector<ObjectPtr>& objectVectorPtr) override;
+	void drawObjects(std::list<ObjectPtr>& objectVectorPtr) override;
 
 private: // Member functions
 

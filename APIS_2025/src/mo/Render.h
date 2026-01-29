@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include <vector>
+#include <list>
 #include <memory>
 
 // Forward declarations
@@ -53,6 +53,6 @@ public: // Member functions
 	virtual void removeObject(std::shared_ptr<old::Object> objectPtr) = 0;
 
 	// Draw object list
-	virtual void drawObjects(std::vector<ObjectPtr>& objectVectorPtr) = 0;
+	virtual void drawObjects(std::list<ObjectPtr>& objectVectorPtr) = 0;
 
 };
