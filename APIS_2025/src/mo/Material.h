@@ -17,6 +17,10 @@ class Material
 protected: // Attributes
 	RenderProgram* m_program = nullptr;
 
+public: // Getters & Setters
+	RenderProgram* getRenderProgram()
+	{ return m_program; }
+
 public: // Virtual methods
 	virtual void loadPrograms(std::vector<std::string> shaderFileNames) = 0;
 	virtual void prepare() = 0;

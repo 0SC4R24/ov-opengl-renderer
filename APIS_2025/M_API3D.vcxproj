@@ -160,58 +160,44 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="APIS3D_2025.cpp" />
-    <ClCompile Include="mapi\Camera.cpp" />
-    <ClCompile Include="mapi\GLFWKeyManager.cpp" />
-    <ClCompile Include="mapi\GLSLMaterial.cpp" />
-    <ClCompile Include="mapi\GLSLProgram.cpp" />
-    <ClCompile Include="mapi\GLSLShader.cpp" />
-    <ClCompile Include="mapi\Mesh3D.cpp" />
-    <ClCompile Include="mapi\Object.cpp" />
-    <ClCompile Include="mapi\Object3D.cpp" />
-    <ClCompile Include="mapi\Program.cpp" />
-    <ClCompile Include="mapi\Shader.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="mapi\Camera.h" />
-    <ClInclude Include="mapi\common.h" />
-    <ClInclude Include="mapi\Entity.h" />
-    <ClInclude Include="mapi\GLFWKeyManager.h" />
-    <ClInclude Include="mapi\GLSLMaterial.h" />
-    <ClInclude Include="mapi\GLSLProgram.h" />
-    <ClInclude Include="mapi\GLSLShader.h" />
-    <ClInclude Include="mapi\Material.h" />
-    <ClInclude Include="mapi\Mesh3D.h" />
-    <ClInclude Include="mapi\Object.h" />
-    <ClInclude Include="mapi\Object3D.h" />
-    <ClInclude Include="mapi\Program.h" />
-    <ClInclude Include="mapi\RenderProgram.h" />
-    <ClInclude Include="mapi\Shader.h" />
-    <ClInclude Include="mapi\vertex.h" />
     <ClCompile Include="src\mapi\Camera.cpp" />
     <ClCompile Include="src\mapi\GLFWKeyManager.cpp" />
-    <ClCompile Include="src\mapi\Object.cpp" />
-    <ClCompile Include="src\mapi\Program.cpp" />
-    <ClCompile Include="src\mapi\Shader.cpp" />
     <ClCompile Include="src\mo\GL4Render.cpp" />
     <ClCompile Include="src\mo\GLFWInputManager.cpp" />
+    <ClCompile Include="src\mo\GLSLMaterial.cpp" />
+    <ClCompile Include="src\mo\GLSLProgram.cpp" />
+    <ClCompile Include="src\mo\GLSLShader.cpp" />
     <ClCompile Include="src\mo\InputManager.cpp" />
+    <ClCompile Include="src\mo\Mesh3D.cpp" />
+    <ClCompile Include="src\mo\Object.cpp" />
+    <ClCompile Include="src\mo\Object3D.cpp" />
+    <ClCompile Include="src\mo\Program.cpp" />
+    <ClCompile Include="src\mo\Shader.cpp" />
     <ClCompile Include="src\mo\World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\mapi\Camera.h" />
     <ClInclude Include="src\mapi\common.h" />
     <ClInclude Include="src\mapi\GLFWKeyManager.h" />
-    <ClInclude Include="src\mapi\Object.h" />
-    <ClInclude Include="src\mapi\Program.h" />
-    <ClInclude Include="src\mapi\Shader.h" />
     <ClInclude Include="src\mapi\stb_image.h" />
     <ClInclude Include="src\mapi\vertex.h" />
     <ClInclude Include="src\mo\bufferObject.h" />
+    <ClInclude Include="src\mo\Entity.h" />
     <ClInclude Include="src\mo\FactoryEngine.h" />
     <ClInclude Include="src\mo\GL4Render.h" />
     <ClInclude Include="src\mo\GLFWInputManager.h" />
+    <ClInclude Include="src\mo\GLSLMaterial.h" />
+    <ClInclude Include="src\mo\GLSLProgram.h" />
+    <ClInclude Include="src\mo\GLSLShader.h" />
     <ClInclude Include="src\mo\InputManager.h" />
+    <ClInclude Include="src\mo\Material.h" />
+    <ClInclude Include="src\mo\Mesh3D.h" />
+    <ClInclude Include="src\mo\Object.h" />
+    <ClInclude Include="src\mo\Object3D.h" />
+    <ClInclude Include="src\mo\Program.h" />
     <ClInclude Include="src\mo\Render.h" />
+    <ClInclude Include="src\mo\RenderProgram.h" />
+    <ClInclude Include="src\mo\Shader.h" />
     <ClInclude Include="src\mo\World.h" />
   </ItemGroup>
   <ItemGroup>

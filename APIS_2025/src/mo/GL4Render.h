@@ -54,10 +54,10 @@ public: // Member functions
 	void init() override;
 
 	// Render set up object
-	void setupObject(std::shared_ptr<old::Object> objectPtr) override;
+	void setupObject(std::shared_ptr<Object> objectPtr) override;
 
 	// Render remove object
-	void removeObject(std::shared_ptr<old::Object> objectPtr) override;
+	void removeObject(std::shared_ptr<Object> objectPtr) override;
 
 	// Render draw objects
 	void drawObjects(std::list<ObjectPtr>& objectVectorPtr) override;

@@ -31,6 +31,9 @@ public: // Getters & Setters
 	const int& getMeshID()
 	{ return m_meshID; }
 
+	const glm::vec4& getColor()
+	{ return m_colorRGBA; }
+
 	std::vector<vertex_t>* getVertList()
 	{ return m_vVertList; }
 

@@ -3,10 +3,24 @@
 Mesh3D::Mesh3D()
 {
 	m_meshID = m_ObjectCounter++;
-	m_colorRGBA = glm::vec4(0, 0, 0, 1);
+	m_colorRGBA = glm::vec4(0.5f, 0.5f, 0.5f, 1.0f);
 	
-	m_vVertList->clear();
-	m_vTriangleIdxList->clear();
+	*m_vVertList = {
+			{
+				glm::vec4(0.5f, 0.5f, 0.0f, 1.0f)
+			},
+			{
+				glm::vec4(-0.5f, 0.5f, 0.0f, 1.0f)
+			},
+			{
+				glm::vec4(-0.5f, -0.5f, 0.0f, 1.0f)
+			},
+			{
+				glm::vec4(0.5f, -0.5f, 0.0f, 1.0f)
+			}
+	};
+
+	*m_vTriangleIdxList = { 2, 1, 0, 2, 0, 3 };
 }
 
 void Mesh3D::addVertex(vertex_t vertex)

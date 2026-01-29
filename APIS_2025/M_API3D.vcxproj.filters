@@ -1,169 +1,55 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Archivos de origen">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Archivos de encabezado">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Archivos de recursos">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Archivos de recursos\data">
-      <UniqueIdentifier>{7966902b-36d0-4d69-9f51-49031cab7bbe}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de origen\VK">
-      <UniqueIdentifier>{c477e1d2-fff0-4f33-b63b-5e7d82a68bc6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de origen\GLSL">
-      <UniqueIdentifier>{5ac15606-4fdd-4f49-ad21-5f1c8e4a4009}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de encabezado\VK">
-      <UniqueIdentifier>{9dfe4245-fd60-4707-a7c3-4a2d6da8a666}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de encabezado\GLSL">
-      <UniqueIdentifier>{8163de99-2fee-487b-92b7-91d0ebab7582}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de origen\mapi">
-      <UniqueIdentifier>{a90cad9b-04c8-4aef-b117-10e8ed50dfcc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de encabezado\mapi">
-      <UniqueIdentifier>{0e722547-2aca-4f15-a820-e1ffde67967b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de encabezado\mo">
-      <UniqueIdentifier>{2d024ff4-39da-4dd8-9092-90f344f22bbd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de origen\mo">
-      <UniqueIdentifier>{479bf5dc-cdd5-43a5-a915-972377525860}</UniqueIdentifier>
-    </Filter>
+    <ClCompile Include="APIS3D_2025.cpp" />
+    <ClCompile Include="src\mapi\Camera.cpp" />
+    <ClCompile Include="src\mapi\GLFWKeyManager.cpp" />
+    <ClCompile Include="src\mapi\Object.cpp" />
+    <ClCompile Include="src\mapi\Program.cpp" />
+    <ClCompile Include="src\mapi\Shader.cpp" />
+    <ClCompile Include="src\mo\GL4Render.cpp" />
+    <ClCompile Include="src\mo\GLFWInputManager.cpp" />
+    <ClCompile Include="src\mo\InputManager.cpp" />
+    <ClCompile Include="src\mo\World.cpp" />
+    <ClCompile Include="src\mo\GLSLMaterial.cpp" />
+    <ClCompile Include="src\mo\GLSLProgram.cpp" />
+    <ClCompile Include="src\mo\GLSLShader.cpp" />
+    <ClCompile Include="src\mo\Mesh3D.cpp" />
+    <ClCompile Include="src\mo\Object.cpp" />
+    <ClCompile Include="src\mo\Object3D.cpp" />
+    <ClCompile Include="src\mo\Program.cpp" />
+    <ClCompile Include="src\mo\Shader.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="APIS3D_2025.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\mapi\Camera.cpp">
-      <Filter>Archivos de origen\mapi</Filter>
-    </ClCompile>
-    <ClCompile Include="src\mapi\GLFWKeyManager.cpp">
-      <Filter>Archivos de origen\mapi</Filter>
-    </ClCompile>
-    <ClCompile Include="src\mapi\Object.cpp">
-      <Filter>Archivos de origen\mapi</Filter>
-    </ClCompile>
-    <ClCompile Include="src\mapi\Program.cpp">
-      <Filter>Archivos de origen\mapi</Filter>
-    </ClCompile>
-    <ClCompile Include="mapi\GLSLMaterial.cpp">
-      <Filter>Archivos de origen\GLSL</Filter>
-    </ClCompile>
-    <ClCompile Include="mapi\GLSLProgram.cpp">
-      <Filter>Archivos de origen\GLSL</Filter>
-    </ClCompile>
-    <ClCompile Include="mapi\GLSLShader.cpp">
-      <Filter>Archivos de origen\GLSL</Filter>
-    </ClCompile>
-    <ClCompile Include="mapi\Mesh3D.cpp">
-      <Filter>Archivos de origen\mapi</Filter>
-    </ClCompile>
-    <ClCompile Include="mapi\Object3D.cpp">
-      <Filter>Archivos de origen\mapi</Filter>
-    <ClCompile Include="src\mapi\Shader.cpp">
-      <Filter>Archivos de origen\mapi</Filter>
-    </ClCompile>
-    <ClCompile Include="src\mo\GL4Render.cpp">
-      <Filter>Archivos de origen\mo</Filter>
-    </ClCompile>
-    <ClCompile Include="src\mo\InputManager.cpp">
-      <Filter>Archivos de origen\mo</Filter>
-    </ClCompile>
-    <ClCompile Include="src\mo\GLFWInputManager.cpp">
-      <Filter>Archivos de origen\mo</Filter>
-    </ClCompile>
-    <ClCompile Include="src\mo\World.cpp">
-      <Filter>Archivos de origen\mo</Filter>
-    </ClCompile>
+    <ClInclude Include="src\mapi\Camera.h" />
+    <ClInclude Include="src\mapi\common.h" />
+    <ClInclude Include="src\mapi\GLFWKeyManager.h" />
+    <ClInclude Include="src\mapi\Object.h" />
+    <ClInclude Include="src\mapi\Program.h" />
+    <ClInclude Include="src\mapi\Shader.h" />
+    <ClInclude Include="src\mapi\stb_image.h" />
+    <ClInclude Include="src\mapi\vertex.h" />
+    <ClInclude Include="src\mo\bufferObject.h" />
+    <ClInclude Include="src\mo\FactoryEngine.h" />
+    <ClInclude Include="src\mo\GL4Render.h" />
+    <ClInclude Include="src\mo\GLFWInputManager.h" />
+    <ClInclude Include="src\mo\InputManager.h" />
+    <ClInclude Include="src\mo\Render.h" />
+    <ClInclude Include="src\mo\World.h" />
+    <ClInclude Include="src\mo\Entity.h" />
+    <ClInclude Include="src\mo\GLSLMaterial.h" />
+    <ClInclude Include="src\mo\GLSLProgram.h" />
+    <ClInclude Include="src\mo\GLSLShader.h" />
+    <ClInclude Include="src\mo\Material.h" />
+    <ClInclude Include="src\mo\Mesh3D.h" />
+    <ClInclude Include="src\mo\Object.h" />
+    <ClInclude Include="src\mo\Object3D.h" />
+    <ClInclude Include="src\mo\Program.h" />
+    <ClInclude Include="src\mo\RenderProgram.h" />
+    <ClInclude Include="src\mo\Shader.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\mapi\Camera.h">
-      <Filter>Archivos de encabezado\mapi</Filter>
-    </ClInclude>
-    <ClInclude Include="src\mapi\common.h">
-      <Filter>Archivos de encabezado\mapi</Filter>
-    </ClInclude>
-    <ClInclude Include="src\mapi\GLFWKeyManager.h">
-      <Filter>Archivos de encabezado\mapi</Filter>
-    </ClInclude>
-    <ClInclude Include="src\mapi\Object.h">
-      <Filter>Archivos de encabezado\mapi</Filter>
-    </ClInclude>
-    <ClInclude Include="src\mapi\Program.h">
-      <Filter>Archivos de encabezado\mapi</Filter>
-    </ClInclude>
-    <ClInclude Include="src\mo\Render.h">
-      <Filter>Archivos de encabezado\mo</Filter>
-    </ClInclude>
-    <ClInclude Include="src\mapi\Shader.h">
-      <Filter>Archivos de encabezado\mapi</Filter>
-    </ClInclude>
-    <ClInclude Include="src\mapi\vertex.h">
-      <Filter>Archivos de encabezado\mapi</Filter>
-    </ClInclude>
-    <ClInclude Include="src\mapi\stb_image.h">
-      <Filter>Archivos de encabezado\mapi</Filter>
-    </ClInclude>
-    <ClInclude Include="src\mo\GL4Render.h">
-      <Filter>Archivos de encabezado\mo</Filter>
-    </ClInclude>
-    <ClInclude Include="src\mo\bufferObject.h">
-      <Filter>Archivos de encabezado\mo</Filter>
-    </ClInclude>
-    <ClInclude Include="src\mo\GLFWInputManager.h">
-      <Filter>Archivos de encabezado\mo</Filter>
-    </ClInclude>
-    <ClInclude Include="src\mo\InputManager.h">
-      <Filter>Archivos de encabezado\mo</Filter>
-    </ClInclude>
-    <ClInclude Include="src\mo\FactoryEngine.h">
-      <Filter>Archivos de encabezado\mo</Filter>
-    </ClInclude>
-    <ClInclude Include="src\mo\World.h">
-      <Filter>Archivos de encabezado\mo</Filter>
-    </ClInclude>
-    <ClInclude Include="mapi\GLSLMaterial.h">
-      <Filter>Archivos de encabezado\GLSL</Filter>
-    </ClInclude>
-    <ClInclude Include="mapi\GLSLProgram.h">
-      <Filter>Archivos de encabezado\GLSL</Filter>
-    </ClInclude>
-    <ClInclude Include="mapi\GLSLShader.h">
-      <Filter>Archivos de encabezado\GLSL</Filter>
-    </ClInclude>
-    <ClInclude Include="mapi\Entity.h">
-      <Filter>Archivos de encabezado\mapi</Filter>
-    </ClInclude>
-    <ClInclude Include="mapi\Material.h">
-      <Filter>Archivos de encabezado\mapi</Filter>
-    </ClInclude>
-    <ClInclude Include="mapi\Mesh3D.h">
-      <Filter>Archivos de encabezado\mapi</Filter>
-    </ClInclude>
-    <ClInclude Include="mapi\Object3D.h">
-      <Filter>Archivos de encabezado\mapi</Filter>
-    </ClInclude>
-    <ClInclude Include="mapi\RenderProgram.h">
-      <Filter>Archivos de encabezado\mapi</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="data\shader.vert">
-      <Filter>Archivos de recursos\data</Filter>
-    </None>
-    <None Include="data\shader.frag">
-      <Filter>Archivos de recursos\data</Filter>
-    </None>
+    <None Include="data\shader.frag" />
+    <None Include="data\shader.vert" />
   </ItemGroup>
 </Project>

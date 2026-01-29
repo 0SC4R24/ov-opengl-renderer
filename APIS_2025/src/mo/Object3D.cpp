@@ -9,7 +9,7 @@ Object3D::Object3D()
 
 	computeModelMatrix();
 
-	m_mesh = nullptr;
+	m_mesh = new Mesh3D();
 }
 
 void Object3D::loadDataFromFile(std::string file)
