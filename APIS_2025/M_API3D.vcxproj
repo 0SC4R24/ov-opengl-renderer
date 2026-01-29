@@ -166,9 +166,10 @@
     <ClCompile Include="src\mapi\Program.cpp" />
     <ClCompile Include="src\mapi\Shader.cpp" />
     <ClCompile Include="src\mo\GL4Render.cpp" />
+    <ClCompile Include="src\mo\GLFWInputManager.cpp" />
+    <ClCompile Include="src\mo\InputManager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="mo\InputManager.h" />
     <ClInclude Include="src\mapi\Camera.h" />
     <ClInclude Include="src\mapi\common.h" />
     <ClInclude Include="src\mapi\GLFWKeyManager.h" />
@@ -179,6 +180,8 @@
     <ClInclude Include="src\mapi\vertex.h" />
     <ClInclude Include="src\mo\BufferObject.h" />
     <ClInclude Include="src\mo\GL4Render.h" />
+    <ClInclude Include="src\mo\GLFWInputManager.h" />
+    <ClInclude Include="src\mo\InputManager.h" />
     <ClInclude Include="src\mo\Render.h" />
   </ItemGroup>
   <ItemGroup>

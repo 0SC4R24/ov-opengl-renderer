@@ -1,4 +1,5 @@
 #include "Camera.h"
+#include "mo/InputManager.h"
 
 namespace old
 {
@@ -14,22 +15,22 @@ namespace old
         float speed = 1.0f;
         float rotSpeed = 60.0f;
 
-        if (GLFWKeyManager::keyboardState[GLFW_KEY_D])
+        if (InputManager::isKeyPressed(GLFW_KEY_D)) 
         {
             this->position.x += speed * timeStep;
             lookAt.x += speed * timeStep;
         }
-        if (GLFWKeyManager::keyboardState[GLFW_KEY_A])
+        if (InputManager::isKeyPressed(GLFW_KEY_A))
         {
             this->position.x -= speed * timeStep;
             lookAt.x -= speed * timeStep;
         }
-        if (GLFWKeyManager::keyboardState[GLFW_KEY_W])
+        if (InputManager::isKeyPressed(GLFW_KEY_W))
         {
             this->position.z -= speed * timeStep;
             lookAt.z -= speed * timeStep;
         }
-        if (GLFWKeyManager::keyboardState[GLFW_KEY_S])
+        if (InputManager::isKeyPressed(GLFW_KEY_S))
         {
             this->position.z += speed * timeStep;
             lookAt.z += speed * timeStep;

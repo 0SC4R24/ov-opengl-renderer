@@ -7,6 +7,7 @@
 #include "mapi/vertex.h"
 
 #include "mo/GL4Render.h"
+#include "mo/GLFWInputManager.h"
 
 std::vector<old::Object*> objectList;
 std::vector<std::shared_ptr<old::Object>> objectPtrList;
@@ -96,6 +97,7 @@ int main(int argc, char** argv)
     }
 
     old::GLFWKeyManager::initKeyManager(window);
+	GLFWInputManager inputManager(window);
 
     float newTime = static_cast<float>(glfwGetTime());
     float deltaTime = 0;
@@ -114,7 +116,7 @@ int main(int argc, char** argv)
 
         //glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         //glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
+		cam.step(deltaTime);
         //updateObjects(deltaTime, cam);
         render.drawObjects(objectPtrList);
 

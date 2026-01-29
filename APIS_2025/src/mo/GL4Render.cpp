@@ -36,7 +36,7 @@ void GL4Render::init()
 	// Initialize OpenGL
 	if (not glfwInit())
 	{
-		std::cout << "ERROR: Unable to initialize GLFW\n"; // TODO: Make logger
+		std::cout << "ERROR: Unable to initialize GLFW\n";
 		exit(0);
 	}
 

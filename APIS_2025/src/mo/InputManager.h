@@ -18,7 +18,7 @@ class InputManager
 protected: // Data members
 
 	// Key state dictionary
-	std::map<int, bool> m_keyStateDictionary;
+	static std::map<int, bool> m_keyStateDictionary;
 
 protected: // Member functions
 
@@ -28,6 +28,6 @@ protected: // Member functions
 public: // Member functions
 
 	// Returns key pressed state
-	bool isKeyPressed(int keyCode);
+	static bool isKeyPressed(int keyCode);
 
 };
