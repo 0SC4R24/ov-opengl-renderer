@@ -4,29 +4,24 @@
 #include "mapi/GLFWKeyManager.h"
 #include "mapi/Object.h"
 #include "mapi/Camera.h"
+#include "mapi/vertex.h"
 
-#include "mapi/Object3D.h"
-#include "mapi/GLSLShader.h"
-
-typedef struct
-{
-    unsigned int arrayBufferId;
-    unsigned int vertexArrayId;
-    unsigned int vertexIndexArrayId;
-} bufferObject_t;
+#include "mo/GL4Render.h"
+#include "mo/GLFWInputManager.h"
 
 std::vector<old::Object*> objectList;
+std::list<std::shared_ptr<old::Object>> objectPtrList;
 std::map<int, bufferObject_t> bufferObjectList;
 
 void setupObject(old::Object* obj)
 {
     bufferObject_t bo = { 0, 0, 0 };
 
-    glGenVertexArrays(1, &bo.arrayBufferId);
+    glGenVertexArrays(1, &bo.vertexBufferId);
     glGenBuffers(1, &bo.vertexArrayId);
     glGenBuffers(1, &bo.vertexIndexArrayId);
 
-    glBindVertexArray(bo.arrayBufferId);
+    glBindVertexArray(bo.vertexBufferId);
     glBindBuffer(GL_ARRAY_BUFFER, bo.vertexArrayId);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, bo.vertexIndexArrayId);
 
@@ -41,7 +36,6 @@ void setupObject(old::Object* obj)
 
 void updateObjects(float deltaTime, old::Camera& cam)
 {
-    // std::cout << 1.0f / deltaTime << "fps\n";
     cam.step(deltaTime);
 
     for (auto &obj : objectList)
@@ -61,7 +55,7 @@ void updateObjects(float deltaTime, old::Camera& cam)
         obj->renderProgram->setMVP(cam.cameraProjection * cam.cameraView * model);
 
         bufferObject_t bo = bufferObjectList[obj->objectId];
-        glBindVertexArray(bo.arrayBufferId);
+        glBindVertexArray(bo.vertexBufferId);
         glBindBuffer(GL_ARRAY_BUFFER, bo.vertexArrayId);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, bo.vertexIndexArrayId);
 
@@ -81,27 +75,9 @@ void updateObjects(float deltaTime, old::Camera& cam)
 
 int main(int argc, char** argv)
 {
-    if (glfwInit() != GLFW_TRUE) {
-        std::cout << "ERROR GLFW no iniciada\n";
-        exit(0);
-    }
+    GL4Render render{ 640, 480 };
 
-#ifdef __APPLE__
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-#endif
-
-    GLFWwindow* window = glfwCreateWindow(640, 480, "MO OpenGL Renderer", nullptr, nullptr);
-
-    glfwMakeContextCurrent(window);
-    
-    gladLoadGL(glfwGetProcAddress);
-
-    glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
-
-    glEnable(GL_DEPTH_TEST);
+    auto window = render.getWindow();
 
     old::Object* ground = new old::Object();
     ground->rotation.x = 90.0f;
@@ -109,34 +85,45 @@ int main(int argc, char** argv)
     ground->position.y = -1.5f;
 
     objectList.push_back(ground);
+	objectPtrList.push_back(std::make_shared<old::Object>(*ground));
     objectList.push_back(new old::Object());
-    for (auto& obj : objectList)
+	objectPtrList.push_back(std::make_shared<old::Object>());
+
+    for (auto& obj : objectPtrList)
     {
-        setupObject(obj);
+        //setupObject(obj);
+        render.setupObject(obj);
+        // render.removeObject(objPtr);
     }
 
     old::GLFWKeyManager::initKeyManager(window);
+	GLFWInputManager inputManager(window);
 
     float newTime = static_cast<float>(glfwGetTime());
     float deltaTime = 0;
     float lastTime = newTime;
 
     old::Camera cam(glm::vec4(0, 0, 3, 1), glm::vec4(0, 0, 0, 1));
+	render.setCamera(&cam);
 
-    while (!glfwWindowShouldClose(window) && !old::GLFWKeyManager::keyboardState[GLFW_KEY_ESCAPE])
+    cam.cameraView = glm::lookAt(glm::vec3(cam.position), glm::vec3(cam.lookAt), glm::vec3(0, 1, 0));
+
+    while (!glfwWindowShouldClose(window) && !InputManager::isKeyPressed(GLFW_KEY_ESCAPE))
     {
         newTime = static_cast<float>(glfwGetTime());
         deltaTime = newTime - lastTime;
         lastTime = newTime;
 
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        //glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+        //glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		cam.step(deltaTime);
+        //updateObjects(deltaTime, cam);
+        render.drawObjects(objectPtrList);
 
-        updateObjects(deltaTime, cam);
+		inputManager.updateEvents();
+        //old::GLFWKeyManager::updateEvents();
 
-        old::GLFWKeyManager::updateEvents();
-
-        glfwSwapBuffers(window);
+        //glfwSwapBuffers(window);
     }
 
     glfwTerminate();
