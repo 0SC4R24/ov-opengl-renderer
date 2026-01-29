@@ -108,7 +108,7 @@ int main(int argc, char** argv)
 
     cam.cameraView = glm::lookAt(glm::vec3(cam.position), glm::vec3(cam.lookAt), glm::vec3(0, 1, 0));
 
-    while (!glfwWindowShouldClose(window) && !old::GLFWKeyManager::keyboardState[GLFW_KEY_ESCAPE])
+    while (!glfwWindowShouldClose(window) && !InputManager::isKeyPressed(GLFW_KEY_ESCAPE))
     {
         newTime = static_cast<float>(glfwGetTime());
         deltaTime = newTime - lastTime;
@@ -120,7 +120,8 @@ int main(int argc, char** argv)
         //updateObjects(deltaTime, cam);
         render.drawObjects(objectPtrList);
 
-        old::GLFWKeyManager::updateEvents();
+		inputManager.updateEvents();
+        //old::GLFWKeyManager::updateEvents();
 
         //glfwSwapBuffers(window);
     }

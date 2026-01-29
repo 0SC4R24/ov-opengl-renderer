@@ -10,7 +10,7 @@
 #include <vector>
 #include <memory>
 
-// Forward references
+// Forward declarations
 class old::Object;
 
 // Aliases
