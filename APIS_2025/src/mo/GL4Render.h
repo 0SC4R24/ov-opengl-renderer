@@ -28,10 +28,6 @@ private: // Const data members
 
 private: // Data members
 
-	GLFWwindow* m_window;
-
-	old::Camera* m_camera;
-
 	std::map<int, bufferObject_t> m_bufferObjectMap;
 
 public: // Constructors & Destructor
@@ -42,10 +38,7 @@ public: // Constructors & Destructor
 
 public: // Get - Set
 
-	GLFWwindow* getWindow()
-	{ return m_window; }
-
-	void setCamera(old::Camera* camera)
+	void setCamera(old::Camera* camera) override
 	{ m_camera = camera; }
 
 public: // Member functions

@@ -3,10 +3,6 @@
 #include "GLFWInputManager.h"
 #include "GLSLMaterial.h"
 
-MO_InputManagerType_e FactoryEngine::m_selectedInputManager = MO_INPUT_MANAGER_TYPE_GLFW;
-MO_RenderEngineType_e FactoryEngine::m_selectedRenderEngine = MO_RENDER_ENGINE_TYPE_GL4;
-std::shared_ptr<Render> FactoryEngine::m_render = nullptr;
-
 std::shared_ptr<Render> FactoryEngine::getNewRender()
 {
 	switch (m_selectedRenderEngine)
@@ -32,12 +28,12 @@ std::shared_ptr<InputManager> FactoryEngine::getNewInputManager()
 	}
 }
 
-std::shared_ptr<Material> FactoryEngine::getNewMaterial()
+Material* FactoryEngine::getNewMaterial()
 {
 	switch (m_selectedRenderEngine)
 	{
 	case MO_RENDER_ENGINE_TYPE_GL4:
-		return std::make_shared<GLSLMaterial>();
+		return new GLSLMaterial();
 	default:
 		std::cerr << "[ERROR] No material found for Render Engine type OpenGL" << (m_selectedRenderEngine + 1) << "\n";
 		break;

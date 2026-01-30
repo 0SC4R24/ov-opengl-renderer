@@ -28,11 +28,11 @@ public: // Getters & Setters
 	GLFWwindow* getWindow()
 	{ return m_window; }
 
-	void setWindow(GLFWwindow* window);
+	void setWindow(GLFWwindow* window) override;
 
 public: // Member functions
 
-	void updateEvents();
+	void updateEvents() override;
 
 protected: // Member functions
 

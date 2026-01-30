@@ -8,6 +8,7 @@
 #pragma once
 
 #include "common.h"
+#include "FactoryEngine.h"
 
 // Forward declarations
 class Render;
@@ -32,7 +33,7 @@ private: // Attributes
 	static inline WorldPtr m_world;
 	static inline bool m_end;
 
-	static inline float deltaTime, newTime, lastTime;
+	static inline float m_deltaTime, m_newTime, m_lastTime;
 
 	static inline glm::mat4 m_modelMatrix;
 
@@ -46,7 +47,7 @@ public: // Getters & Setters
 	static void setModelMatrix(glm::mat4 modelMatrix);
 
 public: // Static methods
-	static void initSystem();
+	static void initSystem(MO_RenderEngineType_e renderEngineType, MO_InputManagerType_e inputManagerType);
 	static void addObject(ObjectPtr obj);
 	static void exit();
 	static void mainLoop();

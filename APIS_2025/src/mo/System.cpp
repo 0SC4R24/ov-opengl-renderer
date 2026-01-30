@@ -33,13 +33,23 @@ void System::setModelMatrix(glm::mat4 modelMatrix)
 	m_modelMatrix = modelMatrix;
 }
 
-void System::initSystem()
+void System::initSystem(MO_RenderEngineType_e renderEngineType, MO_InputManagerType_e inputManagerType)
 {
-	FactoryEngine::setRenderEngineType(MO_RENDER_ENGINE_TYPE_GL4);
-	FactoryEngine::setInputManagerType(MO_INPUT_MANAGER_TYPE_GLFW);
+	FactoryEngine::setRenderEngineType(renderEngineType);
+	FactoryEngine::setInputManagerType(inputManagerType);
 
 	m_render = FactoryEngine::getNewRender();
 	m_inputManager = FactoryEngine::getNewInputManager();
+
+	m_inputManager->setWindow(m_render->getWindow());
+
+	m_world = std::make_shared<World>();
+
+	m_newTime = static_cast<float>(glfwGetTime());
+	m_deltaTime = 0;
+	m_lastTime = m_newTime;
+
+	m_end = false;
 }
 
 void System::addObject(ObjectPtr obj)
@@ -59,14 +69,17 @@ void System::mainLoop()
 		m_render->setupObject(obj);
 	}
 
-	while (!m_end)
+	while (!m_end && !m_render->isClosed() && !m_inputManager->isKeyPressed(GLFW_KEY_ESCAPE))
 	{
-		newTime = static_cast<float>(glfwGetTime());
-		deltaTime = newTime - lastTime;
-		lastTime = newTime;
+		m_newTime = static_cast<float>(glfwGetTime());
+		m_deltaTime = m_newTime - m_lastTime;
+		m_lastTime = m_newTime;
 
-		m_world->step(deltaTime);
+		m_render->getCamera()->step(m_deltaTime);
+		m_world->step(m_deltaTime);
 
 		m_render->drawObjects(m_world->getObjectList());
+
+		m_inputManager->updateEvents();
 	}
 }

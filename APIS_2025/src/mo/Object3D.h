@@ -8,13 +8,12 @@
 #pragma once
 
 #include "Object.h"
-#include "GLFWKeyManager.h"
 
 class Object3D : public Object
 {
 public:
 	Object3D();
 
-	void loadDataFromFile(std::string file) override;
-	void step(double deltaTime) override;
+	virtual void loadDataFromFile(std::string file) {};
+	virtual void step(double deltaTime) {};
 };

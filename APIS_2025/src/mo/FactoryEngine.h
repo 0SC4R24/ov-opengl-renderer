@@ -37,9 +37,9 @@ static enum MO_RenderEngineType_e
 static class FactoryEngine
 {
 protected: // Static data members
-	static MO_InputManagerType_e m_selectedInputManager;
-	static MO_RenderEngineType_e m_selectedRenderEngine;
-	static std::shared_ptr<Render> m_render;
+	static inline MO_InputManagerType_e m_selectedInputManager;
+	static inline MO_RenderEngineType_e m_selectedRenderEngine;
+	static inline std::shared_ptr<Render> m_render;
 
 public: // Getters & Setters
 	static MO_InputManagerType_e getInputManagerType()
@@ -57,6 +57,6 @@ public: // Getters & Setters
 public: // Public static methods
 	static std::shared_ptr<Render> getNewRender();
 	static std::shared_ptr<InputManager> getNewInputManager();
-	static std::shared_ptr<Material> getNewMaterial();
+	static Material* getNewMaterial();
 	static bool isClosed();
 };

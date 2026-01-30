@@ -7,11 +7,10 @@
 
 #include "mo/Object.h" // Change to new object
 #include "mapi/vertex.h"
-
+#include "System.h"
 #include "GL4Render.h"
 
-GL4Render::GL4Render(const int& width, const int& height) :
-	m_camera{ nullptr }
+GL4Render::GL4Render(const int& width, const int& height)
 {
 	// Initialize OpenGL
 	init();
@@ -139,6 +138,7 @@ void GL4Render::drawObject(std::shared_ptr<Object> objectPtr)
 {
 	// Calculate projection matrix
 	glm::mat4 model = objectPtr->getModelMatrix();
+	System::setModelMatrix(model);
 
 	auto renderProgram = objectPtr->getMesh()->getMaterial()->getRenderProgram();
 	renderProgram->use();

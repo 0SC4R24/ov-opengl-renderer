@@ -9,6 +9,7 @@
 
 #include <list>
 #include <memory>
+#include "Camera.h"
 
 // Forward declarations
 class Object;
@@ -27,6 +28,10 @@ protected: // Data members
 	int m_width  { 1920 };
 	int m_height { 1080 };
 
+	old::Camera* m_camera;
+
+	GLFWwindow* m_window;
+
 public: // Get - Set
 
 	const int& getWidth() const
@@ -35,11 +40,23 @@ public: // Get - Set
 	const int& getHeight() const
 	{ return m_height; }
 
+	GLFWwindow* getWindow()
+	{ return m_window; }
+
+	void setWindow(GLFWwindow* window)
+	{ m_window = window; }
+
 	void setWidth(int& width)
 	{ m_width = width; }
 
 	void setHeight(int& height)
 	{ m_height = height; }
+
+	virtual void setCamera(old::Camera* camera)
+	{ m_camera = camera; }
+
+	virtual old::Camera* getCamera()
+	{ return m_camera; }
 
 public: // Member functions
 

@@ -11,7 +11,6 @@
 #include "vertex.h"
 #include "GLFWKeyManager.h"
 #include "Program.h"
-
 #include "Entity.h"
 #include "Mesh3D.h"
 
@@ -57,8 +56,8 @@ typedef enum
 class Object : public Entity
 {
 protected: // Attributes
-	Mesh3D* m_mesh;
-	MO_ObjectType_e m_type;
+	Mesh3D* m_mesh = nullptr;
+	MO_ObjectType_e m_type = MO_OBJECT_TYPE_OBJECT;
 
 public: // Getters & Setters
 	Mesh3D* getMesh()

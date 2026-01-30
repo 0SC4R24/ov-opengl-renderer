@@ -7,6 +7,7 @@
 
 #pragma once
 
+#include "common.h"
 #include <map>
 
 /// <summary>
@@ -26,6 +27,10 @@ protected: // Member functions
 	virtual void init() = 0;
 
 public: // Member functions
+
+	virtual void updateEvents() = 0;
+
+	virtual void setWindow(GLFWwindow* window) = 0;
 
 	// Returns key pressed state
 	static bool isKeyPressed(int keyCode);

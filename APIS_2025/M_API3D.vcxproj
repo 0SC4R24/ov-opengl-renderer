@@ -175,6 +175,7 @@
     <ClCompile Include="src\mo\Program.cpp" />
     <ClCompile Include="src\mo\Shader.cpp" />
     <ClCompile Include="src\mo\System.cpp" />
+    <ClCompile Include="src\mo\TrianguloRot.cpp" />
     <ClCompile Include="src\mo\World.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -201,6 +202,7 @@
     <ClInclude Include="src\mo\RenderProgram.h" />
     <ClInclude Include="src\mo\Shader.h" />
     <ClInclude Include="src\mo\System.h" />
+    <ClInclude Include="src\mo\TrianguloRot.h" />
     <ClInclude Include="src\mo\World.h" />
   </ItemGroup>
   <ItemGroup>

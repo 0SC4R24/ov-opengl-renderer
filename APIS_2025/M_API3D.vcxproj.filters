@@ -18,6 +18,7 @@
     <ClCompile Include="src\mo\Shader.cpp" />
     <ClCompile Include="src\mo\FactoryEngine.cpp" />
     <ClCompile Include="src\mo\System.cpp" />
+    <ClCompile Include="src\mo\TrianguloRot.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\mapi\Camera.h" />
@@ -44,6 +45,7 @@
     <ClInclude Include="src\mo\RenderProgram.h" />
     <ClInclude Include="src\mo\Shader.h" />
     <ClInclude Include="src\mo\System.h" />
+    <ClInclude Include="src\mo\TrianguloRot.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="data\shader.frag" />
