@@ -73,7 +73,7 @@ void GL4Render::setupObject(std::shared_ptr<Object> objectPtr)
 
 	// Fill vertex buffer data
 	auto vertList = obj->getMesh()->getVertList();
-	glBufferData(GL_ARRAY_BUFFER, sizeof(old::vertex_t) * vertList->size(), vertList->data(), GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertex_t) * vertList->size(), vertList->data(), GL_STATIC_DRAW);
 
 	// Fill index buffer data
 	auto vertIndexList = obj->getMesh()->getVTriangleIdxList();
@@ -83,8 +83,9 @@ void GL4Render::setupObject(std::shared_ptr<Object> objectPtr)
 
 	// Set shader data
 	auto renderProgram = obj->getMesh()->getMaterial()->getRenderProgram();
-	renderProgram->setVec4("vPos", obj->getPosition());
-	renderProgram->setVec4("vColor", obj->getMesh()->getColor());
+	renderProgram->setVertexAttrib("vPos", sizeof(vertex_t), (void*)offsetof(vertex_t, vertexPosition), 4, GL_FLOAT);
+	renderProgram->setVertexAttrib("vColor", sizeof(vertex_t), (void*)offsetof(vertex_t, vertexColor), 4, GL_FLOAT);
+	renderProgram->use();
 
 	// Reset bindings
 	glBindVertexArray(0);

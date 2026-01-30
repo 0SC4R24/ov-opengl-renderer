@@ -34,13 +34,22 @@ public: // Getters & Setters
 	{ return m_modelMatrix; }
 
 	void setPosition(glm::vec4& position)
-	{ m_position = position; }
+	{ 
+		m_position = position;
+		computeModelMatrix();
+	}
 
 	void setRotation(glm::vec4& rotation)
-	{ m_rotation = rotation; }
+	{ 
+		m_rotation = rotation;
+		computeModelMatrix();
+	}
 
 	void setScale(glm::vec4& scale)
-	{ m_scale = scale; }
+	{ 
+		m_scale = scale;
+		computeModelMatrix(); 
+	}
 
 public: // Methods
 	// Compute model matrix

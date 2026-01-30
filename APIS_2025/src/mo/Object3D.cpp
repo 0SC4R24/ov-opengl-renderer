@@ -21,12 +21,6 @@ void Object3D::step(double deltaTime)
 {
 	// TODO: Change with new Input Manager
 	float rotSpeed = 60.0f;
-	float speed = 0.1f;
-
-	if (old::GLFWKeyManager::keyboardState[GLFW_KEY_D]) m_position.x += speed * deltaTime;
-	if (old::GLFWKeyManager::keyboardState[GLFW_KEY_A]) m_position.x -= speed * deltaTime;
-	if (old::GLFWKeyManager::keyboardState[GLFW_KEY_W]) m_position.y += speed * deltaTime;
-	if (old::GLFWKeyManager::keyboardState[GLFW_KEY_S]) m_position.y -= speed * deltaTime;
 
 	if (old::GLFWKeyManager::keyboardState[GLFW_KEY_Q]) m_rotation.x += rotSpeed * deltaTime;
 	if (old::GLFWKeyManager::keyboardState[GLFW_KEY_E]) m_rotation.x -= rotSpeed * deltaTime;

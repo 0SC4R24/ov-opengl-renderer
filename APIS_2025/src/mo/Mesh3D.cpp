@@ -3,21 +3,25 @@
 Mesh3D::Mesh3D()
 {
 	m_meshID = m_ObjectCounter++;
-	m_colorRGBA = glm::vec4(0.5f, 0.5f, 0.5f, 1.0f);
+	m_colorRGBA = glm::vec4(0.25f, 0.25f, 0.25f, 1.0f);
 	
 	m_vVertList = new std::vector<vertex_t>{
-			{
-				glm::vec4(0.5f, 0.5f, 0.0f, 1.0f)
-			},
-			{
-				glm::vec4(-0.5f, 0.5f, 0.0f, 1.0f)
-			},
-			{
-				glm::vec4(-0.5f, -0.5f, 0.0f, 1.0f)
-			},
-			{
-				glm::vec4(0.5f, -0.5f, 0.0f, 1.0f)
-			}
+		{
+			glm::vec4(0.5f, 0.5f, 0.0f, 1.0f),
+			m_colorRGBA
+		},
+		{
+			glm::vec4(-0.5f, 0.5f, 0.0f, 1.0f),
+			m_colorRGBA
+		},
+		{
+			glm::vec4(-0.5f, -0.5f, 0.0f, 1.0f),
+			m_colorRGBA
+		},
+		{
+			glm::vec4(0.5f, -0.5f, 0.0f, 1.0f),
+			m_colorRGBA
+		}
 	};
 
 	m_vTriangleIdxList = new std::vector<glm::uint32>{ 2, 1, 0, 2, 0, 3 };

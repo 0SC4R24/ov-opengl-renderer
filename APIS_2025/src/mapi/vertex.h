@@ -21,4 +21,5 @@ namespace old
 typedef struct
 {
 	glm::vec4 vertexPosition;
+	glm::vec4 vertexColor;
 } vertex_t;
