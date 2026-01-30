@@ -43,6 +43,8 @@ public: // Getters & Setters
 	std::vector<glm::uint32>* getVTriangleIdxList()
 	{ return m_vTriangleIdxList; }
 
+	void setColor(glm::vec4 color);
+
 	void setMaterial(Material* material)
 	{ m_material = material; }
 

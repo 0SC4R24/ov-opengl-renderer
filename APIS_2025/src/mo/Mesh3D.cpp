@@ -27,6 +27,16 @@ Mesh3D::Mesh3D()
 	m_vTriangleIdxList = new std::vector<glm::uint32>{ 2, 1, 0, 2, 0, 3 };
 }
 
+void Mesh3D::setColor(glm::vec4 color)
+{
+	m_colorRGBA = color;
+
+	for (auto& v : *m_vVertList)
+	{
+		v.vertexColor = color;
+	}
+}
+
 void Mesh3D::addVertex(vertex_t vertex)
 {
 	m_vVertList->push_back(vertex);
