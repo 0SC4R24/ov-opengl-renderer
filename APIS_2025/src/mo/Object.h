@@ -35,7 +35,7 @@ namespace old
 
 		Object();
 
-		glm::mat4 getModelMatrix();
+		//glm::mat4 getModelMatrix();
 
 		void step(float timeStep);
 	};

@@ -11,7 +11,7 @@
 #include <memory>
 
 // Forward declarations
-class old::Object;
+class Object;
 
 // Aliases
 using ObjectPtr = std::shared_ptr<Object>;
@@ -54,5 +54,11 @@ public: // Member functions
 
 	// Draw object list
 	virtual void drawObjects(std::list<ObjectPtr>& objectVectorPtr) = 0;
+
+	// Draw single object
+	virtual void drawObject(std::shared_ptr<Object> objectPtr) = 0;
+
+	// Return if window should close
+	virtual bool isClosed() = 0;
 
 };

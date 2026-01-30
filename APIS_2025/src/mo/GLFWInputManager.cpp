@@ -7,9 +7,20 @@
 
 #include "GLFWInputManager.h"
 
+GLFWInputManager::GLFWInputManager()
+{
+	m_window = nullptr;
+}
+
 GLFWInputManager::GLFWInputManager(GLFWwindow* window)
 	: m_window{ window }
 { 
+	init();
+}
+
+void GLFWInputManager::setWindow(GLFWwindow* window)
+{
+	m_window = window;
 	init();
 }
 

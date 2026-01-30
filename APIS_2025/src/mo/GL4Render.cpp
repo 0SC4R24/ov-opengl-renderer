@@ -36,7 +36,7 @@ void GL4Render::init()
 	// Initialize OpenGL
 	if (not glfwInit())
 	{
-		std::cout << "ERROR: Unable to initialize GLFW\n";
+		std::cout << "[ERROR] Unable to initialize GLFW\n";
 		exit(0);
 	}
 
@@ -83,9 +83,9 @@ void GL4Render::setupObject(std::shared_ptr<Object> objectPtr)
 
 	// Set shader data
 	auto renderProgram = obj->getMesh()->getMaterial()->getRenderProgram();
+	renderProgram->use();
 	renderProgram->setVertexAttrib("vPos", sizeof(vertex_t), (void*)offsetof(vertex_t, vertexPosition), 4, GL_FLOAT);
 	renderProgram->setVertexAttrib("vColor", sizeof(vertex_t), (void*)offsetof(vertex_t, vertexColor), 4, GL_FLOAT);
-	renderProgram->use();
 
 	// Reset bindings
 	glBindVertexArray(0);
@@ -125,31 +125,38 @@ void GL4Render::drawObjects(std::list<ObjectPtr>& objectVectorPtr)
 		{
 			// Continue if object is not set up
 			auto bufferObjectMapIterator = m_bufferObjectMap.find(objPtr->getMesh()->getMeshID());
-			if (bufferObjectMapIterator == m_bufferObjectMap.end())
-			{
-				continue;
-			}
+			if (bufferObjectMapIterator == m_bufferObjectMap.end()) continue;
 
-			// Calculate projection matrix
-			glm::mat4 model = objPtr->getModelMatrix();
-
-			auto renderProgram = objPtr->getMesh()->getMaterial()->getRenderProgram();
-			renderProgram->use();
-			renderProgram->setMatrix("MVP", m_camera->cameraProjection * m_camera->cameraView * model);
-
-			// Bind buffers
-			bufferObject_t bo = m_bufferObjectMap[objPtr->getMesh()->getMeshID()];
-			glBindVertexArray(bo.vertexArrayId);
-			glBindBuffer(GL_ARRAY_BUFFER, bo.vertexBufferId);
-			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, bo.vertexIndexArrayId);
-
-			// Draw call
-			glDrawElements(GL_TRIANGLES, objPtr->getMesh()->getVTriangleIdxList()->size(), GL_UNSIGNED_INT, nullptr);
+			drawObject(objPtr);
 		}
 	}
 
 	// Swap buffers
 	glfwSwapBuffers(m_window);
+}
+
+void GL4Render::drawObject(std::shared_ptr<Object> objectPtr)
+{
+	// Calculate projection matrix
+	glm::mat4 model = objectPtr->getModelMatrix();
+
+	auto renderProgram = objectPtr->getMesh()->getMaterial()->getRenderProgram();
+	renderProgram->use();
+	renderProgram->setMatrix("MVP", m_camera->cameraProjection * m_camera->cameraView * model);
+
+	// Bind buffers
+	bufferObject_t bo = m_bufferObjectMap[objectPtr->getMesh()->getMeshID()];
+	glBindVertexArray(bo.vertexArrayId);
+	glBindBuffer(GL_ARRAY_BUFFER, bo.vertexBufferId);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, bo.vertexIndexArrayId);
+
+	// Draw call
+	glDrawElements(GL_TRIANGLES, objectPtr->getMesh()->getVTriangleIdxList()->size(), GL_UNSIGNED_INT, nullptr);
+}
+
+bool GL4Render::isClosed()
+{
+	return glfwWindowShouldClose(m_window);
 }
 
 GLFWwindow* GL4Render::createGLFWWindow(const int& width, const int& height)

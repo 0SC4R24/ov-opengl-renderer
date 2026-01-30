@@ -20,7 +20,15 @@ private: // Data members
 
 public: // Constructors
 
+	GLFWInputManager();
 	GLFWInputManager(GLFWwindow* window);
+
+public: // Getters & Setters
+
+	GLFWwindow* getWindow()
+	{ return m_window; }
+
+	void setWindow(GLFWwindow* window);
 
 public: // Member functions
 

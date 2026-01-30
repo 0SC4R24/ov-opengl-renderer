@@ -16,7 +16,7 @@
 
 #include "mo/Render.h"
 
-class GL4Render : Render
+class GL4Render : public Render
 {
 
 private: // Const data members
@@ -38,7 +38,7 @@ public: // Constructors & Destructor
 
 	GL4Render(const int& width, const int& height);
 
-   ~GL4Render();
+	~GL4Render();
 
 public: // Get - Set
 
@@ -61,6 +61,12 @@ public: // Member functions
 
 	// Render draw objects
 	void drawObjects(std::list<ObjectPtr>& objectVectorPtr) override;
+
+	// Render draw object
+	void drawObject(std::shared_ptr<Object> objectPtr) override;
+
+	// Render if window should close
+	bool isClosed() override;
 
 private: // Member functions
 

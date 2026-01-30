@@ -162,6 +162,7 @@
     <ClCompile Include="APIS3D_2025.cpp" />
     <ClCompile Include="src\mapi\Camera.cpp" />
     <ClCompile Include="src\mapi\GLFWKeyManager.cpp" />
+    <ClCompile Include="src\mo\FactoryEngine.cpp" />
     <ClCompile Include="src\mo\GL4Render.cpp" />
     <ClCompile Include="src\mo\GLFWInputManager.cpp" />
     <ClCompile Include="src\mo\GLSLMaterial.cpp" />
@@ -173,6 +174,7 @@
     <ClCompile Include="src\mo\Object3D.cpp" />
     <ClCompile Include="src\mo\Program.cpp" />
     <ClCompile Include="src\mo\Shader.cpp" />
+    <ClCompile Include="src\mo\System.cpp" />
     <ClCompile Include="src\mo\World.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -198,6 +200,7 @@
     <ClInclude Include="src\mo\Render.h" />
     <ClInclude Include="src\mo\RenderProgram.h" />
     <ClInclude Include="src\mo\Shader.h" />
+    <ClInclude Include="src\mo\System.h" />
     <ClInclude Include="src\mo\World.h" />
   </ItemGroup>
   <ItemGroup>

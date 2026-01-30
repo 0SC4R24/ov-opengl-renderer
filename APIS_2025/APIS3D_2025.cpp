@@ -10,6 +10,7 @@
 
 #include "mo/GL4Render.h"
 #include "mo/GLFWInputManager.h"
+#include "mo/System.h"
 
 int main(int argc, char** argv)
 {
@@ -38,12 +39,12 @@ int main(int argc, char** argv)
     ground->setScale(groundScale);
     glm::vec4 groundPosition = glm::vec4(0.0f, -1.5f, 0.0f, 0.0f);
     ground->setPosition(groundPosition);
-    ground->getMesh()->setColor({ 0,1,0,1 });
+    ground->getMesh()->setColor({ 0,0.5f,0,1 });
     ground->getMesh()->setMaterial(new GLSLMaterial());
     ground->getMesh()->getMaterial()->loadPrograms(shaders);
 
     auto square = std::make_shared<Object3D>();
-    square->getMesh()->setColor({ 1,0,0,1 });
+    square->getMesh()->setColor({ 0.5f,0,0,1 });
     square->getMesh()->setMaterial(new GLSLMaterial());
     square->getMesh()->getMaterial()->loadPrograms(shaders);
 

@@ -6,7 +6,6 @@
 /// 
 
 #include "Object.h"
-
 #include "World.h"
 
 void World::addObject(const ObjectPtr& objectPtr)
@@ -24,9 +23,17 @@ size_t World::getObjectCount() const
 	return m_objectList.size();
 }
 
-const std::list<ObjectPtr>& World::getObjectList() const
+std::list<ObjectPtr>& World::getObjectList()
 {
 	return m_objectList;
+}
+
+ObjectPtr World::getObject(size_t index)
+{
+	std::list<ObjectPtr>::iterator it = m_objectList.begin();
+	for (size_t i = 0; i < index; i++) it++;
+	ObjectPtr obj = *it;
+	return obj;
 }
 
 void World::step(const float& deltaTime)

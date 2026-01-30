@@ -35,7 +35,7 @@ old::Object::Object()
 	this->renderProgram->linkProgram();
 }
 
-glm::mat4 old::Object::getModelMatrix()
+/*glm::mat4 old::Object::getModelMatrix()
 {
 	glm::mat4 modelMatrix = glm::mat4(1.0f);
 
@@ -48,7 +48,7 @@ glm::mat4 old::Object::getModelMatrix()
 	modelMatrix = glm::scale(modelMatrix, glm::vec3(this->scale));
 
 	return modelMatrix;
-}
+}*/
 
 void old::Object::step(float timeStep)
 {

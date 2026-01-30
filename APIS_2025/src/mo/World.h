@@ -11,10 +11,10 @@
 #include <memory>
 
 // Forward declarations
-class old::Object;
+class Object;
 
 // Aliases
-using ObjectPtr = std::shared_ptr<old::Object>;
+using ObjectPtr = std::shared_ptr<Object>;
 
 class World
 {	
@@ -35,7 +35,9 @@ public: // Member functions
 
 	size_t getObjectCount() const;
 
-	const std::list<ObjectPtr>& getObjectList() const;
+	std::list<ObjectPtr>& getObjectList();
+
+	ObjectPtr getObject(size_t index);
 
 	void step(const float& deltaTime);
 

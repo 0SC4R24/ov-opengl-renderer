@@ -4,9 +4,6 @@
     <ClCompile Include="APIS3D_2025.cpp" />
     <ClCompile Include="src\mapi\Camera.cpp" />
     <ClCompile Include="src\mapi\GLFWKeyManager.cpp" />
-    <ClCompile Include="src\mapi\Object.cpp" />
-    <ClCompile Include="src\mapi\Program.cpp" />
-    <ClCompile Include="src\mapi\Shader.cpp" />
     <ClCompile Include="src\mo\GL4Render.cpp" />
     <ClCompile Include="src\mo\GLFWInputManager.cpp" />
     <ClCompile Include="src\mo\InputManager.cpp" />
@@ -19,14 +16,13 @@
     <ClCompile Include="src\mo\Object3D.cpp" />
     <ClCompile Include="src\mo\Program.cpp" />
     <ClCompile Include="src\mo\Shader.cpp" />
+    <ClCompile Include="src\mo\FactoryEngine.cpp" />
+    <ClCompile Include="src\mo\System.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\mapi\Camera.h" />
     <ClInclude Include="src\mapi\common.h" />
     <ClInclude Include="src\mapi\GLFWKeyManager.h" />
-    <ClInclude Include="src\mapi\Object.h" />
-    <ClInclude Include="src\mapi\Program.h" />
-    <ClInclude Include="src\mapi\Shader.h" />
     <ClInclude Include="src\mapi\stb_image.h" />
     <ClInclude Include="src\mapi\vertex.h" />
     <ClInclude Include="src\mo\bufferObject.h" />
@@ -47,6 +43,7 @@
     <ClInclude Include="src\mo\Program.h" />
     <ClInclude Include="src\mo\RenderProgram.h" />
     <ClInclude Include="src\mo\Shader.h" />
+    <ClInclude Include="src\mo\System.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="data\shader.frag" />
