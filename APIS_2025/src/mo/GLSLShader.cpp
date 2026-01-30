@@ -17,8 +17,8 @@ void GLSLShader::readFile()
 void GLSLShader::compile()
 {
 	unsigned int glType;
-	if (m_type = MO_PROGRAM_TYPE_VERTEX) glType = GL_VERTEX_SHADER;
-	else if (m_type = MO_PROGRAM_TYPE_FRAGMENT) glType = GL_FRAGMENT_SHADER;
+	if (m_type == MO_PROGRAM_TYPE_VERTEX) glType = GL_VERTEX_SHADER;
+	else if (m_type == MO_PROGRAM_TYPE_FRAGMENT) glType = GL_FRAGMENT_SHADER;
 
 	m_idProgram = glCreateShader(glType);
 	const char* source = m_sourceCode.c_str();
