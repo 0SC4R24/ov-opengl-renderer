@@ -1,12 +1,12 @@
 #include "Program.h"
 
-void Program::linkProgram()
+void old::Program::linkProgram()
 {
 	this->programID = glCreateProgram();
 
 	for (auto& c : this->shaderList)
 	{
-		Shader shader(c);
+		old::Shader shader(c);
 
 		if (shader.compiled)
 		{
@@ -34,7 +34,7 @@ void Program::linkProgram()
 	readVarList();
 }
 
-void Program::readVarList()
+void old::Program::readVarList()
 {
 	glUseProgram(this->programID);
 	
@@ -73,7 +73,7 @@ void Program::readVarList()
 	}
 }
 
-void Program::setAttributeMetaData(std::string attribName, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid* pointer)
+void old::Program::setAttributeMetaData(std::string attribName, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid* pointer)
 {
 	if (varList.find(attribName) != varList.end())
 	{
@@ -86,7 +86,7 @@ void Program::setAttributeMetaData(std::string attribName, GLint size, GLenum ty
 	}
 }
 
-void Program::setMVP(glm::mat4 m)
+void old::Program::setMVP(glm::mat4 m)
 {
 	if (varList.find("MVP") != varList.end())
 	{

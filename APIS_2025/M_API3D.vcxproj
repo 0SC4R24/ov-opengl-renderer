@@ -82,11 +82,13 @@
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\externalLibs\glm\inc;..\externalLibs\SDL\include;..\externalLibs\glfw\inc;$(IncludePath);..\externalLibs\glad\inc;..\externalLibs\vulkan\include;..\externalLibs\pugixml\include;..\externalLibs\reactphysics3d\inc</IncludePath>
     <LibraryPath>$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);..\externalLibs\glm\lib;..\externalLibs\SDL\lib;..\externalLibs\glfw\lib;..\externalLibs\glad\lib;..\externalLibs\vulkan\lib;..\externalLibs\pugixml\lib;..\externalLibs\reactphysics3d\lib</LibraryPath>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\externalLibs\glm\inc;..\externalLibs\SDL\include;..\externalLibs\glfw\inc;$(IncludePath);..\externalLibs\glad\inc;..\externalLibs\vulkan\include;..\externalLibs\pugixml\include;..\externalLibs\reactphysics3d\inc</IncludePath>
     <LibraryPath>$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);..\externalLibs\glm\lib;..\externalLibs\SDL\lib;..\externalLibs\glfw\lib;..\externalLibs\glad\lib;..\externalLibs\vulkan\lib;..\externalLibs\pugixml\lib;..\externalLibs\reactphysics3d\lib</LibraryPath>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -127,6 +129,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>src\mapi;src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -144,6 +147,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>src\mapi;src;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -156,20 +160,50 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="APIS3D_2025.cpp" />
-    <ClCompile Include="mapi\Camera.cpp" />
-    <ClCompile Include="mapi\GLFWKeyManager.cpp" />
-    <ClCompile Include="mapi\Object.cpp" />
-    <ClCompile Include="mapi\Program.cpp" />
-    <ClCompile Include="mapi\Shader.cpp" />
+    <ClCompile Include="src\mapi\Camera.cpp" />
+    <ClCompile Include="src\mapi\GLFWKeyManager.cpp" />
+    <ClCompile Include="src\mo\FactoryEngine.cpp" />
+    <ClCompile Include="src\mo\GL4Render.cpp" />
+    <ClCompile Include="src\mo\GLFWInputManager.cpp" />
+    <ClCompile Include="src\mo\GLSLMaterial.cpp" />
+    <ClCompile Include="src\mo\GLSLProgram.cpp" />
+    <ClCompile Include="src\mo\GLSLShader.cpp" />
+    <ClCompile Include="src\mo\InputManager.cpp" />
+    <ClCompile Include="src\mo\Mesh3D.cpp" />
+    <ClCompile Include="src\mo\Object.cpp" />
+    <ClCompile Include="src\mo\Object3D.cpp" />
+    <ClCompile Include="src\mo\Program.cpp" />
+    <ClCompile Include="src\mo\Shader.cpp" />
+    <ClCompile Include="src\mo\System.cpp" />
+    <ClCompile Include="src\mo\TrianguloRot.cpp" />
+    <ClCompile Include="src\mo\World.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="mapi\Camera.h" />
-    <ClInclude Include="mapi\common.h" />
-    <ClInclude Include="mapi\GLFWKeyManager.h" />
-    <ClInclude Include="mapi\Object.h" />
-    <ClInclude Include="mapi\Program.h" />
-    <ClInclude Include="mapi\Shader.h" />
-    <ClInclude Include="mapi\vertex.h" />
+    <ClInclude Include="src\mapi\Camera.h" />
+    <ClInclude Include="src\mapi\common.h" />
+    <ClInclude Include="src\mapi\GLFWKeyManager.h" />
+    <ClInclude Include="src\mapi\stb_image.h" />
+    <ClInclude Include="src\mapi\vertex.h" />
+    <ClInclude Include="src\mo\bufferObject.h" />
+    <ClInclude Include="src\mo\Entity.h" />
+    <ClInclude Include="src\mo\FactoryEngine.h" />
+    <ClInclude Include="src\mo\GL4Render.h" />
+    <ClInclude Include="src\mo\GLFWInputManager.h" />
+    <ClInclude Include="src\mo\GLSLMaterial.h" />
+    <ClInclude Include="src\mo\GLSLProgram.h" />
+    <ClInclude Include="src\mo\GLSLShader.h" />
+    <ClInclude Include="src\mo\InputManager.h" />
+    <ClInclude Include="src\mo\Material.h" />
+    <ClInclude Include="src\mo\Mesh3D.h" />
+    <ClInclude Include="src\mo\Object.h" />
+    <ClInclude Include="src\mo\Object3D.h" />
+    <ClInclude Include="src\mo\Program.h" />
+    <ClInclude Include="src\mo\Render.h" />
+    <ClInclude Include="src\mo\RenderProgram.h" />
+    <ClInclude Include="src\mo\Shader.h" />
+    <ClInclude Include="src\mo\System.h" />
+    <ClInclude Include="src\mo\TrianguloRot.h" />
+    <ClInclude Include="src\mo\World.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="data\shader.frag" />

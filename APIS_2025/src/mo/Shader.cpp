@@ -1,6 +1,6 @@
 #include "Shader.h"
 
-Shader::Shader(std::string fileName)
+old::Shader::Shader(std::string fileName)
 {
 	char* code = nullptr;
 	FILE* f = fopen(fileName.c_str(), "rb");
