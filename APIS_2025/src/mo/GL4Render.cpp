@@ -33,7 +33,7 @@ GL4Render::~GL4Render()
 void GL4Render::init()
 {
 	// Initialize OpenGL
-	if (not glfwInit())
+	if (glfwInit() != GLFW_TRUE)
 	{
 		std::cout << "[ERROR] Unable to initialize GLFW\n";
 		exit(0);
@@ -136,13 +136,13 @@ void GL4Render::drawObjects(std::list<ObjectPtr>& objectVectorPtr)
 
 void GL4Render::drawObject(std::shared_ptr<Object> objectPtr)
 {
-	// Calculate projection matrix
 	glm::mat4 model = objectPtr->getModelMatrix();
 	System::setModelMatrix(model);
 
 	auto renderProgram = objectPtr->getMesh()->getMaterial()->getRenderProgram();
 	renderProgram->use();
-	renderProgram->setMatrix("MVP", m_camera->cameraProjection * m_camera->cameraView * model);
+	//renderProgram->setMatrix("MVP", m_camera->cameraProjection * m_camera->cameraView * model);
+	renderProgram->setMatrix("M", model);
 
 	// Bind buffers
 	bufferObject_t bo = m_bufferObjectMap[objectPtr->getMesh()->getMeshID()];

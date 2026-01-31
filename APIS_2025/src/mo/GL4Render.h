@@ -24,7 +24,7 @@ private: // Const data members
 	static constexpr int MO_GL_MAJOR_VERSION = 4;
 	static constexpr int MO_GL_MINOR_VERSION = 0;
 
-	static constexpr std::string_view WINDOW_NAME = "MO OpenGL Renderer";
+	static constexpr std::string_view WINDOW_NAME = "MO OpenGL Renderer v2.0";
 
 private: // Data members
 

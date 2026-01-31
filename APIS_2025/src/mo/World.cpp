@@ -41,6 +41,7 @@ void World::step(const float& deltaTime)
 	for (auto& objectPtr : m_objectList)
 	{
 		objectPtr->step(deltaTime);
+		objectPtr->computeModelMatrix();
 	}
 }
 

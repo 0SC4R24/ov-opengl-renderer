@@ -75,7 +75,7 @@ void System::mainLoop()
 		m_deltaTime = m_newTime - m_lastTime;
 		m_lastTime = m_newTime;
 
-		m_render->getCamera()->step(m_deltaTime);
+		//m_render->getCamera()->step(m_deltaTime);
 		m_world->step(m_deltaTime);
 
 		m_render->drawObjects(m_world->getObjectList());
