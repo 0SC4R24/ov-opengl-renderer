@@ -1,4 +1,5 @@
 #include "GLSLMaterial.h"
+#include "System.h"
 
 void GLSLMaterial::loadPrograms(std::vector<std::string> shaderFileNames)
 {
@@ -13,4 +14,5 @@ void GLSLMaterial::loadPrograms(std::vector<std::string> shaderFileNames)
 void GLSLMaterial::prepare()
 {
 	m_program->use();
+	m_program->setMatrix("M", System::getModelMatrix());
 }

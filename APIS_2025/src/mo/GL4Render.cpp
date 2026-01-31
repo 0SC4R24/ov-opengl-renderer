@@ -118,16 +118,13 @@ void GL4Render::drawObjects(std::list<ObjectPtr>& objectVectorPtr)
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	if (m_camera != nullptr)
+	for (auto& objPtr : objectVectorPtr)
 	{
-		for (auto& objPtr : objectVectorPtr)
-		{
-			// Continue if object is not set up
-			auto bufferObjectMapIterator = m_bufferObjectMap.find(objPtr->getMesh()->getMeshID());
-			if (bufferObjectMapIterator == m_bufferObjectMap.end()) continue;
+		// Continue if object is not set up
+		auto bufferObjectMapIterator = m_bufferObjectMap.find(objPtr->getMesh()->getMeshID());
+		if (bufferObjectMapIterator == m_bufferObjectMap.end()) continue;
 
-			drawObject(objPtr);
-		}
+		drawObject(objPtr);
 	}
 
 	// Swap buffers
@@ -136,13 +133,12 @@ void GL4Render::drawObjects(std::list<ObjectPtr>& objectVectorPtr)
 
 void GL4Render::drawObject(std::shared_ptr<Object> objectPtr)
 {
+	// Get and set model matrix
 	glm::mat4 model = objectPtr->getModelMatrix();
 	System::setModelMatrix(model);
 
-	auto renderProgram = objectPtr->getMesh()->getMaterial()->getRenderProgram();
-	renderProgram->use();
-	//renderProgram->setMatrix("MVP", m_camera->cameraProjection * m_camera->cameraView * model);
-	renderProgram->setMatrix("M", model);
+	// Prepare material
+	objectPtr->getMesh()->getMaterial()->prepare();
 
 	// Bind buffers
 	bufferObject_t bo = m_bufferObjectMap[objectPtr->getMesh()->getMeshID()];
