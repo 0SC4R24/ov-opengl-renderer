@@ -3,7 +3,6 @@
 #include "mapi/common.h"
 #include "mo/System.h"
 #include "mo/TrianguloRot.h"
-#include "mapi/Camera.h"
 
 int main(int argc, char** argv)
 {
