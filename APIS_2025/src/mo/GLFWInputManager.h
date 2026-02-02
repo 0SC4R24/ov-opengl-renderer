@@ -14,21 +14,9 @@
 class GLFWInputManager : public InputManager
 {
 
-private: // Data members
-
-	GLFWwindow* m_window;
-
 public: // Constructors
 
 	GLFWInputManager();
-	GLFWInputManager(GLFWwindow* window);
-
-public: // Getters & Setters
-
-	GLFWwindow* getWindow()
-	{ return m_window; }
-
-	void setWindow(GLFWwindow* window) override;
 
 public: // Member functions
 

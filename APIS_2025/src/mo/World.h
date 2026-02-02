@@ -12,9 +12,11 @@
 
 // Forward declarations
 class Object;
+class Camera;
 
 // Aliases
 using ObjectPtr = std::shared_ptr<Object>;
+using CameraPtr = std::shared_ptr<Camera>;
 
 class World
 {	
@@ -22,6 +24,8 @@ class World
 private: // Data members
 
 	std::list<ObjectPtr> m_objectList;
+	std::list<CameraPtr> m_cameraList;
+	int m_activeCamera = 0;
 
 public: // Constructors
 
@@ -38,6 +42,22 @@ public: // Member functions
 	std::list<ObjectPtr>& getObjectList();
 
 	ObjectPtr getObject(size_t index);
+	
+	void addCamera(const CameraPtr& cameraPtr);
+
+	void removeCamera(const CameraPtr& cameraPtr);
+
+	size_t getCamerasCount() const;
+
+	std::list<CameraPtr>& getCameraList();
+
+	CameraPtr getCamera(size_t index);
+
+	CameraPtr getActiveCamera();
+
+	int getActiveCameraIndex();
+
+	void setActiveCameraIndex(int activeCamera);
 
 	void step(const float& deltaTime);
 

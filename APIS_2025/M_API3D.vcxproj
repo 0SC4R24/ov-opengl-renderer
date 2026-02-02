@@ -160,8 +160,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="APIS3D_2025.cpp" />
-    <ClCompile Include="src\mapi\Camera.cpp" />
-    <ClCompile Include="src\mapi\GLFWKeyManager.cpp" />
+    <ClCompile Include="src\mo\Camera.cpp" />
+    <ClCompile Include="src\mo\CameraKeyboard.cpp" />
     <ClCompile Include="src\mo\FactoryEngine.cpp" />
     <ClCompile Include="src\mo\GL4Render.cpp" />
     <ClCompile Include="src\mo\GLFWInputManager.cpp" />
@@ -170,7 +170,6 @@
     <ClCompile Include="src\mo\GLSLShader.cpp" />
     <ClCompile Include="src\mo\InputManager.cpp" />
     <ClCompile Include="src\mo\Mesh3D.cpp" />
-    <ClCompile Include="src\mo\Object.cpp" />
     <ClCompile Include="src\mo\Object3D.cpp" />
     <ClCompile Include="src\mo\Program.cpp" />
     <ClCompile Include="src\mo\Shader.cpp" />
@@ -179,12 +178,12 @@
     <ClCompile Include="src\mo\World.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\mapi\Camera.h" />
     <ClInclude Include="src\mapi\common.h" />
-    <ClInclude Include="src\mapi\GLFWKeyManager.h" />
     <ClInclude Include="src\mapi\stb_image.h" />
     <ClInclude Include="src\mapi\vertex.h" />
     <ClInclude Include="src\mo\bufferObject.h" />
+    <ClInclude Include="src\mo\Camera.h" />
+    <ClInclude Include="src\mo\CameraKeyboard.h" />
     <ClInclude Include="src\mo\Entity.h" />
     <ClInclude Include="src\mo\FactoryEngine.h" />
     <ClInclude Include="src\mo\GL4Render.h" />

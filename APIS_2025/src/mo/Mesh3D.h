@@ -24,6 +24,9 @@ private: // Attributes
 	Material* m_material = nullptr;
 	std::vector<glm::uint32>* m_vTriangleIdxList;
 
+	void loadTriangle();
+	void loadSquare();
+
 public: // Constructor
 	Mesh3D();
 

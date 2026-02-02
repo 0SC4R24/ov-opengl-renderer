@@ -38,10 +38,9 @@ void System::initSystem(MO_RenderEngineType_e renderEngineType, MO_InputManagerT
 	FactoryEngine::setRenderEngineType(renderEngineType);
 	FactoryEngine::setInputManagerType(inputManagerType);
 
+	// Always instantiate render first, then input manager
 	m_render = FactoryEngine::getNewRender();
 	m_inputManager = FactoryEngine::getNewInputManager();
-
-	m_inputManager->setWindow(m_render->getWindow());
 
 	m_world = std::make_shared<World>();
 
@@ -75,7 +74,6 @@ void System::mainLoop()
 		m_deltaTime = m_newTime - m_lastTime;
 		m_lastTime = m_newTime;
 
-		//m_render->getCamera()->step(m_deltaTime);
 		m_world->step(m_deltaTime);
 
 		m_render->drawObjects(m_world->getObjectList());

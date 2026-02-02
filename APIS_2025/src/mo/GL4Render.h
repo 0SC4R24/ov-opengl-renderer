@@ -12,9 +12,8 @@
 
 #include "common.h"
 #include "mo/BufferObject.h"
-#include "mapi/Camera.h"
-
 #include "mo/Render.h"
+#include "mo/Camera.h"
 
 class GL4Render : public Render
 {
@@ -35,11 +34,6 @@ public: // Constructors & Destructor
 	GL4Render(const int& width, const int& height);
 
 	~GL4Render();
-
-public: // Get - Set
-
-	void setCamera(old::Camera* camera) override
-	{ m_camera = camera; }
 
 public: // Member functions
 
