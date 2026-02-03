@@ -25,6 +25,11 @@ public: // Getters & Setters
 
 	unsigned int getVarLocation(std::string varName) override;
 
+	void setColorTextureEnable() override;
+	void setColorTextureDisable() override;
+
+	void bindColorTextureSampler(int binding, TexturePtr texture) override;
+
 public: // Virtual methods
 	void readVarList() override;
 	void addProgram(std::string fileName) override;

@@ -5,7 +5,7 @@ GLTexture::GLTexture() : Texture()
 	glGenTextures(1, &m_glTextID);
 }
 
-GLTexture::GLTexture(std::string fileName) : Texture(fileName)
+GLTexture::GLTexture(const std::string& fileName) : Texture(fileName)
 {
 	glGenTextures(1, &m_glTextID);
 }

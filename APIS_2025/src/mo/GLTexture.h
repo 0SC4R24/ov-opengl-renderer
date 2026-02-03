@@ -23,7 +23,7 @@ public: // Getters & Setters
 
 public: // Constructor
 	GLTexture();
-	GLTexture(std::string fileName);
+	GLTexture(const std::string& fileName);
 
 public: // Virtual methods
 	virtual void update() override;

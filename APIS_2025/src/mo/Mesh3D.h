@@ -18,7 +18,6 @@ private: // Static counter
 
 private: // Attributes
 	int m_meshID;
-	glm::vec4 m_colorRGBA;
 	std::vector<vertex_t>* m_vVertList;
 
 	Material* m_material = nullptr;
@@ -34,9 +33,6 @@ public: // Getters & Setters
 	const int& getMeshID()
 	{ return m_meshID; }
 
-	const glm::vec4& getColor()
-	{ return m_colorRGBA; }
-
 	std::vector<vertex_t>* getVertList()
 	{ return m_vVertList; }
 
@@ -45,8 +41,6 @@ public: // Getters & Setters
 
 	std::vector<glm::uint32>* getVTriangleIdxList()
 	{ return m_vTriangleIdxList; }
-
-	void setColor(glm::vec4 color);
 
 	void setMaterial(Material* material)
 	{ m_material = material; }

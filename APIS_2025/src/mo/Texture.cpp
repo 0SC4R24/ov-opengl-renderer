@@ -8,7 +8,7 @@ Texture::Texture()
 	m_textID = m_TextureIDCounter++;
 }
 
-Texture::Texture(std::string fileName) : Texture()
+Texture::Texture(const std::string& fileName) : Texture()
 {
 	m_fileName = fileName;
 	load(fileName);

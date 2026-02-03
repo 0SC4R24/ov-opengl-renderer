@@ -2,6 +2,7 @@
 #include "System.h"
 #include "World.h"
 #include "Camera.h"
+#include "GLTexture.h"
 
 void GLSLMaterial::loadPrograms(std::vector<std::string> shaderFileNames)
 {
@@ -24,4 +25,13 @@ void GLSLMaterial::prepare()
 	glm::mat4 MVP = P * V * M;
 
 	m_program->setMatrix("MVP", MVP);
+
+	m_program->setVec4("vColor", m_colorRGBA);
+
+	if (m_colorTexture != nullptr)
+	{
+		GLTexture* glTexture = (GLTexture*) m_colorTexture;
+		m_program->setColorTextureEnable();
+		m_program->bindColorTextureSampler(glTexture->getGLTextureID(), std::shared_ptr<Texture>(m_colorTexture));
+	}
 }

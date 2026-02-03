@@ -51,22 +51,11 @@ void Mesh3D::loadSquare()
 Mesh3D::Mesh3D()
 {
 	m_meshID = m_MeshIDCounter++;
-	m_colorRGBA = glm::vec4(0.5f, 0.0f, 0.0f, 1.0f);
 	
 	loadTriangle();
 
 	m_material = FactoryEngine::getNewMaterial();
 	m_material->loadPrograms({ "data/shader.vert", "data/shader.frag" });
-}
-
-void Mesh3D::setColor(glm::vec4 color)
-{
-	m_colorRGBA = color;
-
-	for (auto& v : *m_vVertList)
-	{
-		v.vertexColor = color;
-	}
 }
 
 void Mesh3D::addVertex(vertex_t vertex)

@@ -85,6 +85,7 @@ void GL4Render::setupObject(std::shared_ptr<Object> objectPtr)
 	renderProgram->use();
 	renderProgram->setVertexAttrib("vPos", sizeof(vertex_t), (void*)offsetof(vertex_t, vertexPosition), 4, GL_FLOAT);
 	renderProgram->setVertexAttrib("vColor", sizeof(vertex_t), (void*)offsetof(vertex_t, vertexColor), 4, GL_FLOAT);
+	renderProgram->setVertexAttrib("vTexCoord", sizeof(vertex_t), (void*)offsetof(vertex_t, vertexTextureCoordinates), 2, GL_FLOAT);
 
 	// Reset bindings
 	glBindVertexArray(0);

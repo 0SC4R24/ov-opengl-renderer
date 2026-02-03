@@ -86,7 +86,7 @@ public: // Getters & Setters
 
 public: // Constructor
 	Texture();
-	Texture(std::string fileName);
+	Texture(const std::string& fileName);
 
 public: // Methods
 	void load(std::string fileName);
