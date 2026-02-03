@@ -50,7 +50,7 @@ void Mesh3D::loadSquare()
 
 Mesh3D::Mesh3D()
 {
-	m_meshID = m_ObjectCounter++;
+	m_meshID = m_MeshIDCounter++;
 	m_colorRGBA = glm::vec4(0.5f, 0.0f, 0.0f, 1.0f);
 	
 	loadTriangle();

@@ -18,6 +18,8 @@
     <ClCompile Include="src\mo\TrianguloRot.cpp" />
     <ClCompile Include="src\mo\Camera.cpp" />
     <ClCompile Include="src\mo\CameraKeyboard.cpp" />
+    <ClCompile Include="src\mo\Texture.cpp" />
+    <ClCompile Include="src\mo\GLTexture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\mapi\common.h" />
@@ -45,6 +47,8 @@
     <ClInclude Include="src\mo\TrianguloRot.h" />
     <ClInclude Include="src\mo\Camera.h" />
     <ClInclude Include="src\mo\CameraKeyboard.h" />
+    <ClInclude Include="src\mo\Texture.h" />
+    <ClInclude Include="src\mo\GLTexture.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="data\shader.frag" />

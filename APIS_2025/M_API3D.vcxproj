@@ -168,12 +168,14 @@
     <ClCompile Include="src\mo\GLSLMaterial.cpp" />
     <ClCompile Include="src\mo\GLSLProgram.cpp" />
     <ClCompile Include="src\mo\GLSLShader.cpp" />
+    <ClCompile Include="src\mo\GLTexture.cpp" />
     <ClCompile Include="src\mo\InputManager.cpp" />
     <ClCompile Include="src\mo\Mesh3D.cpp" />
     <ClCompile Include="src\mo\Object3D.cpp" />
     <ClCompile Include="src\mo\Program.cpp" />
     <ClCompile Include="src\mo\Shader.cpp" />
     <ClCompile Include="src\mo\System.cpp" />
+    <ClCompile Include="src\mo\Texture.cpp" />
     <ClCompile Include="src\mo\TrianguloRot.cpp" />
     <ClCompile Include="src\mo\World.cpp" />
   </ItemGroup>
@@ -191,6 +193,7 @@
     <ClInclude Include="src\mo\GLSLMaterial.h" />
     <ClInclude Include="src\mo\GLSLProgram.h" />
     <ClInclude Include="src\mo\GLSLShader.h" />
+    <ClInclude Include="src\mo\GLTexture.h" />
     <ClInclude Include="src\mo\InputManager.h" />
     <ClInclude Include="src\mo\Material.h" />
     <ClInclude Include="src\mo\Mesh3D.h" />
@@ -201,6 +204,7 @@
     <ClInclude Include="src\mo\RenderProgram.h" />
     <ClInclude Include="src\mo\Shader.h" />
     <ClInclude Include="src\mo\System.h" />
+    <ClInclude Include="src\mo\Texture.h" />
     <ClInclude Include="src\mo\TrianguloRot.h" />
     <ClInclude Include="src\mo\World.h" />
   </ItemGroup>

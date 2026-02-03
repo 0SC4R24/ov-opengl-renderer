@@ -14,7 +14,7 @@
 class Mesh3D
 {
 private: // Static counter
-	static inline int m_ObjectCounter = 0;
+	static inline int m_MeshIDCounter = 0;
 
 private: // Attributes
 	int m_meshID;
