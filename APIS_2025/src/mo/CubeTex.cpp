@@ -13,6 +13,13 @@ CubeTex::CubeTex()
 
 	Mesh3D* mesh1 = new Mesh3D();
 	Mesh3D* mesh2 = new Mesh3D();
+	
+	mesh1->setMaterial(FactoryEngine::getNewMaterial());
+	mesh2->setMaterial(FactoryEngine::getNewMaterial());
+
+	// Reuse shaders from mesh1 to not load same shaders to memory again
+	mesh1->getMaterial()->loadPrograms({"data/shader.vert", "data/shader.frag"});
+	mesh2->getMaterial()->setRenderProgram(mesh1->getMaterial()->getRenderProgram());
 
 	// Mesh 1 - Front face
 	mesh1->addVertex({
@@ -127,9 +134,9 @@ CubeTex::CubeTex()
 	mesh2->addTriangle(4, 6, 7);
 
 	auto texture1 = FactoryEngine::getNewTexture();
-	texture1->load("data/cubeTextures/top.png");
-
 	auto texture2 = FactoryEngine::getNewTexture();
+
+	texture1->load("data/cubeTextures/top.png");
 	texture2->load("data/cubeTextures/front.png");
 
 	mesh1->getMaterial()->setColorTexture(texture1);

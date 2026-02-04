@@ -55,9 +55,6 @@ Mesh3D::Mesh3D()
 	//loadTriangle();
 	m_vVertList = new std::vector<vertex_t>();
 	m_vTriangleIdxList = new std::vector<glm::uint32>();
-
-	m_material = FactoryEngine::getNewMaterial();
-	m_material->loadPrograms({ "data/shader.vert", "data/shader.frag" });
 }
 
 void Mesh3D::addVertex(vertex_t vertex)

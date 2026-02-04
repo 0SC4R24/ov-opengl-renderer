@@ -38,6 +38,9 @@ public: // Getters & Setters
 	void setColor(glm::vec4 color)
 	{ m_colorRGBA = color; }
 
+	void setRenderProgram(RenderProgram* program)
+	{ m_program = program; }
+
 public: // Virtual methods
 	virtual void loadPrograms(std::vector<std::string> shaderFileNames) = 0;
 	virtual void prepare() = 0;
