@@ -16,7 +16,7 @@ void GLSLShader::readFile()
 
 void GLSLShader::compile()
 {
-	unsigned int glType;
+	unsigned int glType{};
 	if (m_type == MO_PROGRAM_TYPE_VERTEX) glType = GL_VERTEX_SHADER;
 	else if (m_type == MO_PROGRAM_TYPE_FRAGMENT) glType = GL_FRAGMENT_SHADER;
 

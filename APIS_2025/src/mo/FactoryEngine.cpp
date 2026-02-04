@@ -2,6 +2,7 @@
 #include "GL4Render.h"
 #include "GLFWInputManager.h"
 #include "GLSLMaterial.h"
+#include "GLTexture.h"
 
 std::shared_ptr<Render> FactoryEngine::getNewRender()
 {
@@ -28,14 +29,26 @@ std::shared_ptr<InputManager> FactoryEngine::getNewInputManager()
 	}
 }
 
-Material* FactoryEngine::getNewMaterial()
+std::shared_ptr<Material> FactoryEngine::getNewMaterial()
 {
 	switch (m_selectedRenderEngine)
 	{
 	case MO_RENDER_ENGINE_TYPE_GL4:
-		return new GLSLMaterial();
+		return std::make_shared<GLSLMaterial>();
 	default:
 		std::cerr << "[ERROR] No material found for Render Engine type OpenGL" << (m_selectedRenderEngine + 1) << "\n";
+		break;
+	}
+}
+
+std::shared_ptr<Texture> FactoryEngine::getNewTexture()
+{
+	switch (m_selectedRenderEngine)
+	{
+	case MO_RENDER_ENGINE_TYPE_GL4:
+		return std::make_shared<GLTexture>();
+	default:
+		std::cerr << "[ERROR] No texture found for Render Engine type OpenGL" << (m_selectedRenderEngine + 1) << "\n";
 		break;
 	}
 }

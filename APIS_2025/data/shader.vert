@@ -1,17 +1,18 @@
 #version 330
 
 uniform mat4 MVP;
-uniform mat4 M;
 
 attribute vec4 vPos;
 attribute vec4 vColor;
+attribute vec2 vTexCoord;
 
 out vec4 fColor;
+out vec2 fTexCoord;
 
 void main()
 {
-	//gl_Position = MVP * vPos;
-	gl_Position = M * vPos;
+	gl_Position = MVP * vPos;
 
 	fColor = vColor;
+	fTexCoord = vTexCoord;
 }

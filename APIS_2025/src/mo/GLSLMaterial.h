@@ -13,7 +13,7 @@
 class GLSLMaterial : public Material
 {
 public: // Constructor
-	GLSLMaterial() { m_program = new GLSLProgram(); }
+	GLSLMaterial() { m_program = std::make_shared<GLSLProgram>(); }
 
 public: // Virtual methods
 	void loadPrograms(std::vector<std::string> shaderFileNames) override;

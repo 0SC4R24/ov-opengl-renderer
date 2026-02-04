@@ -10,6 +10,13 @@
 #include "common.h"
 #include "Program.h"
 
+// Forward declarations
+class Texture;
+
+// Aliases
+using TexturePtr = std::shared_ptr<Texture>;
+using ProgramPtr = std::shared_ptr<Program>;
+
 /// <summary>
 /// RenderProgram abstract class
 /// </summary>
@@ -17,7 +24,7 @@ class RenderProgram
 {
 protected: // Attributes
 	unsigned int m_idRenderProgram;
-	std::vector<Program*> m_shaders;
+	std::vector<ProgramPtr> m_shaders;
 	std::map<std::string, unsigned int> m_varList;
 
 public: // Getters & Setters
@@ -29,6 +36,11 @@ public: // Getters & Setters
 	virtual void setMatrix(std::string name, const glm::mat4& matrix) = 0;
 	
 	virtual unsigned int getVarLocation(std::string varName) = 0;
+
+	virtual void setColorTextureEnable() = 0;
+	virtual void setColorTextureDisable() = 0;
+
+	virtual void bindColorTextureSampler(int binding, TexturePtr texture) = 0;
 
 public: // Virtual methods
 	virtual void readVarList() = 0;

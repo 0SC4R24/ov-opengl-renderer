@@ -33,19 +33,19 @@ public: // Getters & Setters
 	const glm::mat4& getModelMatrix()
 	{ return m_modelMatrix; }
 
-	void setPosition(glm::vec4& position)
+	void setPosition(glm::vec4 position)
 	{ 
 		m_position = position;
 		computeModelMatrix();
 	}
 
-	void setRotation(glm::vec4& rotation)
+	void setRotation(glm::vec4 rotation)
 	{ 
 		m_rotation = rotation;
 		computeModelMatrix();
 	}
 
-	void setScale(glm::vec4& scale)
+	void setScale(glm::vec4 scale)
 	{ 
 		m_scale = scale;
 		computeModelMatrix(); 

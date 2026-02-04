@@ -5,7 +5,7 @@
 /// 2026
 /// 
 
-#include "mo/Object.h" // Change to new object
+#include "mo/Object.h"
 #include "mapi/vertex.h"
 #include "System.h"
 #include "GL4Render.h"
@@ -55,41 +55,46 @@ void GL4Render::setupObject(std::shared_ptr<Object> objectPtr)
 	if (not objectPtr)
 	{ return; }
 
-	bufferObject_t bo = { 0, 0, 0 };
+	for (auto& mesh : objectPtr->getMeshes())
+	{
+		if (not mesh) continue;
 
-	// Generate VAO, VBO and IBO
-	glGenVertexArrays(1, &bo.vertexArrayId);
-	glGenBuffers(1, &bo.vertexBufferId);
-	glGenBuffers(1, &bo.vertexIndexArrayId);
+		if (m_bufferObjectMap.find(mesh->getMeshID()) != m_bufferObjectMap.end()) continue;
 
-	// Bind in OpenGL state machine VAO, VBO and IBO
-	glBindVertexArray(bo.vertexArrayId);
-	glBindBuffer(GL_ARRAY_BUFFER, bo.vertexBufferId);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, bo.vertexIndexArrayId);
+		bufferObject_t bo = { 0, 0, 0 };
 
-	// Get pointer
-	Object* obj = objectPtr.get();
+		// Generate VAO, VBO and IBO
+		glGenVertexArrays(1, &bo.vertexArrayId);
+		glGenBuffers(1, &bo.vertexBufferId);
+		glGenBuffers(1, &bo.vertexIndexArrayId);
 
-	// Fill vertex buffer data
-	auto vertList = obj->getMesh()->getVertList();
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertex_t) * vertList->size(), vertList->data(), GL_STATIC_DRAW);
+		// Bind in OpenGL state machine VAO, VBO and IBO
+		glBindVertexArray(bo.vertexArrayId);
+		glBindBuffer(GL_ARRAY_BUFFER, bo.vertexBufferId);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, bo.vertexIndexArrayId);
 
-	// Fill index buffer data
-	auto vertIndexList = obj->getMesh()->getVTriangleIdxList();
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * vertIndexList->size(), vertIndexList->data(), GL_STATIC_DRAW);
+		// Fill vertex buffer data
+		auto vertList = mesh->getVertList();
+		glBufferData(GL_ARRAY_BUFFER, sizeof(vertex_t) * vertList->size(), vertList->data(), GL_STATIC_DRAW);
 
-	m_bufferObjectMap[obj->getMesh()->getMeshID()] = bo;
+		// Fill index buffer data
+		auto vertIndexList = mesh->getVTriangleIdxList();
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * vertIndexList->size(), vertIndexList->data(), GL_STATIC_DRAW);
 
-	// Set shader data
-	auto renderProgram = obj->getMesh()->getMaterial()->getRenderProgram();
-	renderProgram->use();
-	renderProgram->setVertexAttrib("vPos", sizeof(vertex_t), (void*)offsetof(vertex_t, vertexPosition), 4, GL_FLOAT);
-	renderProgram->setVertexAttrib("vColor", sizeof(vertex_t), (void*)offsetof(vertex_t, vertexColor), 4, GL_FLOAT);
+		m_bufferObjectMap[mesh->getMeshID()] = bo;
 
-	// Reset bindings
-	glBindVertexArray(0);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+		// Set shader data
+		auto renderProgram = mesh->getMaterial()->getRenderProgram();
+		renderProgram->use();
+		renderProgram->setVertexAttrib("vPos", sizeof(vertex_t), (void*)offsetof(vertex_t, vertexPosition), 4, GL_FLOAT);
+		renderProgram->setVertexAttrib("vColor", sizeof(vertex_t), (void*)offsetof(vertex_t, vertexColor), 4, GL_FLOAT);
+		renderProgram->setVertexAttrib("vTexCoord", sizeof(vertex_t), (void*)offsetof(vertex_t, vertexTextureCoordinates), 2, GL_FLOAT);
+
+		// Reset bindings
+		glBindVertexArray(0);
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+	}
 }
 
 void GL4Render::removeObject(std::shared_ptr<Object> objectPtr)
@@ -97,19 +102,26 @@ void GL4Render::removeObject(std::shared_ptr<Object> objectPtr)
 	if (not objectPtr)
 	{ return; }
 
-	int objectId = objectPtr->getMesh()->getMeshID();
-	auto bufferObjectMapIterator = m_bufferObjectMap.find(objectId);
+	for (auto& mesh : objectPtr->getMeshes())
+	{
+		if (not mesh) continue;
 
-	if (bufferObjectMapIterator == m_bufferObjectMap.end())
-	{ return; }
+		int meshId = mesh->getMeshID();
+		auto bufferObjectMapIterator = m_bufferObjectMap.find(meshId);
 
-	// Get object buffers
-	bufferObject_t bo = bufferObjectMapIterator->second;
+		if (bufferObjectMapIterator == m_bufferObjectMap.end()) continue;
 
-	// Free object buffers
-	glDeleteBuffers(1, &bo.vertexBufferId);
-	glDeleteBuffers(1, &bo.vertexIndexArrayId);
-	glDeleteVertexArrays(1, &bo.vertexArrayId);
+		// Get object buffers
+		bufferObject_t bo = bufferObjectMapIterator->second;
+
+		// Free object buffers
+		glDeleteBuffers(1, &bo.vertexBufferId);
+		glDeleteBuffers(1, &bo.vertexIndexArrayId);
+		glDeleteVertexArrays(1, &bo.vertexArrayId);
+
+		// Delete from map
+		m_bufferObjectMap.erase(bufferObjectMapIterator);
+	}
 }
 
 void GL4Render::drawObjects(std::list<ObjectPtr>& objectVectorPtr)
@@ -118,16 +130,9 @@ void GL4Render::drawObjects(std::list<ObjectPtr>& objectVectorPtr)
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	if (m_camera != nullptr)
+	for (auto& objPtr : objectVectorPtr)
 	{
-		for (auto& objPtr : objectVectorPtr)
-		{
-			// Continue if object is not set up
-			auto bufferObjectMapIterator = m_bufferObjectMap.find(objPtr->getMesh()->getMeshID());
-			if (bufferObjectMapIterator == m_bufferObjectMap.end()) continue;
-
-			drawObject(objPtr);
-		}
+		drawObject(objPtr);
 	}
 
 	// Swap buffers
@@ -136,22 +141,36 @@ void GL4Render::drawObjects(std::list<ObjectPtr>& objectVectorPtr)
 
 void GL4Render::drawObject(std::shared_ptr<Object> objectPtr)
 {
+	if (not objectPtr) return;
+
+	// Get and set model matrix
 	glm::mat4 model = objectPtr->getModelMatrix();
 	System::setModelMatrix(model);
 
-	auto renderProgram = objectPtr->getMesh()->getMaterial()->getRenderProgram();
-	renderProgram->use();
-	//renderProgram->setMatrix("MVP", m_camera->cameraProjection * m_camera->cameraView * model);
-	renderProgram->setMatrix("M", model);
+	for (auto& mesh : objectPtr->getMeshes())
+	{
+		if (not mesh) continue;
 
-	// Bind buffers
-	bufferObject_t bo = m_bufferObjectMap[objectPtr->getMesh()->getMeshID()];
-	glBindVertexArray(bo.vertexArrayId);
-	glBindBuffer(GL_ARRAY_BUFFER, bo.vertexBufferId);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, bo.vertexIndexArrayId);
+		auto bufferObjectMapIterator = m_bufferObjectMap.find(mesh->getMeshID());
+		if (bufferObjectMapIterator == m_bufferObjectMap.end()) continue;
 
-	// Draw call
-	glDrawElements(GL_TRIANGLES, objectPtr->getMesh()->getVTriangleIdxList()->size(), GL_UNSIGNED_INT, nullptr);
+		// Prepare material
+		mesh->getMaterial()->prepare();
+
+		// Bind buffers
+		bufferObject_t bo = bufferObjectMapIterator->second;
+		glBindVertexArray(bo.vertexArrayId);
+		glBindBuffer(GL_ARRAY_BUFFER, bo.vertexBufferId);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, bo.vertexIndexArrayId);
+
+		// Draw call
+		glDrawElements(GL_TRIANGLES, mesh->getVTriangleIdxList()->size(), GL_UNSIGNED_INT, nullptr);
+	}
+
+	// Unbind after drawing all meshes
+	glBindVertexArray(0);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
 bool GL4Render::isClosed()

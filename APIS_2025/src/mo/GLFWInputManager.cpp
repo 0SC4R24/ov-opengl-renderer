@@ -6,21 +6,10 @@
 /// 
 
 #include "GLFWInputManager.h"
+#include "System.h"
 
 GLFWInputManager::GLFWInputManager()
 {
-	m_window = nullptr;
-}
-
-GLFWInputManager::GLFWInputManager(GLFWwindow* window)
-	: m_window{ window }
-{ 
-	init();
-}
-
-void GLFWInputManager::setWindow(GLFWwindow* window)
-{
-	m_window = window;
 	init();
 }
 
@@ -31,7 +20,7 @@ void GLFWInputManager::updateEvents()
 
 void GLFWInputManager::init()
 {
-	glfwSetKeyCallback(m_window, windowKeyboardEvent);
+	glfwSetKeyCallback(System::getRender()->getWindow(), windowKeyboardEvent);
 }
 
 void GLFWInputManager::windowKeyboardEvent(GLFWwindow* window, int key, int scancode, int action, int mods)

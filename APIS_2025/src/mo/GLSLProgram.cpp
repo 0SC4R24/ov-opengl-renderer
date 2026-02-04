@@ -1,4 +1,5 @@
 #include "GLSLProgram.h"
+#include "GLTexture.h"
 
 void GLSLProgram::setVertexAttrib(std::string name, GLsizei stride, void* offset, GLint count, GLenum type)
 {
@@ -87,6 +88,46 @@ unsigned int GLSLProgram::getVarLocation(std::string varName)
 	}
 }
 
+void GLSLProgram::setColorTextureEnable()
+{
+	if (m_varList.find("useColorText") != m_varList.end())
+	{
+		glUniform1i(m_varList["useColorText"], 1);
+	}
+	else
+	{
+		std::cerr << "[ERROR] Variable useColorText not found in shader\n";
+	}
+}
+
+void GLSLProgram::setColorTextureDisable()
+{
+	if (m_varList.find("useColorText") != m_varList.end())
+	{
+		glUniform1i(m_varList["useColorText"], 0);
+	}
+	else
+	{
+		std::cerr << "[ERROR] Variable useColorText not found in shader\n";
+	}
+}
+
+void GLSLProgram::bindColorTextureSampler(int binding, TexturePtr texture)
+{
+	glActiveTexture(GL_TEXTURE0 + 0);
+	glBindTexture(GL_TEXTURE_2D, binding);
+
+	if (m_varList.find("textureColor") != m_varList.end())
+	{
+		glUniform1i(m_varList["textureColor"], 0);
+	}
+	else
+	{
+		std::cerr << "[ERROR] Variable textureColor not found in shader\n";
+		return;
+	}
+}
+
 void GLSLProgram::readVarList()
 {
 	int numAttributes = 0;
@@ -115,7 +156,7 @@ void GLSLProgram::readVarList()
 
 void GLSLProgram::addProgram(std::string fileName)
 {
-	m_shaders.push_back(new GLSLShader(fileName));
+	m_shaders.push_back(std::make_shared<GLSLShader>(fileName));
 }
 
 void GLSLProgram::linkProgram()

@@ -28,8 +28,6 @@ protected: // Data members
 	int m_width  { 1920 };
 	int m_height { 1080 };
 
-	old::Camera* m_camera;
-
 	GLFWwindow* m_window;
 
 public: // Get - Set
@@ -51,12 +49,6 @@ public: // Get - Set
 
 	void setHeight(int& height)
 	{ m_height = height; }
-
-	virtual void setCamera(old::Camera* camera)
-	{ m_camera = camera; }
-
-	virtual old::Camera* getCamera()
-	{ return m_camera; }
 
 public: // Member functions
 

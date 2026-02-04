@@ -2,40 +2,59 @@
 
 #include "FactoryEngine.h"
 
-Mesh3D::Mesh3D()
+void Mesh3D::loadTriangle()
 {
-	m_meshID = m_ObjectCounter++;
-	m_colorRGBA = glm::vec4(0.5f, 0.0f, 0.0f, 1.0f);
-	
-	m_vVertList = new std::vector<vertex_t>{
+	m_vVertList = new std::vector<vertex_t>
+	{
 		{
 			glm::vec4(-0.5f, -0.5f, 0.0f, 1.0f),
-			m_colorRGBA
+			glm::vec4(0.5f, 0.0f, 0.0f, 1.0f)
 		},
 		{
 			glm::vec4(0.5f, -0.5f, 0.0f, 1.0f),
-			m_colorRGBA
+			glm::vec4(0.0f, 0.5f, 0.0f, 1.0f)
 		},
 		{
 			glm::vec4(0.0f, 0.5f, 0.0f, 1.0f),
-			m_colorRGBA
+			glm::vec4(0.0f, 0.0f, 0.5f, 1.0f)
 		}
 	};
 
 	m_vTriangleIdxList = new std::vector<glm::uint32>{ 0, 1, 2 };
-
-	m_material = FactoryEngine::getNewMaterial();
-	m_material->loadPrograms({ "data/shader.vert", "data/shader.frag" });
 }
 
-void Mesh3D::setColor(glm::vec4 color)
+void Mesh3D::loadSquare()
 {
-	m_colorRGBA = color;
-
-	for (auto& v : *m_vVertList)
+	m_vVertList = new std::vector<vertex_t>
 	{
-		v.vertexColor = color;
-	}
+		{
+			glm::vec4(0.5f, 0.5f, 0.0f, 1.0f),
+			glm::vec4(0.5f, 0.0f, 0.0f, 1.0f)
+		},
+		{
+			glm::vec4(-0.5f, 0.5f, 0.0f, 1.0f),
+			glm::vec4(0.0f, 0.5f, 0.0f, 1.0f)
+		},
+		{
+			glm::vec4(-0.5f, -0.5f, 0.0f, 1.0f),
+			glm::vec4(0.0f, 0.0f, 0.5f, 1.0f)
+		},
+		{
+			glm::vec4(0.5f, -0.5f, 0.0f, 1.0f),
+			glm::vec4(0.5f, 0.0f, 0.5f, 1.0f)
+		}
+	};
+
+	m_vTriangleIdxList = new std::vector<glm::uint32>{ 2, 1, 0, 2, 0, 3 };
+}
+
+Mesh3D::Mesh3D()
+{
+	m_meshID = m_MeshIDCounter++;
+	
+	//loadTriangle();
+	m_vVertList = new std::vector<vertex_t>();
+	m_vTriangleIdxList = new std::vector<glm::uint32>();
 }
 
 void Mesh3D::addVertex(vertex_t vertex)

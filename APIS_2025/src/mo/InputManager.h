@@ -30,8 +30,6 @@ public: // Member functions
 
 	virtual void updateEvents() = 0;
 
-	virtual void setWindow(GLFWwindow* window) = 0;
-
 	// Returns key pressed state
 	static bool isKeyPressed(int keyCode);
 

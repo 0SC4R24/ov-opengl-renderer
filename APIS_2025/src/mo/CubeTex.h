@@ -9,10 +9,8 @@
 
 #include "Object3D.h"
 
-class TrianguloRot : public Object3D
+class CubeTex : public Object3D
 {
-public:
-	TrianguloRot();
-
-	void step(double deltaTime) override;
+public: // Constructor
+	CubeTex();
 };
