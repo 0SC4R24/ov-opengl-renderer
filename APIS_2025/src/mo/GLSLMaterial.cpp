@@ -30,8 +30,10 @@ void GLSLMaterial::prepare()
 
 	if (m_colorTexture != nullptr)
 	{
-		GLTexture* glTexture = (GLTexture*) m_colorTexture;
+		auto glTexture = dynamic_cast<GLTexture*>(m_colorTexture.get());
+		glTexture->update();
+
 		m_program->setColorTextureEnable();
-		m_program->bindColorTextureSampler(glTexture->getGLTextureID(), std::shared_ptr<Texture>(m_colorTexture));
+		m_program->bindColorTextureSampler(glTexture->getGLTextureID(), m_colorTexture);
 	}
 }

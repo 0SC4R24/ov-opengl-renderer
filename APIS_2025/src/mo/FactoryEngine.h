@@ -58,5 +58,6 @@ public: // Public static methods
 	static std::shared_ptr<Render> getNewRender();
 	static std::shared_ptr<InputManager> getNewInputManager();
 	static Material* getNewMaterial();
+	static std::shared_ptr<Texture> getNewTexture();
 	static bool isClosed();
 };

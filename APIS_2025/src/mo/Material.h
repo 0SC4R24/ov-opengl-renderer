@@ -9,6 +9,7 @@
 
 #include "RenderProgram.h"
 #include "Texture.h"
+#include <memory>
 
 /// <summary>
 /// Material abstract class
@@ -17,7 +18,7 @@ class Material
 {
 protected: // Attributes
 	RenderProgram* m_program = nullptr;
-	Texture* m_colorTexture = nullptr;
+	std::shared_ptr<Texture> m_colorTexture = nullptr;
 
 	glm::vec4 m_colorRGBA;
 
@@ -25,13 +26,13 @@ public: // Getters & Setters
 	RenderProgram* getRenderProgram()
 	{ return m_program; }
 
-	Texture* getColorTexture()
+	std::shared_ptr<Texture> getColorTexture()
 	{ return m_colorTexture; }
 
 	const glm::vec4& getColor()
 	{ return m_colorRGBA; }
 
-	void setColorTexture(Texture* colorTexture)
+	void setColorTexture(std::shared_ptr<Texture> colorTexture)
 	{ m_colorTexture = colorTexture; }
 
 	void setColor(glm::vec4 color)

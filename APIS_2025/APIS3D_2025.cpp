@@ -5,6 +5,7 @@
 #include "mo/World.h"
 #include "mo/CameraKeyboard.h"
 #include "mo/TrianguloRot.h"
+#include "mo/CubeTex.h"
 
 int main(int argc, char** argv)
 {
@@ -17,7 +18,7 @@ int main(int argc, char** argv)
     auto camera = std::make_shared<CameraKeyboard>(cameraType, cameraPosition, cameraUp, cameraLookAt);
     
     System::getWorld()->addCamera(camera);
-    System::addObject(std::make_shared<TrianguloRot>());
+    System::addObject(std::make_shared<CubeTex>());
 
     System::mainLoop();
 

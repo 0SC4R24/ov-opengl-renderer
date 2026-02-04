@@ -114,22 +114,18 @@ void GLSLProgram::setColorTextureDisable()
 
 void GLSLProgram::bindColorTextureSampler(int binding, TexturePtr texture)
 {
-	int w = texture->getWidth();
-	int h = texture->getHeight();
-	auto data = texture->getTexBytes().data();
-
 	glActiveTexture(GL_TEXTURE0 + 0);
 	glBindTexture(GL_TEXTURE_2D, binding);
-	if (m_varList.find("colorText") != m_varList.end())
+
+	if (m_varList.find("textureColor") != m_varList.end())
 	{
-		glUniform1i(m_varList["colorText"], 0);
+		glUniform1i(m_varList["textureColor"], 0);
 	}
 	else
 	{
-		std::cerr << "[ERROR] Variable colorText not found in shader\n";
+		std::cerr << "[ERROR] Variable textureColor not found in shader\n";
 		return;
 	}
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
 }
 
 void GLSLProgram::readVarList()

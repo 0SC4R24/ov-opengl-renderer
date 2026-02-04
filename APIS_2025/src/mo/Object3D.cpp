@@ -11,5 +11,5 @@ Object3D::Object3D()
 
 	computeModelMatrix();
 
-	m_mesh = new Mesh3D();
+	m_meshes.push_back(new Mesh3D());
 }

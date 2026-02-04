@@ -52,7 +52,9 @@ Mesh3D::Mesh3D()
 {
 	m_meshID = m_MeshIDCounter++;
 	
-	loadTriangle();
+	//loadTriangle();
+	m_vVertList = new std::vector<vertex_t>();
+	m_vTriangleIdxList = new std::vector<glm::uint32>();
 
 	m_material = FactoryEngine::getNewMaterial();
 	m_material->loadPrograms({ "data/shader.vert", "data/shader.frag" });
