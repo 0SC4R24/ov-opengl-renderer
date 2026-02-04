@@ -11,8 +11,8 @@ CubeTex::CubeTex()
 	m_scale = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
 	m_type = MO_OBJECT_TYPE_OBJECT;
 
-	Mesh3D* mesh1 = new Mesh3D();
-	Mesh3D* mesh2 = new Mesh3D();
+	auto mesh1 = std::make_shared<Mesh3D>();
+	auto mesh2 = std::make_shared<Mesh3D>();
 	
 	mesh1->setMaterial(FactoryEngine::getNewMaterial());
 	mesh2->setMaterial(FactoryEngine::getNewMaterial());

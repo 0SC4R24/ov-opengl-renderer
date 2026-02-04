@@ -29,12 +29,12 @@ std::shared_ptr<InputManager> FactoryEngine::getNewInputManager()
 	}
 }
 
-Material* FactoryEngine::getNewMaterial()
+std::shared_ptr<Material> FactoryEngine::getNewMaterial()
 {
 	switch (m_selectedRenderEngine)
 	{
 	case MO_RENDER_ENGINE_TYPE_GL4:
-		return new GLSLMaterial();
+		return std::make_shared<GLSLMaterial>();
 	default:
 		std::cerr << "[ERROR] No material found for Render Engine type OpenGL" << (m_selectedRenderEngine + 1) << "\n";
 		break;

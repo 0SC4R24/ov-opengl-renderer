@@ -45,6 +45,7 @@ public: // Methods
 	{
 		if (fileName.ends_with(".vert")) m_type = MO_PROGRAM_TYPE_VERTEX;
 		else if (fileName.ends_with(".frag")) m_type = MO_PROGRAM_TYPE_FRAGMENT;
+		else std::cerr << "[ERROR] Shader type not supported\n";
 		m_idProgram = -1;
 	}
 

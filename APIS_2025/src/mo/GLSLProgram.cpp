@@ -156,7 +156,7 @@ void GLSLProgram::readVarList()
 
 void GLSLProgram::addProgram(std::string fileName)
 {
-	m_shaders.push_back(new GLSLShader(fileName));
+	m_shaders.push_back(std::make_shared<GLSLShader>(fileName));
 }
 
 void GLSLProgram::linkProgram()

@@ -15,6 +15,7 @@ class Texture;
 
 // Aliases
 using TexturePtr = std::shared_ptr<Texture>;
+using ProgramPtr = std::shared_ptr<Program>;
 
 /// <summary>
 /// RenderProgram abstract class
@@ -23,7 +24,7 @@ class RenderProgram
 {
 protected: // Attributes
 	unsigned int m_idRenderProgram;
-	std::vector<Program*> m_shaders;
+	std::vector<ProgramPtr> m_shaders;
 	std::map<std::string, unsigned int> m_varList;
 
 public: // Getters & Setters

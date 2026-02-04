@@ -5,7 +5,7 @@
 /// 2026
 /// 
 
-#include "mo/Object.h" // Change to new object
+#include "mo/Object.h"
 #include "mapi/vertex.h"
 #include "System.h"
 #include "GL4Render.h"
@@ -55,8 +55,7 @@ void GL4Render::setupObject(std::shared_ptr<Object> objectPtr)
 	if (not objectPtr)
 	{ return; }
 
-	auto& meshes = objectPtr->getMeshes();
-	for (auto* mesh : meshes)
+	for (auto& mesh : objectPtr->getMeshes())
 	{
 		if (not mesh) continue;
 
@@ -103,8 +102,7 @@ void GL4Render::removeObject(std::shared_ptr<Object> objectPtr)
 	if (not objectPtr)
 	{ return; }
 
-	auto& meshes = objectPtr->getMeshes();
-	for (auto* mesh : meshes)
+	for (auto& mesh : objectPtr->getMeshes())
 	{
 		if (not mesh) continue;
 
@@ -149,8 +147,7 @@ void GL4Render::drawObject(std::shared_ptr<Object> objectPtr)
 	glm::mat4 model = objectPtr->getModelMatrix();
 	System::setModelMatrix(model);
 
-	auto& meshes = objectPtr->getMeshes();
-	for (auto* mesh : meshes)
+	for (auto& mesh : objectPtr->getMeshes())
 	{
 		if (not mesh) continue;
 

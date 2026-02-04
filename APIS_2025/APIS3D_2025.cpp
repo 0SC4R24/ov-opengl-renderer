@@ -19,7 +19,15 @@ int main(int argc, char** argv)
     );
     
     System::getWorld()->addCamera(camera);
-    System::addObject(std::make_shared<CubeTex>());
+
+    auto cube = std::make_shared<CubeTex>();
+    //auto triangle = std::make_shared<TrianguloRot>();
+
+    //auto newPos = glm::vec4(1, 0, 0, 1);
+    //triangle->setPosition(newPos);
+
+    System::addObject(cube);
+    //System::addObject(triangle);
 
     System::mainLoop();
 

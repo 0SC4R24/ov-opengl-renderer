@@ -12,7 +12,7 @@
 class TrianguloRot : public Object3D
 {
 public:
-	TrianguloRot() : Object3D() {};
+	TrianguloRot();
 
 	void step(double deltaTime) override;
 };

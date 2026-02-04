@@ -11,34 +11,37 @@
 #include "Texture.h"
 #include <memory>
 
+using RenderProgramPtr = std::shared_ptr<RenderProgram>;
+using TexturePtr = std::shared_ptr<Texture>;
+
 /// <summary>
 /// Material abstract class
 /// </summary>
 class Material
 {
 protected: // Attributes
-	RenderProgram* m_program = nullptr;
-	std::shared_ptr<Texture> m_colorTexture = nullptr;
+	RenderProgramPtr m_program = nullptr;
+	TexturePtr m_colorTexture = nullptr;
 
 	glm::vec4 m_colorRGBA;
 
 public: // Getters & Setters
-	RenderProgram* getRenderProgram()
+	RenderProgramPtr getRenderProgram()
 	{ return m_program; }
 
-	std::shared_ptr<Texture> getColorTexture()
+	TexturePtr getColorTexture()
 	{ return m_colorTexture; }
 
 	const glm::vec4& getColor()
 	{ return m_colorRGBA; }
 
-	void setColorTexture(std::shared_ptr<Texture> colorTexture)
+	void setColorTexture(TexturePtr colorTexture)
 	{ m_colorTexture = colorTexture; }
 
 	void setColor(glm::vec4 color)
 	{ m_colorRGBA = color; }
 
-	void setRenderProgram(RenderProgram* program)
+	void setRenderProgram(RenderProgramPtr program)
 	{ m_program = program; }
 
 public: // Virtual methods

@@ -11,6 +11,8 @@
 #include "vertex.h"
 #include "Material.h"
 
+using MaterialPtr = std::shared_ptr<Material>;
+
 class Mesh3D
 {
 private: // Static counter
@@ -20,7 +22,7 @@ private: // Attributes
 	int m_meshID;
 	std::vector<vertex_t>* m_vVertList;
 
-	Material* m_material = nullptr;
+	MaterialPtr m_material = nullptr;
 	std::vector<glm::uint32>* m_vTriangleIdxList;
 
 	void loadTriangle();
@@ -36,13 +38,13 @@ public: // Getters & Setters
 	std::vector<vertex_t>* getVertList()
 	{ return m_vVertList; }
 
-	Material* getMaterial()
+	MaterialPtr getMaterial()
 	{ return m_material; }
 
 	std::vector<glm::uint32>* getVTriangleIdxList()
 	{ return m_vTriangleIdxList; }
 
-	void setMaterial(Material* material)
+	void setMaterial(MaterialPtr material)
 	{ m_material = material; }
 
 	void setVTriangleIdxList(std::vector<glm::uint32>* vTriangleIdxList)
