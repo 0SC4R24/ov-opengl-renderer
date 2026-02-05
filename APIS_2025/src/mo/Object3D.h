@@ -14,6 +14,11 @@ class Object3D : public Object
 public:
 	Object3D();
 
-	virtual void loadDataFromFile(std::string file) {};
+	void loadDataFromMshFile(std::string file) override;
+
+	void loadDataFromObjFile(std::string file);
+
+	void recomputeNormals();
+
 	virtual void step(double deltaTime) {};
 };

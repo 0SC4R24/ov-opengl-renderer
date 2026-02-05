@@ -48,5 +48,6 @@ public: // Getters & Setters
 	{ return m_type; }
 
 public: // Methods
-	virtual void loadDataFromFile(std::string file) = 0;
+
+	virtual void loadDataFromMshFile(std::string file) = 0;
 };
