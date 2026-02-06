@@ -16,7 +16,7 @@ public:
 
 	void loadDataFromMshFile(std::string file) override;
 
-	void loadDataFromObjFile(std::string file);
+	void loadDataFromObjFile(std::string file, MaterialPtr material);
 
 	void recomputeNormals();
 

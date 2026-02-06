@@ -35,17 +35,22 @@ public: // Getters & Setters
 	const int& getMeshID()
 	{ return m_meshID; }
 
-	std::shared_ptr<std::vector<vertex_t>> getVertList()
+	const std::shared_ptr<std::vector<vertex_t>>& getVertList() const
 	{ return m_vVertList; }
 
 	MaterialPtr getMaterial()
 	{ return m_material; }
 
-	std::shared_ptr<std::vector<glm::uint32>> getVTriangleIdxList()
+	const std::shared_ptr<std::vector<glm::uint32>>& getVTriangleIdxList() const
 	{ return m_vTriangleIdxList; }
 
 	void setMaterial(MaterialPtr material)
 	{ m_material = material; }
+
+	void setVertList(std::shared_ptr<std::vector<vertex_t>> vertList)
+	{
+		m_vVertList = vertList;
+	}
 
 	void setVTriangleIdxList(std::shared_ptr<std::vector<glm::uint32>> vTriangleIdxList)
 	{ m_vTriangleIdxList = vTriangleIdxList; }
