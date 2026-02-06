@@ -52,8 +52,8 @@ typedef enum
 /// </summary>
 typedef enum
 {
-	MO_LIGHT_TYPE_DIRECTIONAL,
 	MO_LIGHT_TYPE_POINT,
+	MO_LIGHT_TYPE_DIRECTIONAL,
 	MO_LIGHT_TYPE_SPOT
 } MO_LightType_e;
 

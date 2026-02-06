@@ -25,6 +25,7 @@ void GLSLMaterial::prepare()
 	glm::mat4 MVP = P * V * M;
 
 	m_program->setMatrix("MVP", MVP);
+	m_program->setMatrix("M", M);
 
 	m_program->setVec4("vColor", m_colorRGBA);
 
@@ -35,5 +36,22 @@ void GLSLMaterial::prepare()
 
 		m_program->setColorTextureEnable();
 		m_program->bindColorTextureSampler(glTexture->getGLTextureID(), m_colorTexture);
+		
+		// TODO: Get from material and light
+		m_program->setInt("material.shiny", 70);
+		
+		glm::vec4 lightPos = glm::vec4(5, 5, 5, 1);
+		glm::vec4 lightDir = glm::normalize(glm::vec4(glm::vec3(0), 1) - lightPos);
+		m_program->setVec4("light.position", lightPos);
+		m_program->setVec4("light.color", glm::vec4(1, 1, 1, 1));
+		m_program->setVec4("light.direction", lightDir);
+		m_program->setInt("light.type", 1);
+		m_program->setInt("light.enabled", 1);
+		
+		m_program->setVec4("eyePos", activeCamera->getPosition());
+	}
+	else
+	{
+		m_program->setColorTextureEnable();
 	}
 }
