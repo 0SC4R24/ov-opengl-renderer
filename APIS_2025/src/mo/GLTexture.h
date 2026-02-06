@@ -26,5 +26,6 @@ public: // Constructor
 	GLTexture(const std::string& fileName);
 
 public: // Virtual methods
+	virtual void setup() override;
 	virtual void update() override;
 };

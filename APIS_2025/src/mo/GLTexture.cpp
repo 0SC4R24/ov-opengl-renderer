@@ -10,7 +10,7 @@ GLTexture::GLTexture(const std::string& fileName) : Texture(fileName)
 	glGenTextures(1, &m_glTextID);
 }
 
-void GLTexture::update()
+void GLTexture::setup()
 {
 	glBindTexture(GL_TEXTURE_2D, m_glTextID);
 
@@ -27,6 +27,12 @@ void GLTexture::update()
 	}
 
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, m_width, m_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, m_texBytes.data());
-
+	
 	glGenerateMipmap(GL_TEXTURE_2D);
+}
+
+void GLTexture::update()
+{
+	glBindTexture(GL_TEXTURE_2D, m_glTextID);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, m_width, m_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, m_texBytes.data());
 }

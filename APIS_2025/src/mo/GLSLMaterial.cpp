@@ -40,12 +40,12 @@ void GLSLMaterial::prepare()
 		// TODO: Get from material and light
 		m_program->setInt("material.shiny", 70);
 		
-		glm::vec4 lightPos = glm::vec4(5, 5, 5, 1);
-		glm::vec4 lightDir = glm::normalize(glm::vec4(glm::vec3(0), 1) - lightPos);
+		glm::vec4 lightPos = glm::vec4(2, 2, 2, 1);
+		glm::vec4 lightDir = glm::vec4(-2, -2, -2, 0);
 		m_program->setVec4("light.position", lightPos);
 		m_program->setVec4("light.color", glm::vec4(1, 1, 1, 1));
 		m_program->setVec4("light.direction", lightDir);
-		m_program->setInt("light.type", 1);
+		m_program->setInt("light.type", 0);
 		m_program->setInt("light.enabled", 1);
 		
 		m_program->setVec4("eyePos", activeCamera->getPosition());

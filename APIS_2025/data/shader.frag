@@ -37,7 +37,7 @@ vec4 calculateColor(light_t light)
 	
 	if (light.enabled)
 	{
-		float ambiental = 0.2f;
+		float ambiental = 0.25f;
 		float diffuse = 1;
 		float specular = 1;
 		
