@@ -45,6 +45,7 @@ void Object3D::loadDataFromMshFile(std::string file)
             if (textureNode)
             {
                 texturePtr->load(textureNode.child("layer").text().as_string());
+                texturePtr->setup();
                 materialPtr->setColorTexture(texturePtr);
             }
 
@@ -187,7 +188,7 @@ void Object3D::recomputeNormals()
         for (auto it = vertIndexListCopy.begin(); it != vertIndexListCopy.end();)
         {
             // Each three vertices, one face
-            vertex_t& v1 = vertListCopy[*it]; it++; //cada tres vértices, una faceta
+            vertex_t& v1 = vertListCopy[*it]; it++; //cada tres vï¿½rtices, una faceta
             vertex_t& v2 = vertListCopy[*it]; it++;
             vertex_t& v3 = vertListCopy[*it]; it++;
 

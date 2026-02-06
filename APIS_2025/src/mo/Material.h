@@ -23,7 +23,7 @@ protected: // Attributes
 	RenderProgramPtr m_program = nullptr;
 	TexturePtr m_colorTexture = nullptr;
 
-	glm::vec4 m_colorRGBA;
+	glm::vec4 m_colorRGBA = glm::vec4(1);
 	int m_shininess = 70;
 
 public: // Getters & Setters
