@@ -124,7 +124,6 @@ void Object3D::loadDataFromObjFile(std::string file, MaterialPtr material)
             {
                 std::string vert;
                 vertex_t v[3];
-                int vIndex[3] = { 0 };
 
                 glm::vec4 color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -132,19 +131,32 @@ void Object3D::loadDataFromObjFile(std::string file, MaterialPtr material)
                 {
                     str >> vert;
                     auto indexes = splitString<int>(vert, '/');
-                    if (indexes.size() == 3) //si hay tres índices por faceta, se carga la información de normales y textura
+
+                    if (indexes.size() == 3 && indexes[1] != 0) // f v/vt/vn
                     {
-                        v[i] = { vPos[indexes[0] - 1],color,vTC[indexes[1] - 1],vNorm[indexes[2] - 1] };
+                        v[i] = { vPos[indexes[0] - 1], color, vTC[indexes[1] - 1], vNorm[indexes[2] - 1] };
                     }
-                    else if (indexes.size() == 1)//si no, no hay textura y sólo se carga el dato de posición de vértice
+                    else if (indexes.size() == 3 && indexes[1] == 0) // f v//vn
                     {
-                        v[i] = { vPos[indexes[0] - 1],color, {0,0}, { 0,0,0,0 }};
-                        computeNormals = true; //se deben recalcular las normales al acabar de cargar información
+                        v[i] = { vPos[indexes[0] - 1], color, {0, 0}, vNorm[indexes[2] - 1] };
                     }
-                    vertList->at(indexes[0] - 1 - vertexOffset) = v[i];
-                    vertIndexList->push_back(indexes[0] - 1 - vertexOffset);
+                    else if (indexes.size() == 2) // f v/vt
+                    {
+                        v[i] = { vPos[indexes[0] - 1], color, vTC[indexes[1] - 1], {0, 0, 0, 0} };
+                        computeNormals = true;
+                    }
+                    else if (indexes.size() == 1) // f v
+                    {
+                        v[i] = { vPos[indexes[0] - 1], color, {0, 0}, {0, 0, 0, 0} };
+                        computeNormals = true;
+                    }
+
+                    // Add new vertex to list instead of overwriting
+                    vertList->push_back(v[i]);
+                    vertIndexList->push_back(vertList->size() - 1);
                 }
             }
+
         }
     }
 
