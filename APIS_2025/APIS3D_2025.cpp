@@ -13,7 +13,7 @@ int main(int argc, char** argv)
 
     auto camera = std::make_shared<CameraKeyboard>(
         MO_PROJECTION_TYPE_PERSPECTIVE, // tipo
-        glm::vec3(1, 1, 3),             // posición
+        glm::vec3(1, 1, 3),             // posicion
         glm::vec3(0, 1, 0),             // up
         glm::vec3(0, 0, 0)              // lookAt
     );
