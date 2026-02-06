@@ -6,6 +6,7 @@
 #include "mo/CameraKeyboard.h"
 #include "mo/TrianguloRot.h"
 #include "mo/CubeTex.h"
+#include "mo/OrbitalLight.h"
 
 int main(int argc, char** argv)
 {
@@ -29,6 +30,10 @@ int main(int argc, char** argv)
     System::addObject(cube);
     //System::addObject(triangle);
 
+    // auto orbitalLight = std::make_shared<OrbitalLight>(
+    //     MO_LIGHT_TYPE_POINT,    
+    // );
+    
     System::mainLoop();
 
 	return 0;

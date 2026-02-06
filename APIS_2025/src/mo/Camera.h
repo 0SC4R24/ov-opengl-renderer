@@ -10,15 +10,6 @@
 #include "Entity.h"
 
 /// <summary>
-/// Projection type enum
-/// </summary>
-typedef enum
-{
-	MO_PROJECTION_TYPE_PERSPECTIVE,
-	MO_PROJECTION_TYPE_ORTHOGRAPHIC
-} MO_ProjectionType_e;
-
-/// <summary>
 /// Camera class
 /// </summary>
 class Camera : public Entity

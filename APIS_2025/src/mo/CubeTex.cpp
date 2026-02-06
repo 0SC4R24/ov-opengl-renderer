@@ -10,6 +10,8 @@ CubeTex::CubeTex()
 	m_rotation = glm::vec4(0.0f, 0.0f, 0.0f, 1.0f);
 	m_scale = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
 	m_type = MO_OBJECT_TYPE_OBJECT;
+	
+	glm::vec4 color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
 
 	auto mesh1 = std::make_shared<Mesh3D>();
 	auto mesh2 = std::make_shared<Mesh3D>();
@@ -24,89 +26,105 @@ CubeTex::CubeTex()
 	// Mesh 1 - Front face
 	mesh1->addVertex({
 		glm::vec4(0.5f, 0.5f, 0.5f, 1.0f),
-		glm::vec4(0.0f, 0.0f, 0.0f, 1.0f),
-		glm::vec2(1, 1)
+		color,
+		glm::vec2(1, 1),
+		glm::vec4(1.0f, 0.0f, 0.0f, 0.0f)
 		});
 	mesh1->addVertex({
 		glm::vec4(-0.5f, 0.5f, 0.5f, 1.0f),
-		glm::vec4(0.0f, 0.0f, 0.0f, 1.0f),
-		glm::vec2(0, 1)
+		color,
+		glm::vec2(0, 1),
+		glm::vec4(1.0f, 0.0f, 0.0f, 0.0f)
 		});
 	mesh1->addVertex({
 		glm::vec4(-0.5f, -0.5f, 0.5f, 1.0f),
-		glm::vec4(0.0f, 0.0f, 0.0f, 1.0f),
-		glm::vec2(0, 0)
+		color,
+		glm::vec2(0, 0),
+		glm::vec4(1.0f, 0.0f, 0.0f, 0.0f)
 		});
 	mesh1->addVertex({
 		glm::vec4(0.5f, -0.5f, 0.5f, 1.0f),
-		glm::vec4(0.0f, 0.0f, 0.0f, 1.0f),
-		glm::vec2(1, 0)
+		color,
+		glm::vec2(1, 0),
+		glm::vec4(1.0f, 0.0f, 0.0f, 0.0f)
 		});
 
 	// Mesh 1 - Back face
 	mesh1->addVertex({
 		glm::vec4(0.5f, 0.5f, -0.5f, 1.0f),
-		glm::vec4(0.0f, 0.0f, 0.0f, 1.0f),
-		glm::vec2(0, 1)
+		color,
+		glm::vec2(0, 1),
+		glm::vec4(1.0f, 0.0f, 0.0f, 0.0f)
 		});
 	mesh1->addVertex({
 		glm::vec4(-0.5f, 0.5f, -0.5f, 1.0f),
-		glm::vec4(0.0f, 0.0f, 0.0f, 1.0f),
-		glm::vec2(1, 1)
+		color,
+		glm::vec2(1, 1),
+		glm::vec4(1.0f, 0.0f, 0.0f, 0.0f)
 		});
 	mesh1->addVertex({
 		glm::vec4(-0.5f, -0.5f, -0.5f, 1.0f),
-		glm::vec4(0.0f, 0.0f, 0.0f, 1.0f),
-		glm::vec2(1, 0)
+		color,
+		glm::vec2(1, 0),
+		glm::vec4(1.0f, 0.0f, 0.0f, 0.0f)
 		});
 	mesh1->addVertex({
 		glm::vec4(0.5f, -0.5f, -0.5f, 1.0f),
-		glm::vec4(0.0f, 0.0f, 0.0f, 1.0f),
-		glm::vec2(0, 0)
+		color,
+		glm::vec2(0, 0),
+		glm::vec4(1.0f, 0.0f, 0.0f, 0.0f)
 		});
 
 	// Mesh 2 - Top face
 	mesh2->addVertex({
 		glm::vec4(0.5f, 0.5f, -0.5f, 1.0f),   // Back-right
-		glm::vec4(0.0f, 0.0f, 0.0f, 1.0f),
-		glm::vec2(1, 1)
+		color,
+		glm::vec2(1, 1),
+		glm::vec4(1.0f, 0.0f, 0.0f, 0.0f)
 		});
 	mesh2->addVertex({
 		glm::vec4(-0.5f, 0.5f, -0.5f, 1.0f),  // Back-left
-		glm::vec4(0.0f, 0.0f, 0.0f, 1.0f),
-		glm::vec2(0, 1)
+		color,
+		glm::vec2(0, 1),
+		glm::vec4(1.0f, 0.0f, 0.0f, 0.0f)
 		});
 	mesh2->addVertex({
 		glm::vec4(-0.5f, 0.5f, 0.5f, 1.0f),   // Front-left
-		glm::vec4(0.0f, 0.0f, 0.0f, 1.0f),
-		glm::vec2(0, 0)
+		color,
+		glm::vec2(0, 0),
+		glm::vec4(1.0f, 0.0f, 0.0f, 0.0f)
 		});
 	mesh2->addVertex({
 		glm::vec4(0.5f, 0.5f, 0.5f, 1.0f),    // Front-right
-		glm::vec4(0.0f, 0.0f, 0.0f, 1.0f),
-		glm::vec2(1, 0)
+		color,
+		glm::vec2(1, 0),
+		glm::vec4(1.0f, 0.0f, 0.0f, 0.0f)
 		});
 
 	// Mesh 2 - Bottom face
 	mesh2->addVertex({
 		glm::vec4(0.5f, -0.5f, 0.5f, 1.0f),   // Front-right
-		glm::vec4(0.0f, 0.0f, 0.0f, 1.0f),
-		glm::vec2(1, 1)
+		color,
+		glm::vec2(1, 1),
+		glm::vec4(1.0f, 0.0f, 0.0f, 0.0f)
 		});
 	mesh2->addVertex({
 		glm::vec4(-0.5f, -0.5f, 0.5f, 1.0f),  // Front-left
-		glm::vec4(0.0f, 0.0f, 0.0f, 1.0f),
-		glm::vec2(0, 1)
+		color,
+		glm::vec2(0, 1),
+		glm::vec4(1.0f, 0.0f, 0.0f, 0.0f)
 		});
 	mesh2->addVertex({
 		glm::vec4(-0.5f, -0.5f, -0.5f, 1.0f), // Back-left
-		glm::vec4(0.0f, 0.0f, 0.0f, 1.0f),
-		glm::vec2(0, 0)
+		color,
+		glm::vec2(0, 0),
+		glm::vec4(1.0f, 0.0f, 0.0f, 0.0f)
 		});
 	mesh2->addVertex({
 		glm::vec4(0.5f, -0.5f, -0.5f, 1.0f),  // Back-right
-		glm::vec4(0.0f, 0.0f, 0.0f, 1.0f),
-		glm::vec2(1, 0)
+		color,
+		glm::vec2(1, 0),
+		glm::vec4(1.0f, 0.0f, 0.0f, 0.0f)
 		});
 
 	// Front face

@@ -90,26 +90,12 @@ unsigned int GLSLProgram::getVarLocation(std::string varName)
 
 void GLSLProgram::setColorTextureEnable()
 {
-	if (m_varList.find("useColorText") != m_varList.end())
-	{
-		glUniform1i(m_varList["useColorText"], 1);
-	}
-	else
-	{
-		std::cerr << "[ERROR] Variable useColorText not found in shader\n";
-	}
+	setInt("useColorText", 1);
 }
 
 void GLSLProgram::setColorTextureDisable()
 {
-	if (m_varList.find("useColorText") != m_varList.end())
-	{
-		glUniform1i(m_varList["useColorText"], 0);
-	}
-	else
-	{
-		std::cerr << "[ERROR] Variable useColorText not found in shader\n";
-	}
+	setInt("useColorText", 0);
 }
 
 void GLSLProgram::bindColorTextureSampler(int binding, TexturePtr texture)

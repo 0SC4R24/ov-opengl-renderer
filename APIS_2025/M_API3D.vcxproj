@@ -171,8 +171,10 @@
     <ClCompile Include="src\mo\GLSLShader.cpp" />
     <ClCompile Include="src\mo\GLTexture.cpp" />
     <ClCompile Include="src\mo\InputManager.cpp" />
+    <ClCompile Include="src\mo\Light.cpp" />
     <ClCompile Include="src\mo\Mesh3D.cpp" />
     <ClCompile Include="src\mo\Object3D.cpp" />
+    <ClCompile Include="src\mo\OrbitalLight.cpp" />
     <ClCompile Include="src\mo\System.cpp" />
     <ClCompile Include="src\mo\Texture.cpp" />
     <ClCompile Include="src\mo\TrianguloRot.cpp" />
@@ -195,10 +197,12 @@
     <ClInclude Include="src\mo\GLSLShader.h" />
     <ClInclude Include="src\mo\GLTexture.h" />
     <ClInclude Include="src\mo\InputManager.h" />
+    <ClInclude Include="src\mo\Light.h" />
     <ClInclude Include="src\mo\Material.h" />
     <ClInclude Include="src\mo\Mesh3D.h" />
     <ClInclude Include="src\mo\Object.h" />
     <ClInclude Include="src\mo\Object3D.h" />
+    <ClInclude Include="src\mo\OrbitalLight.h" />
     <ClInclude Include="src\mo\Program.h" />
     <ClInclude Include="src\mo\Render.h" />
     <ClInclude Include="src\mo\RenderProgram.h" />
