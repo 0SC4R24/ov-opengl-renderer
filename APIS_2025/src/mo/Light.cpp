@@ -6,3 +6,8 @@ Light::Light(MO_LightType_e type, glm::vec4 position, glm::vec4 color, glm::vec4
 {
     m_position = position;
 }
+
+void Light::step(double deltaTime)
+{
+    
+}

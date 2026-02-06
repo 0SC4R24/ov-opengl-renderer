@@ -8,6 +8,7 @@
 #include "World.h"
 #include "Object.h"
 #include "Camera.h"
+#include "Light.h"
 
 void World::addObject(const ObjectPtr& objectPtr)
 {
@@ -83,12 +84,35 @@ void World::setActiveCameraIndex(int activeCamera)
 	m_activeCamera = activeCamera;
 }
 
+std::list<LightPtr>& World::getLights()
+{
+	return m_lightList;
+}
+
+LightPtr World::getLight(size_t index)
+{
+	std::list<LightPtr>::iterator it = m_lightList.begin();
+	for (size_t i = 0; i < index; i++) it++;
+	LightPtr light = *it;
+	return light;
+}
+
+void World::addLight(LightPtr light)
+{
+	m_lightList.push_back(light);
+}
+
+void World::deleteLight(size_t index)
+{
+	m_lightList.remove(getLight(index));
+}
+
 void World::step(const float& deltaTime)
 {
 	for (auto& cameraPtr : m_cameraList)
 	{
 		cameraPtr->step(deltaTime);
-		cameraPtr->computeProjectionMatrix();
+		// cameraPtr->computeProjectionMatrix();
 		cameraPtr->computeViewMatrix();
 	}
 
@@ -96,6 +120,11 @@ void World::step(const float& deltaTime)
 	{
 		objectPtr->step(deltaTime);
 		objectPtr->computeModelMatrix();
+	}
+	
+	for (auto& lightPtr : m_lightList)
+	{
+		lightPtr->step(deltaTime);
 	}
 }
 

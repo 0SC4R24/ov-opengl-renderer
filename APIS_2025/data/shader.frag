@@ -14,7 +14,8 @@ struct material_t
 	int shiny;
 };
 
-uniform light_t light;
+uniform light_t lights[8];
+uniform int activeLights;
 uniform material_t material;
 
 uniform vec4 eyePos;
@@ -44,8 +45,8 @@ vec4 calculateColor(light_t light)
 		vec3 L = vec3(0, 0, 0);
 		vec3 N = fNormal.xyz;
 		
-		if (light.type == 0) L = light.position.xyz - fPos.xyz;
-		if (light.type == 1) L = light.direction.xyz;
+		if (light.type == 0) L = light.position.xyz - fPos.xyz; // Type Point
+		if (light.type == 1) L = light.direction.xyz;           // Type Directional
 		
 		L = normalize(L);
 		N = normalize(N);
@@ -63,5 +64,10 @@ vec4 calculateColor(light_t light)
 
 void main()
 {
-	gl_FragColor = calculateColor(light);
+	vec4 finalColor = vec4(0,0,0,0);
+	for (int i = 0; i < activeLights; i++)
+	{
+		finalColor += calculateColor(lights[i]);
+	}
+	gl_FragColor = finalColor;
 }

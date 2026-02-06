@@ -24,6 +24,23 @@ int main(int argc, char** argv)
     auto cube = std::make_shared<CubeTex>();
     System::addObject(cube);
     
+    auto light = std::make_shared<Light>(
+        MO_LIGHT_TYPE_POINT,
+        glm::vec4(-2, 2, 0, 1),
+        glm::vec4(1, 0, 0, 1),
+        glm::vec4(0, -1, 0, 0)
+    );
+    
+    auto light2 = std::make_shared<Light>(
+        MO_LIGHT_TYPE_POINT,
+        glm::vec4(2, 2, 0, 1),
+        glm::vec4(0, 1, 0, 1),
+        glm::vec4(0, -1, 0, 0)
+    );
+    
+    System::getWorld()->addLight(light);
+    System::getWorld()->addLight(light2);
+    
     System::mainLoop();
 
 	return 0;

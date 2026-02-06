@@ -19,6 +19,10 @@ CubeTex::CubeTex()
 
 	mesh1->setMaterial(FactoryEngine::getNewMaterial());
 	mesh2->setMaterial(FactoryEngine::getNewMaterial());
+	
+	int shininess = 70;
+	mesh1->getMaterial()->setShininess(shininess);
+	mesh2->getMaterial()->setShininess(shininess);
 
 	mesh1->getMaterial()->loadPrograms({"data/shader.vert", "data/shader.frag"});
 	mesh2->getMaterial()->setRenderProgram(mesh1->getMaterial()->getRenderProgram());
