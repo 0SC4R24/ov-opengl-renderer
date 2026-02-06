@@ -35,7 +35,7 @@ public: // Getters & Setters
 	const int& getMeshID()
 	{ return m_meshID; }
 
-	std::shared_ptr<std::vector<vertex_t>> getVertList()
+	const std::shared_ptr<std::vector<vertex_t>>& getVertList() const
 	{ return m_vVertList; }
 
 	MaterialPtr getMaterial()
