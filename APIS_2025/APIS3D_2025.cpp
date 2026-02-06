@@ -22,13 +22,17 @@ int main(int argc, char** argv)
     System::getWorld()->addCamera(camera);
 
     auto cube = std::make_shared<CubeTex>();
+
+    auto asianTown = std::make_shared<Object3D>();
+    asianTown->loadDataFromMshFile("data/asian_town.msh");
     //auto triangle = std::make_shared<TrianguloRot>();
 
     //auto newPos = glm::vec4(1, 0, 0, 1);
     //triangle->setPosition(newPos);
 
-    System::addObject(cube);
+    //System::addObject(cube);
     //System::addObject(triangle);
+    System::addObject(asianTown);
 
     // auto orbitalLight = std::make_shared<OrbitalLight>(
     //     MO_LIGHT_TYPE_POINT,    
