@@ -10,21 +10,12 @@
 #include "common.h"
 
 /// <summary>
-/// Program Type Enumerator
-/// </summary>
-typedef enum
-{
-	MO_PROGRAM_TYPE_VERTEX,
-	MO_PROGRAM_TYPE_FRAGMENT
-} MO_ProgramType_e;
-
-/// <summary>
 /// Program abstract class
 /// </summary>
 class Program
 {
 protected: // Attributes
-	MO_ProgramType_e m_type = MO_PROGRAM_TYPE_VERTEX; // Inicialización por defecto
+	MO_ProgramType_e m_type = MO_PROGRAM_TYPE_VERTEX; // Inicializaciï¿½n por defecto
 	std::string m_fileName;
 	std::string m_sourceCode;
 	unsigned int m_idProgram;
