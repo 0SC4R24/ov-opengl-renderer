@@ -10,11 +10,26 @@
 #include "common.h"
 #include <map>
 
+typedef struct {
+	double xPos;
+	double yPos;
+	std::map<int, bool> buttonState;
+}mouseStats_t;
+
 /// <summary>
 /// Input Manager Interface
 /// </summary>
 class InputManager
 {
+
+protected: // Structs
+
+	struct Mouse
+	{
+		double xPos;
+		double yPos;
+		std::map<int, bool> buttonState;
+	};
 
 protected: // Data members
 

@@ -41,3 +41,28 @@ void GLFWInputManager::windowKeyboardEvent(GLFWwindow* window, int key, int scan
 		break;
 	}
 }
+
+void GLFWInputManager::mousePosEvent(GLFWwindow* window, double xpos, double ypos)
+{
+	mouse.xPos = xpos;
+	mouse.yPos = ypos;
+}
+
+void GLFWInputManager::mouseButtonEvent(GLFWwindow* window, int button, int action, int mods)
+{
+	switch (action)
+	{
+		case GLFW_PRESS:
+		{
+			mouse.buttonState[button] = true;
+		}
+		break;
+		case GLFW_RELEASE:
+		{
+			mouse.buttonState[button] = false;
+		}
+		break;
+		default:
+		break;
+	}
+}

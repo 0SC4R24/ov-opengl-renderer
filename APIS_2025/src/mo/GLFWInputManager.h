@@ -14,6 +14,10 @@
 class GLFWInputManager : public InputManager
 {
 
+public: // Data members
+
+	static inline Mouse mouse;
+
 public: // Constructors
 
 	GLFWInputManager();
@@ -30,5 +34,9 @@ protected: // Member functions
 private: // Static member functions
 
 	static void windowKeyboardEvent(GLFWwindow* window, int key, int scancode, int action, int mods);
+
+	static void mousePosEvent(GLFWwindow* window, double xpos, double ypos);
+
+	static void mouseButtonEvent(GLFWwindow* window, int button, int action, int mods);
 
 };
