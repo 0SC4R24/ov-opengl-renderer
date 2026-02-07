@@ -20,10 +20,10 @@ private: // Static counter
 
 private: // Attributes
 	int m_meshID;
-	std::vector<vertex_t>* m_vVertList;
+	std::shared_ptr<std::vector<vertex_t>> m_vVertList;
 
 	MaterialPtr m_material = nullptr;
-	std::vector<glm::uint32>* m_vTriangleIdxList;
+	std::shared_ptr<std::vector<glm::uint32>> m_vTriangleIdxList;
 
 	void loadTriangle();
 	void loadSquare();
@@ -35,19 +35,24 @@ public: // Getters & Setters
 	const int& getMeshID()
 	{ return m_meshID; }
 
-	std::vector<vertex_t>* getVertList()
+	const std::shared_ptr<std::vector<vertex_t>>& getVertList() const
 	{ return m_vVertList; }
 
 	MaterialPtr getMaterial()
 	{ return m_material; }
 
-	std::vector<glm::uint32>* getVTriangleIdxList()
+	const std::shared_ptr<std::vector<glm::uint32>>& getVTriangleIdxList() const
 	{ return m_vTriangleIdxList; }
 
 	void setMaterial(MaterialPtr material)
 	{ m_material = material; }
 
-	void setVTriangleIdxList(std::vector<glm::uint32>* vTriangleIdxList)
+	void setVertList(std::shared_ptr<std::vector<vertex_t>> vertList)
+	{
+		m_vVertList = vertList;
+	}
+
+	void setVTriangleIdxList(std::shared_ptr<std::vector<glm::uint32>> vTriangleIdxList)
 	{ m_vTriangleIdxList = vTriangleIdxList; }
 
 public: // Methods

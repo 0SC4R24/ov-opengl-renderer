@@ -13,25 +13,6 @@
 #include "Material.h"
 
 /// <summary>
-/// Enum to select InputManager
-/// </summary>
-static enum MO_InputManagerType_e
-{
-	MO_INPUT_MANAGER_TYPE_GLFW
-};
-
-/// <summary>
-/// Enum to select Render
-/// </summary>
-static enum MO_RenderEngineType_e
-{
-	MO_RENDER_ENGINE_TYPE_GL1,
-	MO_RENDER_ENGINE_TYPE_GL2,
-	MO_RENDER_ENGINE_TYPE_GL3,
-	MO_RENDER_ENGINE_TYPE_GL4
-};
-
-/// <summary>
 /// Class acting as a factory for different rendering backends
 /// </summary>
 static class FactoryEngine

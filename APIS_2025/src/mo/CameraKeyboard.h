@@ -12,7 +12,6 @@
 class CameraKeyboard : public Camera
 {
 private: // Attributes
-	glm::vec4 m_direction = glm::vec4(0);
 	glm::vec4 m_velocity = glm::vec4(0);
 
 public: // Constructor:

@@ -161,6 +161,7 @@
   <ItemGroup>
     <ClCompile Include="APIS3D_2025.cpp" />
     <ClCompile Include="src\mo\Camera.cpp" />
+    <ClCompile Include="src\mo\CameraFPS.cpp" />
     <ClCompile Include="src\mo\CameraKeyboard.cpp" />
     <ClCompile Include="src\mo\CubeTex.cpp" />
     <ClCompile Include="src\mo\FactoryEngine.cpp" />
@@ -171,8 +172,10 @@
     <ClCompile Include="src\mo\GLSLShader.cpp" />
     <ClCompile Include="src\mo\GLTexture.cpp" />
     <ClCompile Include="src\mo\InputManager.cpp" />
+    <ClCompile Include="src\mo\Light.cpp" />
     <ClCompile Include="src\mo\Mesh3D.cpp" />
     <ClCompile Include="src\mo\Object3D.cpp" />
+    <ClCompile Include="src\mo\OrbitalLight.cpp" />
     <ClCompile Include="src\mo\System.cpp" />
     <ClCompile Include="src\mo\Texture.cpp" />
     <ClCompile Include="src\mo\TrianguloRot.cpp" />
@@ -184,6 +187,7 @@
     <ClInclude Include="src\mapi\vertex.h" />
     <ClInclude Include="src\mo\bufferObject.h" />
     <ClInclude Include="src\mo\Camera.h" />
+    <ClInclude Include="src\mo\CameraFPS.h" />
     <ClInclude Include="src\mo\CameraKeyboard.h" />
     <ClInclude Include="src\mo\CubeTex.h" />
     <ClInclude Include="src\mo\Entity.h" />
@@ -195,10 +199,12 @@
     <ClInclude Include="src\mo\GLSLShader.h" />
     <ClInclude Include="src\mo\GLTexture.h" />
     <ClInclude Include="src\mo\InputManager.h" />
+    <ClInclude Include="src\mo\Light.h" />
     <ClInclude Include="src\mo\Material.h" />
     <ClInclude Include="src\mo\Mesh3D.h" />
     <ClInclude Include="src\mo\Object.h" />
     <ClInclude Include="src\mo\Object3D.h" />
+    <ClInclude Include="src\mo\OrbitalLight.h" />
     <ClInclude Include="src\mo\Program.h" />
     <ClInclude Include="src\mo\Render.h" />
     <ClInclude Include="src\mo\RenderProgram.h" />
@@ -208,8 +214,12 @@
     <ClInclude Include="src\mo\World.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="data\asian_town.msh" />
     <None Include="data\shader.frag" />
     <None Include="data\shader.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="data\asian_town.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -4,7 +4,8 @@
 
 void Mesh3D::loadTriangle()
 {
-	m_vVertList = new std::vector<vertex_t>
+	m_vVertList = std::make_shared<std::vector<vertex_t>>
+		(std::initializer_list<vertex_t>
 	{
 		{
 			glm::vec4(-0.5f, -0.5f, 0.0f, 1.0f),
@@ -18,14 +19,16 @@ void Mesh3D::loadTriangle()
 			glm::vec4(0.0f, 0.5f, 0.0f, 1.0f),
 			glm::vec4(0.0f, 0.0f, 0.5f, 1.0f)
 		}
-	};
+	});
 
-	m_vTriangleIdxList = new std::vector<glm::uint32>{ 0, 1, 2 };
+	m_vTriangleIdxList = std::make_shared<std::vector<glm::uint32>>
+		(std::initializer_list<glm::uint32>{ 0, 1, 2 });
 }
 
 void Mesh3D::loadSquare()
 {
-	m_vVertList = new std::vector<vertex_t>
+	m_vVertList = std::make_shared<std::vector<vertex_t>>
+		(std::initializer_list<vertex_t>
 	{
 		{
 			glm::vec4(0.5f, 0.5f, 0.0f, 1.0f),
@@ -43,9 +46,10 @@ void Mesh3D::loadSquare()
 			glm::vec4(0.5f, -0.5f, 0.0f, 1.0f),
 			glm::vec4(0.5f, 0.0f, 0.5f, 1.0f)
 		}
-	};
+	});
 
-	m_vTriangleIdxList = new std::vector<glm::uint32>{ 2, 1, 0, 2, 0, 3 };
+	m_vTriangleIdxList = std::make_shared<std::vector<glm::uint32>>
+		(std::initializer_list<glm::uint32>{ 2, 1, 0, 2, 0, 3 });
 }
 
 Mesh3D::Mesh3D()
@@ -53,8 +57,8 @@ Mesh3D::Mesh3D()
 	m_meshID = m_MeshIDCounter++;
 	
 	//loadTriangle();
-	m_vVertList = new std::vector<vertex_t>();
-	m_vTriangleIdxList = new std::vector<glm::uint32>();
+	m_vVertList = std::make_shared<std::vector<vertex_t>>();
+	m_vTriangleIdxList = std::make_shared<std::vector<glm::uint32>>();
 }
 
 void Mesh3D::addVertex(vertex_t vertex)

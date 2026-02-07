@@ -223,4 +223,5 @@ $RECYCLE.BIN/
 *.msp
 
 .vs/
+.idea/
 /APIS_2025/M_API3D/x64

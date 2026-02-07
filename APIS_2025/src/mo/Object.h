@@ -16,16 +16,6 @@
 using Mesh3DPtr = std::shared_ptr<Mesh3D>;
 
 /// <summary>
-/// Object Type Enumerator
-/// </summary>
-typedef enum
-{
-	MO_OBJECT_TYPE_OBJECT,
-	MO_OBJECT_TYPE_CAMERA,
-	MO_OBJECT_TYPE_LIGHT
-} MO_ObjectType_e;
-
-/// <summary>
 /// Object Interface
 /// </summary>
 class Object : public Entity
@@ -48,5 +38,6 @@ public: // Getters & Setters
 	{ return m_type; }
 
 public: // Methods
-	virtual void loadDataFromFile(std::string file) = 0;
+
+	virtual void loadDataFromMshFile(std::string file) = 0;
 };
