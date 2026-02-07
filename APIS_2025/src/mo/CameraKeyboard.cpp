@@ -48,19 +48,19 @@ void CameraKeyboard::step(double deltaTime)
     forward = glm::normalize(m_lookAt - glm::vec3(m_position));
     right = glm::normalize(glm::cross(forward, m_up));
 
-    m_direction = glm::vec4(0);
+    m_direction = glm::vec3(0);
     
-    if (inputManager->isKeyPressed(GLFW_KEY_W)) m_direction += glm::vec4(forward, 0.0f);
-    if (inputManager->isKeyPressed(GLFW_KEY_S)) m_direction -= glm::vec4(forward, 0.0f);
-    if (inputManager->isKeyPressed(GLFW_KEY_D)) m_direction += glm::vec4(right, 0.0f);
-    if (inputManager->isKeyPressed(GLFW_KEY_A)) m_direction -= glm::vec4(right, 0.0f);
-    if (inputManager->isKeyPressed(GLFW_KEY_SPACE)) m_direction += glm::vec4(m_up, 0.0f);
-    if (inputManager->isKeyPressed(GLFW_KEY_LEFT_SHIFT)) m_direction -= glm::vec4(m_up, 0.0f);
+    if (inputManager->isKeyPressed(GLFW_KEY_W)) m_direction += forward;
+    if (inputManager->isKeyPressed(GLFW_KEY_S)) m_direction -= forward;
+    if (inputManager->isKeyPressed(GLFW_KEY_D)) m_direction += right;
+    if (inputManager->isKeyPressed(GLFW_KEY_A)) m_direction -= right;
+    if (inputManager->isKeyPressed(GLFW_KEY_SPACE)) m_direction += m_up;
+    if (inputManager->isKeyPressed(GLFW_KEY_LEFT_SHIFT)) m_direction -= m_up;
 
     if (glm::length(m_direction) > 0.0f) m_direction = glm::normalize(m_direction) * speed;
 
     glm::vec3 oldPosition = glm::vec3(m_position);
-    m_position += m_direction + m_velocity;
+    m_position += glm::vec4(m_direction, 1.0f) + m_velocity;
     glm::vec3 displacement = glm::vec3(m_position) - oldPosition;
     m_lookAt += displacement;
 

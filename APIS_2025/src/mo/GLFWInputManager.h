@@ -14,10 +14,6 @@
 class GLFWInputManager : public InputManager
 {
 
-public: // Data members
-
-	static inline Mouse mouse;
-
 public: // Constructors
 
 	GLFWInputManager();

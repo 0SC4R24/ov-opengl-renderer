@@ -10,12 +10,6 @@
 #include "common.h"
 #include <map>
 
-typedef struct {
-	double xPos;
-	double yPos;
-	std::map<int, bool> buttonState;
-}mouseStats_t;
-
 /// <summary>
 /// Input Manager Interface
 /// </summary>
@@ -33,6 +27,8 @@ protected: // Structs
 
 protected: // Data members
 
+	static inline Mouse m_mouse;
+
 	// Key state dictionary
 	static std::map<int, bool> m_keyStateDictionary;
 
@@ -44,6 +40,9 @@ protected: // Member functions
 public: // Member functions
 
 	virtual void updateEvents() = 0;
+
+	// Returns mouse position
+	static glm::vec2 getMousePosition();
 
 	// Returns key pressed state
 	static bool isKeyPressed(int keyCode);
