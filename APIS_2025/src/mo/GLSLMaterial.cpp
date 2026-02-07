@@ -46,7 +46,7 @@ void GLSLMaterial::prepare()
 		m_program->setVec4("light.color", glm::vec4(1, 1, 1, 1));
 		m_program->setVec4("light.direction", lightDir);
 		m_program->setInt("light.type", 1);
-		m_program->setInt("light.enabled", 1);
+		m_program->setInt("light.enabled", 0);
 		
 		m_program->setVec4("eyePos", activeCamera->getPosition());
 	}

@@ -12,7 +12,7 @@
 CameraFPS::CameraFPS(MO_ProjectionType_e cameraType, glm::vec3 position, glm::vec3 up, glm::vec3 lookAt)
 	: Camera(cameraType, position, up, lookAt)
 {
-	m_movementSpeed = 10;
+	m_movementSpeed = 1;
 	m_rotationSpeed = 1;
 
 	m_direction = glm::normalize(lookAt - position);
@@ -61,8 +61,6 @@ void CameraFPS::rotate_camera(glm::vec2 positionDifference, double delta)
 	direction.y = sin(glm::radians(pitch));
 	direction.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
 	m_direction = glm::normalize(direction);
-	std::cout << m_direction.x << " " << m_direction.y << " " << m_direction.z << std::endl;
-
 }
 
 void CameraFPS::step(double deltaTime)
@@ -73,9 +71,7 @@ void CameraFPS::step(double deltaTime)
 
 	m_mouseLastPosition = currentMousePosition;
 
-	std::cout << positionDifference.x << " " << positionDifference.y << std::endl;
-
-	// Move
+	// Move and rotate
 	float xAxis = 0;
 	float zAxis = 0;
 

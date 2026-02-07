@@ -15,17 +15,18 @@ int main(int argc, char** argv)
 
     auto camera = std::make_shared<CameraFPS>(
         MO_PROJECTION_TYPE_PERSPECTIVE, // tipo
-        glm::vec3(1, 1, 3),             // posicion
+        glm::vec3(0, 0.5f, 2),             // posicion
         glm::vec3(0, 1, 0),             // up
         glm::vec3(0, 0, 0)              // lookAt
     );
     
     System::getWorld()->addCamera(camera);
 
-    auto cube = std::make_shared<CubeTex>();
+    //auto cube = std::make_shared<CubeTex>();
 
     auto asianTown = std::make_shared<Object3D>();
     asianTown->loadDataFromMshFile("data/asian_town.msh");
+    asianTown->setScale(glm::vec4(5.0f, 5.0f, 5.0f, 1));
     //auto triangle = std::make_shared<TrianguloRot>();
 
     //auto newPos = glm::vec4(1, 0, 0, 1);
