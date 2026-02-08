@@ -19,6 +19,8 @@
     <ClCompile Include="src\mo\Texture.cpp" />
     <ClCompile Include="src\mo\GLTexture.cpp" />
     <ClCompile Include="src\mo\CubeTex.cpp" />
+    <ClCompile Include="src\mo\Light.cpp" />
+    <ClCompile Include="src\mo\OrbitalLight.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\mapi\common.h" />
@@ -48,9 +50,7 @@
     <ClInclude Include="src\mo\Texture.h" />
     <ClInclude Include="src\mo\GLTexture.h" />
     <ClInclude Include="src\mo\CubeTex.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="data\shader.frag" />
-    <None Include="data\shader.vert" />
+    <ClInclude Include="src\mo\Light.h" />
+    <ClInclude Include="src\mo\OrbitalLight.h" />
   </ItemGroup>
 </Project>

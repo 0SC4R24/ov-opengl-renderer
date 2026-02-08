@@ -14,25 +14,33 @@ int main(int argc, char** argv)
 
     auto camera = std::make_shared<CameraKeyboard>(
         MO_PROJECTION_TYPE_PERSPECTIVE, // tipo
-        glm::vec3(1, 1, 3),       // posicion
-        glm::vec3(0, 1, 0),       // up
-        glm::vec3(0, 0, 0)        // lookAt
+        glm::vec3(0.6, 1, 0.9),         // posicion
+        glm::vec3(0, 1, 0),             // up
+        glm::vec3(-0.54, -0.93, -1)     // lookAt
     );
     
     System::getWorld()->addCamera(camera);
 
-    auto light = std::make_shared<Light>(
+    auto center = glm::vec4(0);
+    float radius = 10.0f;
+    float speed = 2.0f;
+
+    auto light = std::make_shared<OrbitalLight>(
         MO_LIGHT_TYPE_POINT,
-        glm::vec4(-2, 2, 0, 1),
+        glm::vec4(-10, 10, 0, 1),
         glm::vec4(1, 0, 0, 1),
-        glm::vec4(0, -1, 0, 0)
+        glm::vec4(0, -1, 0, 0),
+        center,
+        radius,
+        speed,
+        0.2f
     );
     
     auto light2 = std::make_shared<Light>(
         MO_LIGHT_TYPE_POINT,
-        glm::vec4(2, 2, 0, 1),
-        glm::vec4(0, 1, 0, 1),
-        glm::vec4(0, -1, 0, 0)
+        glm::vec4(10, 10, 0, 1),
+        glm::vec4(0, 0, 1, 1),
+        glm::vec4(0, 1, -1, 0)
     );
     
     System::getWorld()->addLight(light);
@@ -40,12 +48,11 @@ int main(int argc, char** argv)
     
     auto cube = std::make_shared<CubeTex>();
 
-    auto asianTown = std::make_shared<Object3D>();
-    asianTown->loadDataFromMshFile("data/asian_town.msh");
-    asianTown->setScale(glm::vec4(100));
-    
-    // System::addObject(cube);
-    System::addObject(asianTown);
+    /*auto feng_shui = std::make_shared<Object3D>();
+    feng_shui->loadDataFromMshFile("data/feng_shui/Feng_Shui.msh");
+    feng_shui->setScale(glm::vec4(0.005f));*/
+
+    System::addObject(cube);
     
     System::mainLoop();
 
