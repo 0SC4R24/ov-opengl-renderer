@@ -3,7 +3,7 @@
 		<buffer>
 			<material>
 				<color>1,1,1,1</color>
-				<texture type="color2D" >
+				<texture type="color2D">
 					<layer name="textureColor">data/asian_town.png</layer>
 				</texture>
 				<shader>data/shader.vert,data/shader.frag</shader>

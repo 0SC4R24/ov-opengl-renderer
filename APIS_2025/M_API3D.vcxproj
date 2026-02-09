@@ -161,6 +161,7 @@
   <ItemGroup>
     <ClCompile Include="APIS3D_2025.cpp" />
     <ClCompile Include="src\mo\Camera.cpp" />
+    <ClCompile Include="src\mo\CameraFPS.cpp" />
     <ClCompile Include="src\mo\CameraKeyboard.cpp" />
     <ClCompile Include="src\mo\CubeTex.cpp" />
     <ClCompile Include="src\mo\FactoryEngine.cpp" />
@@ -186,6 +187,7 @@
     <ClInclude Include="src\mapi\vertex.h" />
     <ClInclude Include="src\mo\bufferObject.h" />
     <ClInclude Include="src\mo\Camera.h" />
+    <ClInclude Include="src\mo\CameraFPS.h" />
     <ClInclude Include="src\mo\CameraKeyboard.h" />
     <ClInclude Include="src\mo\CubeTex.h" />
     <ClInclude Include="src\mo\Entity.h" />

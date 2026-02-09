@@ -21,6 +21,7 @@
     <ClCompile Include="src\mo\CubeTex.cpp" />
     <ClCompile Include="src\mo\Light.cpp" />
     <ClCompile Include="src\mo\OrbitalLight.cpp" />
+    <ClCompile Include="src\mo\CameraFPS.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\mapi\common.h" />
@@ -52,5 +53,6 @@
     <ClInclude Include="src\mo\CubeTex.h" />
     <ClInclude Include="src\mo\Light.h" />
     <ClInclude Include="src\mo\OrbitalLight.h" />
+    <ClInclude Include="src\mo\CameraFPS.h" />
   </ItemGroup>
 </Project>

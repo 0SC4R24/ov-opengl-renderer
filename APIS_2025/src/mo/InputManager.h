@@ -16,7 +16,18 @@
 class InputManager
 {
 
+protected: // Structs
+
+	struct Mouse
+	{
+		double xPos;
+		double yPos;
+		std::map<int, bool> buttonState;
+	};
+
 protected: // Data members
+
+	static inline Mouse m_mouse;
 
 	// Key state dictionary
 	static std::map<int, bool> m_keyStateDictionary;
@@ -29,6 +40,9 @@ protected: // Member functions
 public: // Member functions
 
 	virtual void updateEvents() = 0;
+
+	// Returns mouse position
+	static glm::vec2 getMousePosition();
 
 	// Returns key pressed state
 	static bool isKeyPressed(int keyCode);

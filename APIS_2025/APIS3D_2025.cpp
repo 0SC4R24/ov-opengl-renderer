@@ -4,6 +4,7 @@
 #include "mo/System.h"
 #include "mo/World.h"
 #include "mo/CameraKeyboard.h"
+#include "mo/CameraFPS.h"
 #include "mo/TrianguloRot.h"
 #include "mo/CubeTex.h"
 #include "mo/OrbitalLight.h"
@@ -13,15 +14,16 @@ int main(int argc, char** argv)
     System::setParameters("MO OpenGL Renderer v5.0", 640, 480);
     System::initSystem(MO_RENDER_ENGINE_TYPE_GL4, MO_INPUT_MANAGER_TYPE_GLFW);
 
-    auto camera = std::make_shared<CameraKeyboard>(
-        MO_PROJECTION_TYPE_PERSPECTIVE,       // tipo
-        glm::vec3(0.6, 1, 0.9),         // posicion
-        glm::vec3(0, 1, 0),             // up
-        glm::vec3(-0.54, -0.93, -1)     // lookAt
+    auto camera = std::make_shared<CameraFPS>(
+        MO_PROJECTION_TYPE_PERSPECTIVE,        // tipo
+        glm::vec3(0.6f, 1.0f, 0.9f),     // posicion
+        glm::vec3(0, 1, 0),              // up
+        glm::vec3(-0.54f, -0.93f, -1.0f) // lookAt
     );
     
     System::getWorld()->addCamera(camera);
 
+    //auto cube = std::make_shared<CubeTex>();
     auto center = glm::vec4(0);
     float radius = 10.0f;
     float speed = 2.0f;
