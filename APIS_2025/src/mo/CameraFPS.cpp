@@ -46,6 +46,14 @@ void CameraFPS::move_camera_z_axis(float value, double delta)
 	setVectorLookAt(glm::vec3(m_position) + m_direction);
 }
 
+void CameraFPS::move_camera_y_axis(float value, double delta)
+{
+	glm::vec3 position = glm::vec3(m_position) + m_up * value * m_movementSpeed * (float)delta;
+	
+	setPosition(glm::vec4(position, 1.0f));
+	setVectorLookAt(glm::vec3(m_position) + m_direction);
+}
+
 void CameraFPS::rotate_camera(glm::vec2 positionDifference, double delta)
 {
 	yaw += positionDifference.x * 0.1f;
@@ -73,17 +81,21 @@ void CameraFPS::step(double deltaTime)
 
 	// Move and rotate
 	float xAxis = 0;
+	float yAxis = 0;
 	float zAxis = 0;
 
 	if (inputManager->isKeyPressed(GLFW_KEY_W)) ++zAxis;
 	if (inputManager->isKeyPressed(GLFW_KEY_S)) --zAxis;
 	if (inputManager->isKeyPressed(GLFW_KEY_D)) --xAxis;
 	if (inputManager->isKeyPressed(GLFW_KEY_A)) ++xAxis;
+	if (inputManager->isKeyPressed(GLFW_KEY_SPACE)) ++yAxis;
+	if (inputManager->isKeyPressed(GLFW_KEY_LEFT_SHIFT)) --yAxis;
 
 	rotate_camera(positionDifference, deltaTime);
 
 	move_camera_x_axis(xAxis, deltaTime);
 	move_camera_z_axis(zAxis, deltaTime);
+	move_camera_y_axis(yAxis, deltaTime);
 
 	computeViewMatrix();
 }
