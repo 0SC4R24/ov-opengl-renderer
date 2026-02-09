@@ -3,6 +3,7 @@
 #include "World.h"
 #include "Camera.h"
 #include "GLTexture.h"
+#include "Light.h"
 
 void GLSLMaterial::loadPrograms(std::vector<std::string> shaderFileNames)
 {
@@ -26,9 +27,33 @@ void GLSLMaterial::prepare()
 
 	m_program->setMatrix("MVP", MVP);
 	m_program->setMatrix("M", M);
-
-	m_program->setVec4("vColor", m_colorRGBA);
-
+	
+	auto lights = System::getWorld()->getLights();
+	
+	m_program->setInt("activeLights", std::min((int)lights.size(), 8));
+	m_program->setInt("material.shiny", m_shininess);
+	m_program->setFloat("ambiental", System::getWorld()->getAmbient());
+	m_program->setVec4("eyePos", activeCamera->getPosition());
+	
+	for (size_t i = 0; i < lights.size(); i++)
+	{
+		auto light = System::getWorld()->getLight(i);
+		std::string strI = std::to_string(i);
+		
+		if (light != nullptr)
+		{
+			m_program->setVec4("lights[" + strI + "].position", light->getPosition());
+			m_program->setVec4("lights[" + strI + "].color", light->getColor());
+			m_program->setVec4("lights[" + strI + "].direction", light->getDirection());
+			m_program->setInt("lights[" + strI + "].type", light->getType());
+			m_program->setInt("lights[" + strI + "].enabled", light->isEnabled());
+		}
+		else
+		{
+			m_program->setInt("lights[" + strI + "].enabled", 0);
+		}
+	}
+	
 	if (m_colorTexture != nullptr)
 	{
 		auto glTexture = std::dynamic_pointer_cast<GLTexture>(m_colorTexture);
@@ -36,22 +61,9 @@ void GLSLMaterial::prepare()
 
 		m_program->setColorTextureEnable();
 		m_program->bindColorTextureSampler(glTexture->getGLTextureID(), m_colorTexture);
-		
-		// TODO: Get from material and light
-		m_program->setInt("material.shiny", 70);
-		
-		glm::vec4 lightPos = glm::vec4(5, 5, 5, 1);
-		glm::vec4 lightDir = glm::normalize(glm::vec4(glm::vec3(0), 1) - lightPos);
-		m_program->setVec4("light.position", lightPos);
-		m_program->setVec4("light.color", glm::vec4(1, 1, 1, 1));
-		m_program->setVec4("light.direction", lightDir);
-		m_program->setInt("light.type", 1);
-		m_program->setInt("light.enabled", 0);
-		
-		m_program->setVec4("eyePos", activeCamera->getPosition());
 	}
 	else
 	{
-		m_program->setColorTextureEnable();
+		m_program->setColorTextureDisable();
 	}
 }

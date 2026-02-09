@@ -30,6 +30,7 @@ public: // Member functions
 
 	void move_camera_x_axis(float value, double delta);
 	void move_camera_z_axis(float value, double delta);
+	void move_camera_y_axis(float value, double delta);
 
 	void rotate_camera(glm::vec2 positionDifference, double delta);
 

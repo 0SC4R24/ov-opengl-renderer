@@ -92,6 +92,7 @@ public: // Methods
 	void load(std::string fileName);
 
 public: // Virtual methods
+	virtual void setup() = 0;
 	virtual void update() = 0;
 
 };

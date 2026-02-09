@@ -15,13 +15,19 @@
 class Light : public Entity
 {
 protected: // Attributes
-    MO_LightType_e m_type = MO_LIGHT_TYPE_DIRECTIONAL;
+    MO_LightType_e m_type = MO_LIGHT_TYPE_POINT;
     glm::vec4 m_color;
     glm::vec4 m_direction;
     float m_linearAttenuation = 1.0f;
     bool m_enabled = true;
     
 public: // Getters & Setters
+    const MO_LightType_e& getType() const
+    { return m_type; }
+    
+    void setType(const MO_LightType_e type)
+    { m_type = type; }
+    
     const glm::vec4& getColor() const
     { return m_color; }
 
@@ -51,5 +57,5 @@ public: // Constructor
         float linearAttenuation = 1.0f, bool enabled = true);
     
 public: // Virtual methods
-    virtual void step(double deltaTime) = 0;
+    virtual void step(double deltaTime);
 };

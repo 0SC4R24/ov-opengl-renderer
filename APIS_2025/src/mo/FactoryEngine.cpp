@@ -4,12 +4,19 @@
 #include "GLSLMaterial.h"
 #include "GLTexture.h"
 
+void FactoryEngine::setParameters(std::string window_name, int width, int height)
+{
+	m_windowName = window_name;
+	m_width = width;
+	m_height = height;
+}
+
 std::shared_ptr<Render> FactoryEngine::getNewRender()
 {
 	switch (m_selectedRenderEngine)
 	{
 	case MO_RENDER_ENGINE_TYPE_GL4:
-		m_render = std::make_shared<GL4Render>(640, 480);
+		m_render = std::make_shared<GL4Render>(m_windowName, m_width, m_height);
 		return m_render;
 	default:
 		std::cerr << "[ERROR] Selected Render Engine Not Found\n";

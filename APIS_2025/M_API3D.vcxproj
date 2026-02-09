@@ -213,14 +213,6 @@
     <ClInclude Include="src\mo\TrianguloRot.h" />
     <ClInclude Include="src\mo\World.h" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="data\asian_town.msh" />
-    <None Include="data\shader.frag" />
-    <None Include="data\shader.vert" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="data\asian_town.png" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

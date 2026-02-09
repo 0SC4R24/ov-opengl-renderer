@@ -23,7 +23,8 @@ protected: // Attributes
 	RenderProgramPtr m_program = nullptr;
 	TexturePtr m_colorTexture = nullptr;
 
-	glm::vec4 m_colorRGBA;
+	glm::vec4 m_colorRGBA = glm::vec4(1);
+	int m_shininess = 70;
 
 public: // Getters & Setters
 	RenderProgramPtr getRenderProgram()
@@ -43,6 +44,12 @@ public: // Getters & Setters
 
 	void setRenderProgram(RenderProgramPtr program)
 	{ m_program = program; }
+	
+	int getShininess() const
+	{ return m_shininess; }
+
+	void setShininess(const int shininess)
+	{ m_shininess = shininess; }
 
 public: // Virtual methods
 	virtual void loadPrograms(std::vector<std::string> shaderFileNames) = 0;

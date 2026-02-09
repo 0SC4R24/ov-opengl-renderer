@@ -10,8 +10,10 @@
 #include "System.h"
 #include "GL4Render.h"
 
-GL4Render::GL4Render(const int& width, const int& height)
+GL4Render::GL4Render(std::string windowName, const int& width, const int& height)
 {
+	WINDOW_NAME = windowName;
+	
 	// Initialize OpenGL
 	init();
 

@@ -1,4 +1,4 @@
-# MO OpenGL Renderer v4.0.0
+# MO OpenGL Renderer v5.0.0
 
 Un motor de renderizado OpenGL moderno diseñado para aplicaciones gráficas 3D educativas y de alto rendimiento, escrito en C++20.
 
@@ -6,7 +6,7 @@ Un motor de renderizado OpenGL moderno diseñado para aplicaciones gráficas 3D 
 
 ## 📋 Descripción
 
-**MO OpenGL Renderer v4.0.0** es un motor de renderizado 3D basado en OpenGL 4.0+ que proporciona una arquitectura limpia y extensible para crear aplicaciones gráficas interactivas. El proyecto implementa patrones de diseño modernos como Factory Pattern y separación de responsabilidades entre renderizado, entrada y lógica de escena.
+**MO OpenGL Renderer v5.0.0** es un motor de renderizado 3D basado en OpenGL 4.0+ que proporciona una arquitectura limpia y extensible para crear aplicaciones gráficas interactivas. El proyecto implementa patrones de diseño modernos como Factory Pattern y separación de responsabilidades entre renderizado, entrada y lógica de escena.
 
 ## ✨ Características Principales
 
@@ -211,6 +211,6 @@ Este proyecto es parte del máster en Computación Gráfica de U-tad (2026).
 
 ---
 
-**Versión**: 4.0.0  
+**Versión**: 5.0.0  
 **Año**: 2026  
 **Institución**: U-tad Master en Computación Gráfica
