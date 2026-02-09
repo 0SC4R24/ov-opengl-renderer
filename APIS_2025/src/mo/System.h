@@ -44,6 +44,7 @@ public: // Getters & Setters
 	static bool getEnd();
 	static glm::mat4 getModelMatrix();
 
+	static void setParameters(std::string window_name = "MO OpenGL Renderer v5.0", int width = 640, int height = 480);
 	static void setModelMatrix(glm::mat4 modelMatrix);
 
 public: // Static methods

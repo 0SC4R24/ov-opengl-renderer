@@ -10,10 +10,11 @@
 
 int main(int argc, char** argv)
 {
+    System::setParameters("MO OpenGL Renderer v5.0", 640, 480);
     System::initSystem(MO_RENDER_ENGINE_TYPE_GL4, MO_INPUT_MANAGER_TYPE_GLFW);
 
     auto camera = std::make_shared<CameraKeyboard>(
-        MO_PROJECTION_TYPE_PERSPECTIVE, // tipo
+        MO_PROJECTION_TYPE_PERSPECTIVE,       // tipo
         glm::vec3(0.6, 1, 0.9),         // posicion
         glm::vec3(0, 1, 0),             // up
         glm::vec3(-0.54, -0.93, -1)     // lookAt
@@ -25,9 +26,11 @@ int main(int argc, char** argv)
     float radius = 10.0f;
     float speed = 2.0f;
 
+    System::getWorld()->setAmbient(0.2f);
+    
     auto light = std::make_shared<OrbitalLight>(
         MO_LIGHT_TYPE_POINT,
-        glm::vec4(-10, 10, 0, 1),
+        glm::vec4(-10, 0, 0, 1),
         glm::vec4(1, 0, 0, 1),
         glm::vec4(0, -1, 0, 0),
         center,
@@ -37,22 +40,20 @@ int main(int argc, char** argv)
     );
     
     auto light2 = std::make_shared<Light>(
-        MO_LIGHT_TYPE_POINT,
-        glm::vec4(10, 10, 0, 1),
-        glm::vec4(0, 0, 1, 1),
+        MO_LIGHT_TYPE_DIRECTIONAL,
+        glm::vec4(0, 0, 0, 1),
+        glm::vec4(1, 1, 1, 1),
         glm::vec4(0, 1, -1, 0)
     );
     
     System::getWorld()->addLight(light);
     System::getWorld()->addLight(light2);
     
-    auto cube = std::make_shared<CubeTex>();
-
-    /*auto feng_shui = std::make_shared<Object3D>();
+    auto feng_shui = std::make_shared<Object3D>();
     feng_shui->loadDataFromMshFile("data/feng_shui/Feng_Shui.msh");
-    feng_shui->setScale(glm::vec4(0.005f));*/
-
-    System::addObject(cube);
+    feng_shui->setScale(glm::vec4(0.005f));
+    
+    System::addObject(feng_shui);
     
     System::mainLoop();
 

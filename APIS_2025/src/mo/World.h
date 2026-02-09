@@ -30,7 +30,7 @@ private: // Data members
 	std::list<LightPtr> m_lightList;
 	
 	int m_activeCamera = 0;
-	float ambient = 0.25f;
+	float m_ambient = 0.25f;
 	
 public: // Constructors
 
@@ -64,9 +64,11 @@ public: // Member functions
 
 	void setActiveCameraIndex(int activeCamera);
 	
-	const float getAmbient() const;
+	const float getAmbient() const
+	{ return m_ambient; }
 	
-	void setAmbient(float ambient);
+	void setAmbient(float ambient)
+	{ m_ambient = ambient; }
 	
 	std::list<LightPtr>& getLights();
 	

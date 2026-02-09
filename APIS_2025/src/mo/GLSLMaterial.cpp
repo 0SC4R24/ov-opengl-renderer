@@ -27,14 +27,13 @@ void GLSLMaterial::prepare()
 
 	m_program->setMatrix("MVP", MVP);
 	m_program->setMatrix("M", M);
-
-	m_program->setVec4("vColor", m_colorRGBA);
 	
 	auto lights = System::getWorld()->getLights();
 	
-	m_program->setInt("activeLights", lights.size());
-	
+	m_program->setInt("activeLights", std::min((int)lights.size(), 8));
 	m_program->setInt("material.shiny", m_shininess);
+	m_program->setFloat("ambiental", System::getWorld()->getAmbient());
+	m_program->setVec4("eyePos", activeCamera->getPosition());
 	
 	for (size_t i = 0; i < lights.size(); i++)
 	{
@@ -48,8 +47,6 @@ void GLSLMaterial::prepare()
 			m_program->setVec4("lights[" + strI + "].direction", light->getDirection());
 			m_program->setInt("lights[" + strI + "].type", light->getType());
 			m_program->setInt("lights[" + strI + "].enabled", light->isEnabled());
-			
-			m_program->setVec4("eyePos", activeCamera->getPosition());
 		}
 		else
 		{

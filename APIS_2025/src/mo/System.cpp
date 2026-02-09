@@ -1,4 +1,6 @@
 #include "System.h"
+
+#include <utility>
 #include "World.h"
 #include "Render.h"
 #include "FactoryEngine.h"
@@ -26,6 +28,11 @@ bool System::getEnd()
 glm::mat4 System::getModelMatrix()
 {
 	return m_modelMatrix;
+}
+
+void System::setParameters(std::string window_name, int width, int height)
+{
+	FactoryEngine::setParameters(window_name, width, height);
 }
 
 void System::setModelMatrix(glm::mat4 modelMatrix)

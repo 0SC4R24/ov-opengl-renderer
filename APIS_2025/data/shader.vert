@@ -8,17 +8,21 @@ attribute vec4 vColor;
 attribute vec2 vTexCoord;
 attribute vec4 vNormal;
 
-out vec4 fPos;
+out vec3 fPos;
 out vec4 fColor;
 out vec2 fTexCoord;
-out vec4 fNormal;
+out vec3 fNormal;
 
 void main()
 {
-	fPos = M * vPos;
+	vec4 worldPos = M * vPos;
+	fPos = worldPos.xyz;
+
+	mat3 normalMatrix = transpose(inverse(mat3(M)));
+	fNormal = normalize(normalMatrix * vNormal.xyz);
+
 	fColor = vColor;
 	fTexCoord = vTexCoord;
-	fNormal = normalize(inverse(transpose(M)) * vNormal);
 	
 	gl_Position = MVP * vPos;
 }

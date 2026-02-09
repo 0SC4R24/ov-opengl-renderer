@@ -18,56 +18,59 @@ uniform light_t lights[8];
 uniform int activeLights;
 uniform material_t material;
 
+uniform float ambiental;
+
 uniform vec4 eyePos;
 uniform sampler2D textureColor;
 uniform bool useColorText;
 
-in vec4 fPos;
+in vec3 fPos;
 in vec4 fColor;
 in vec2 fTexCoord;
-in vec4 fNormal;
+in vec3 fNormal;
 
-vec4 calculateColor(light_t light)
+void main()
 {
 	vec4 finalColor = fColor;
-	
+
 	if (useColorText)
 	{
 		finalColor = fColor * texture(textureColor, fTexCoord);
 	}
-	
-	if (light.enabled)
-	{
-		float ambiental = 0.25f;
-		float diffuse = 1;
-		float specular = 1;
-		
-		vec3 L = vec3(0, 0, 0);
-		vec3 N = fNormal.xyz;
-		
-		if (light.type == 0) L = light.position.xyz - fPos.xyz; // Type Point
-		if (light.type == 1) L = light.direction.xyz;           // Type Directional
-		
-		L = normalize(L);
-		N = normalize(N);
-		diffuse = max(dot(L, N), 0.0f);
-		
-		vec3 R = normalize(reflect(L, N));
-		vec3 V = normalize(fPos.xyz - eyePos.xyz);
-		specular = pow(max(dot(R, V), 0), material.shiny);
-		
-		finalColor = finalColor * ((ambiental + diffuse + specular) * light.color);
-	}
-	
-	return finalColor;
-}
 
-void main()
-{
-	vec4 finalColor = vec4(0,0,0,0);
+	vec3 N = normalize(fNormal);
+	vec3 V = normalize(eyePos.xyz - fPos);
+
+	vec3 lighting = vec3(ambiental);
+
 	for (int i = 0; i < activeLights; i++)
 	{
-		finalColor += calculateColor(lights[i]);
+		light_t light = lights[i];
+		if (!lights[i].enabled) continue;
+
+		vec3 L;
+		if (light.type == 0) // Point
+		{
+			L = normalize(light.position.xyz - fPos);
+		}
+		else if (light.type == 1) // Directional
+		{
+			L = normalize(-light.direction.xyz);
+		}
+
+		float diffuse = max(dot(N, L), 0.0);
+		vec3 R = reflect(-L, N);
+		float specular = 0.0;
+		if (diffuse > 0.0)
+		{
+			float shin = max(material.shiny, 1);
+			specular = pow(max(dot(R, V), 0.0), shin);
+		}
+
+		vec3 lightCol = light.color.rgb;
+		lighting += (diffuse + specular) * lightCol;
 	}
-	gl_FragColor = finalColor;
+
+	vec3 finalRGB = finalColor.rgb * lighting;
+	gl_FragColor = vec4(finalRGB, finalColor.a);
 }

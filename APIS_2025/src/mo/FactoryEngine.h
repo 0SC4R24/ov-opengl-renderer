@@ -21,6 +21,10 @@ protected: // Static data members
 	static inline MO_InputManagerType_e m_selectedInputManager;
 	static inline MO_RenderEngineType_e m_selectedRenderEngine;
 	static inline std::shared_ptr<Render> m_render;
+	
+	static inline int m_width = 640;
+	static inline int m_height = 480;
+	static inline std::string m_windowName = "MO OpenGL Renderer v5.0";
 
 public: // Getters & Setters
 	static MO_InputManagerType_e getInputManagerType()
@@ -28,6 +32,8 @@ public: // Getters & Setters
 
 	static MO_RenderEngineType_e getRenderEngineType()
 	{ return m_selectedRenderEngine; }
+	
+	static void setParameters(std::string window_name, int width, int height);
 
 	static void setInputManagerType(MO_InputManagerType_e selectedInputManagerType)
 	{ m_selectedInputManager = selectedInputManagerType; }
