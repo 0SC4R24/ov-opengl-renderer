@@ -1,5 +1,5 @@
 ///
-/// MO-OpenGL-Renderer
+/// OV-OpenGL-Renderer
 /// Oscar Viudez
 /// Miguel Gutierrez
 /// 2026

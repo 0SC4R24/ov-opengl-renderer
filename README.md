@@ -1,4 +1,4 @@
-# MO OpenGL Renderer v5.0.0
+# OV OpenGL Renderer v5.0.0
 
 Un motor de renderizado OpenGL moderno diseñado para aplicaciones gráficas 3D educativas y de alto rendimiento, escrito en C++20.
 
@@ -6,7 +6,7 @@ Un motor de renderizado OpenGL moderno diseñado para aplicaciones gráficas 3D 
 
 ## 📋 Descripción
 
-**MO OpenGL Renderer v5.0.0** es un motor de renderizado 3D basado en OpenGL 4.0+ que proporciona una arquitectura limpia y extensible para crear aplicaciones gráficas interactivas. El proyecto implementa patrones de diseño modernos como Factory Pattern y separación de responsabilidades entre renderizado, entrada y lógica de escena.
+**OV OpenGL Renderer v5.0.0** es un motor de renderizado 3D basado en OpenGL 4.0+ que proporciona una arquitectura limpia y extensible para crear aplicaciones gráficas interactivas. El proyecto implementa patrones de diseño modernos como Factory Pattern y separación de responsabilidades entre renderizado, entrada y lógica de escena.
 
 ## ✨ Características Principales
 
@@ -106,7 +106,7 @@ Un motor de renderizado OpenGL moderno diseñado para aplicaciones gráficas 3D 
 
 ```bash
 # Clonar el repositorio
-git clone https://github.com/master-computacion-grafica/mo-opengl-renderer
+git clone https://github.com/0sc4r24/ov-opengl-renderer
 
 # Abrir el proyecto en Visual Studio
 # Compilar en Release o Debug
@@ -125,19 +125,19 @@ make
 ### Ejemplo de Uso Básico
 
 ```cpp
-#include "mo/System.h"
-#include "mo/World.h"
-#include "mo/CameraKeyboard.h"
-#include "mo/CubeTex.h"
+#include "ov/System.h"
+#include "ov/World.h"
+#include "ov/CameraKeyboard.h"
+#include "ov/CubeTex.h"
 
 int main(int argc, char** argv)
 {
     // Inicializar sistema con OpenGL 4.0 y GLFW
-    System::initSystem(MO_RENDER_ENGINE_TYPE_GL4, MO_INPUT_MANAGER_TYPE_GLFW);
+    System::initSystem(OV_RENDER_ENGINE_TYPE_GL4, OV_INPUT_MANAGER_TYPE_GLFW);
 
     // Configurar cámara
     auto camera = std::make_shared<CameraKeyboard>(
-        MO_PROJECTION_TYPE_PERSPECTIVE,
+        OV_PROJECTION_TYPE_PERSPECTIVE,
         glm::vec3(1, 1, 3),    // posición
         glm::vec3(0, 1, 0),    // up
         glm::vec3(0, 0, 0)     // lookAt
@@ -158,9 +158,9 @@ int main(int argc, char** argv)
 ## 📁 Estructura del Proyecto
 
 ```
-mo-opengl-renderer/
+ov-opengl-renderer/
 ├── src/
-│   └── mo/
+│   └── ov/
 │       ├── System.h/cpp           # Core del sistema
 │       ├── World.h/cpp            # Gestión de escena
 │       ├── Render.h               # Interfaz de renderizado
