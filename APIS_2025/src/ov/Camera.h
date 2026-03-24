@@ -18,7 +18,8 @@ protected: // Attributes for projection (no need of getters & setters)
 	float m_fovy = 45.0f; // Field of view of camera
 	float m_zNear = 0.01f; // Near plane of camera
 	float m_zFar = 1000.0f; // Far plane of camera
-	float m_aspectRatio = 4.0f / 3.0f; // Aspect ratio of the window (TODO: Try to get it from render)
+	float m_aspectRatio = 4.0f / 3.0f; // Aspect ratio of the window (Default to 4/3, but the constructor 
+										// calls the renderer for the actual aspect ratio)
 
 protected: // Attributes
 	glm::mat4 m_view;

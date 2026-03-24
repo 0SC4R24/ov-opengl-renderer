@@ -37,6 +37,9 @@ public: // Get - Set
 
 	const int& getHeight() const
 	{ return m_height; }
+	
+	float getAspectRatio() const
+	{ return (float)m_width / (float)m_height; }
 
 	GLFWwindow* getWindow()
 	{ return m_window; }

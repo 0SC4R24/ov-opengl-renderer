@@ -1127,8 +1127,6 @@ static unsigned char *stbi__load_and_postprocess_8bit(stbi__context *s, int *x, 
 		ri.bits_per_channel = 8;
 	}
 
-	// @TODO: move stbi__convert_format to here
-
 	if (stbi__vertically_flip_on_load) {
 		int channels = req_comp ? req_comp : *comp;
 		stbi__vertical_flip(result, *x, *y, channels * sizeof(stbi_uc));
@@ -1151,8 +1149,6 @@ static stbi__uint16 *stbi__load_and_postprocess_16bit(stbi__context *s, int *x, 
 		ri.bits_per_channel = 16;
 	}
 
-	// @TODO: move stbi__convert_format16 to here
-	// @TODO: special case RGB-to-Y (and RGBA-to-YA) for 8-bit-to-16-bit case to keep more precision
 
 	if (stbi__vertically_flip_on_load) {
 		int channels = req_comp ? req_comp : *comp;

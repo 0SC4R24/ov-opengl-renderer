@@ -20,10 +20,10 @@ class GL4Render : public Render
 
 private: // Const data members
 
-	static constexpr int MO_GL_MAJOR_VERSION = 4;
-	static constexpr int MO_GL_MINOR_VERSION = 0;
+	static constexpr int OV_GL_MAJOR_VERSION = 4;
+	static constexpr int OV_GL_MINOR_VERSION = 0;
 
-	static inline std::string WINDOW_NAME = "MO OpenGL Renderer v5.0";
+	static inline std::string WINDOW_NAME = "OV OpenGL Renderer v5.0";
 
 private: // Data members
 

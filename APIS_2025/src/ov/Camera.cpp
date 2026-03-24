@@ -1,3 +1,4 @@
+#include "System.h"
 #include "Camera.h"
 
 Camera::Camera(OV_ProjectionType_e cameraType, glm::vec3 position, glm::vec3 up, glm::vec3 lookAt)
@@ -6,6 +7,8 @@ Camera::Camera(OV_ProjectionType_e cameraType, glm::vec3 position, glm::vec3 up,
 	m_position = glm::vec4(position, 1.0f);
 	m_up = up;
 	m_lookAt = lookAt;
+	
+	m_aspectRatio = System::getRender()->getAspectRatio(); 
 
 	m_direction = glm::normalize(m_lookAt - position);
 
