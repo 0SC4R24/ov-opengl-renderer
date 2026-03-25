@@ -7,6 +7,9 @@ GL4Render::GL4Render(std::string windowName, const int& width, const int& height
 {
 	WINDOW_NAME = windowName;
 	
+	m_width = width;
+	m_height = height;
+	
 	// Initialize OpenGL
 	init();
 
