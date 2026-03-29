@@ -23,7 +23,7 @@ int main(int argc, char** argv)
     
     System::getWorld()->addCamera(camera);
 
-    // auto cube = std::make_shared<CubeTex>();
+    auto cube = std::make_shared<CubeTex>();
     auto center = glm::vec4(0);
     float radius = 10.0f;
     float speed = 2.0f;
@@ -51,12 +51,12 @@ int main(int argc, char** argv)
     System::getWorld()->addLight(light);
     System::getWorld()->addLight(light2);
     
-    auto feng_shui = std::make_shared<Object3D>();
-    feng_shui->loadDataFromMshFile("data/feng_shui/Feng_Shui.msh");
-    feng_shui->setScale(glm::vec4(0.005f));
-    
-    System::addObject(feng_shui);
-    // System::addObject(cube);
+    // auto feng_shui = std::make_shared<Object3D>();
+    // feng_shui->loadDataFromMshFile("data/feng_shui/Feng_Shui.msh");
+    // feng_shui->setScale(glm::vec4(0.005f));
+    //
+    // System::addObject(feng_shui);
+    System::addObject(cube);
     
     System::mainLoop();
 
