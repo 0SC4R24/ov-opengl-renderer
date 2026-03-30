@@ -46,5 +46,8 @@ public: // Member functions
 
 	// Returns key pressed state
 	static bool isKeyPressed(int keyCode);
+	
+	// Returns mouse button pressed state
+	static bool isMouseButtonPressed(int button);
 
 };

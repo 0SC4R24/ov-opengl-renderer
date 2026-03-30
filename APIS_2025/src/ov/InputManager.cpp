@@ -19,3 +19,16 @@ bool InputManager::isKeyPressed(int keyCode)
 
 	return false;
 }
+
+bool InputManager::isMouseButtonPressed(int button)
+{
+	// Return key state if found in dictionary
+	auto it = m_mouse.buttonState.find(button);
+
+	if (it != m_mouse.buttonState.end())
+	{
+		return it->second;
+	}
+
+	return false;
+}

@@ -84,8 +84,7 @@ void CameraFPS::step(double deltaTime)
 	if (inputManager->isKeyPressed(GLFW_KEY_E)) ++yAxis;
 	if (inputManager->isKeyPressed(GLFW_KEY_Q)) --yAxis;
 
-	
-	rotate_camera(positionDifference, deltaTime);
+	if (inputManager->isMouseButtonPressed(GLFW_MOUSE_BUTTON_RIGHT)) rotate_camera(positionDifference, deltaTime);
 
 	move_camera_x_axis(xAxis, deltaTime);
 	move_camera_z_axis(zAxis, deltaTime);
