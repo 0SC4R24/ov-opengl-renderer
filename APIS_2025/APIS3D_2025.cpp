@@ -56,6 +56,12 @@ int main(int argc, char** argv)
     // feng_shui->setScale(glm::vec4(0.005f));
     //
     // System::addObject(feng_shui);
+    
+    // auto tiki = std::make_shared<Object3D>();
+    // tiki->loadDataFromMshFile("data/tiki/tiki.msh");
+    //
+    // System::addObject(tiki);
+    
     System::addObject(cube);
     
     System::mainLoop();
