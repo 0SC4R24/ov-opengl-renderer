@@ -69,6 +69,12 @@ public: // Member functions
 
 	// Draw single object
 	virtual void drawObject(std::shared_ptr<Object> objectPtr) = 0;
+	
+	// Clear buffers
+	virtual void clearBuffers() = 0;
+	
+	// Swap buffers
+	virtual void swapBuffers() = 0;
 
 	// Return if window should close
 	virtual bool isClosed() = 0;

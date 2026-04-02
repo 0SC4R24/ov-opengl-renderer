@@ -36,7 +36,7 @@ void GL4Render::init()
 		std::cout << "[ERROR] Unable to initialize GLFW\n";
 		exit(0);
 	}
-
+	
 	// Set OpenGL version
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, OV_GL_MAJOR_VERSION);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, OV_GL_MINOR_VERSION);
@@ -46,6 +46,12 @@ void GL4Render::init()
 
 	// Set not resizable
 	glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
+	
+	// Enable blending and depth test
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_BLEND);
 }
 
 void GL4Render::setupObject(std::shared_ptr<Object> objectPtr)
