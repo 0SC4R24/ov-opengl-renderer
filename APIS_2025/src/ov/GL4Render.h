@@ -52,6 +52,12 @@ public: // Member functions
 	// Render draw object
 	void drawObject(std::shared_ptr<Object> objectPtr) override;
 
+	// Clear buffers
+	void clearBuffers() override;
+	
+	// Swap buffers
+	void swapBuffers() override;
+	
 	// Render if window should close
 	bool isClosed() override;
 

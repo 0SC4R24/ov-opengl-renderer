@@ -178,6 +178,16 @@ void GL4Render::drawObject(std::shared_ptr<Object> objectPtr)
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
+void GL4Render::clearBuffers()
+{
+	std::cout << "[ERROR] Function clearBuffers not implemented\n";
+}
+
+void GL4Render::swapBuffers()
+{
+	std::cout << "[ERROR] Function swapBuffers not implemented\n";
+}
+
 bool GL4Render::isClosed()
 {
 	return glfwWindowShouldClose(m_window);
