@@ -46,12 +46,6 @@ void GL4Render::init()
 
 	// Set not resizable
 	glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
-	
-	// Enable blending and depth test
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
-	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_BLEND);
 }
 
 void GL4Render::setupObject(std::shared_ptr<Object> objectPtr)
@@ -204,6 +198,10 @@ GLFWwindow* GL4Render::createGLFWWindow(const int& width, const int& height)
 
 	// Enable Z buffer
 	glEnable(GL_DEPTH_TEST);
+	
+	// Enable blending and depth test
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
 
 	return window;
 }
