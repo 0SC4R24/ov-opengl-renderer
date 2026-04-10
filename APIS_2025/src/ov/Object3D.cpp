@@ -87,7 +87,7 @@ void Object3D::loadDataFromMshFile(std::string file)
             if (blendNode)
             {
                 std::string blendModeStr = blendNode.text().as_string();
-                OV_BlendMode_e blendType = OV_BLEND_MODE_NONE;
+                OV_BlendMode_e blendType;
                 
                 if (blendModeStr == "alpha" || blendModeStr == "transparency") blendType = OV_BLEND_MODE_ALPHA;
                 else if (blendModeStr == "add" || blendModeStr == "additive")  blendType = OV_BLEND_MODE_ADD;
