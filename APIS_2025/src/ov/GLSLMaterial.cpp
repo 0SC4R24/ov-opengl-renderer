@@ -19,6 +19,13 @@ void GLSLMaterial::prepare()
 {
 	m_program->use();
 
+	prepareCamera();
+	prepareLights();
+	prepareTextures();
+}
+
+void GLSLMaterial::prepareCamera()
+{
 	std::shared_ptr<Camera> activeCamera = System::getWorld()->getActiveCamera();
 	glm::mat4 M = System::getModelMatrix();
 	glm::mat4 V = activeCamera->getViewMatrix();
@@ -27,13 +34,16 @@ void GLSLMaterial::prepare()
 
 	m_program->setMatrix("MVP", MVP);
 	m_program->setMatrix("M", M);
-	
+}
+
+void GLSLMaterial::prepareLights()
+{
 	auto lights = System::getWorld()->getLights();
 	
 	m_program->setInt("activeLights", std::min((int)lights.size(), 8));
 	m_program->setInt("material.shiny", m_shininess);
 	m_program->setFloat("ambiental", System::getWorld()->getAmbient());
-	m_program->setVec4("eyePos", activeCamera->getPosition());
+	m_program->setVec4("eyePos", System::getWorld()->getActiveCamera()->getPosition());
 	
 	for (size_t i = 0; i < lights.size(); i++)
 	{
@@ -53,7 +63,10 @@ void GLSLMaterial::prepare()
 			m_program->setInt("lights[" + strI + "].enabled", 0);
 		}
 	}
-	
+}
+
+void GLSLMaterial::prepareTextures()
+{
 	if (m_colorTexture != nullptr)
 	{
 		auto glTexture = std::dynamic_pointer_cast<GLTexture>(m_colorTexture);

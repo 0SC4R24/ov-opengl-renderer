@@ -18,4 +18,7 @@ public: // Constructor
 public: // Virtual methods
 	void loadPrograms(std::vector<std::string> shaderFileNames) override;
 	void prepare() override;
+	void prepareCamera() override;
+	void prepareLights() override;
+	void prepareTextures() override;
 };

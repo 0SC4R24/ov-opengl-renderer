@@ -26,10 +26,10 @@ protected: // Attributes
 	glm::vec4 m_colorRGBA = glm::vec4(1);
 	int m_shininess = 70;
 	
-	OV_BlendMode_e m_blendMode;
-	bool m_lighting;
-	bool m_culling;
-	bool m_depthWrite;
+	OV_BlendMode_e m_blendMode = OV_BLEND_MODE_NONE;
+	bool m_lighting = false;
+	bool m_culling = true;
+	bool m_depthWrite = true;
 
 public: // Getters & Setters
 	RenderProgramPtr getRenderProgram()
@@ -83,4 +83,7 @@ public: // Getters & Setters
 public: // Virtual methods
 	virtual void loadPrograms(std::vector<std::string> shaderFileNames) = 0;
 	virtual void prepare() = 0;
+	virtual void prepareCamera() = 0;
+	virtual void prepareLights() = 0;
+	virtual void prepareTextures() = 0;
 };

@@ -92,7 +92,8 @@ typedef enum
 {
 	OV_BLEND_MODE_ALPHA,
 	OV_BLEND_MODE_ADD,
-	OV_BLEND_MODE_MULTIPLY
+	OV_BLEND_MODE_MULTIPLY,
+	OV_BLEND_MODE_NONE
 } OV_BlendMode_e;
 
 template <typename T>

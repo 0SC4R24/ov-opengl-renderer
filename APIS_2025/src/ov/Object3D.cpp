@@ -71,9 +71,44 @@ void Object3D::loadDataFromMshFile(std::string file)
             auto shaders = std::vector<std::string>();
             if (shaderNode)
             {
-                // Miguel: Optimize shader usage
                 shaders = splitString<std::string>(shaderNode.text().as_string(), ',');
                 materialPtr->loadPrograms(shaders);
+            }
+            
+            // Set light mode
+            auto lightNode = materialNode.child("light");
+            if (lightNode)
+            {
+                materialPtr->setLighting(lightNode.text().as_bool());
+            }
+            
+            // Set blend mode
+            auto blendNode = materialNode.child("blendMode");
+            if (blendNode)
+            {
+                std::string blendModeStr = blendNode.text().as_string();
+                OV_BlendMode_e blendType = OV_BLEND_MODE_NONE;
+                
+                if (blendModeStr == "alpha" || blendModeStr == "transparency") blendType = OV_BLEND_MODE_ALPHA;
+                else if (blendModeStr == "add" || blendModeStr == "additive")  blendType = OV_BLEND_MODE_ADD;
+                else if (blendModeStr == "mul" || blendModeStr == "multiply")  blendType = OV_BLEND_MODE_MULTIPLY;
+                else                                                           blendType = OV_BLEND_MODE_NONE;
+                
+                materialPtr->setBlendMode(blendType);
+            }
+            
+            // Set culling mode
+            auto cullingNode = materialNode.child("culling");
+            if (cullingNode)
+            {
+                materialPtr->setLighting(cullingNode.text().as_bool());
+            }
+            
+            // Set depth write mode
+            auto depthWriteNode = materialNode.child("depthWrite");
+            if (depthWriteNode)
+            {
+                materialPtr->setDepthWrite(depthWriteNode.text().as_bool());
             }
 
             // Set mesh material
