@@ -85,6 +85,16 @@ typedef enum
 	OV_PROJECTION_TYPE_ORTHOGRAPHIC
 } OV_ProjectionType_e;
 
+/// <summary>
+/// Blend mode enum
+/// </summary>
+typedef enum
+{
+	OV_BLEND_MODE_ALPHA,
+	OV_BLEND_MODE_ADD,
+	OV_BLEND_MODE_MULTIPLY
+} OV_BlendMode_e;
+
 template <typename T>
 std::vector<T> splitString(const std::string& str, char delim) {
 	std::vector<T> elems;

@@ -25,6 +25,11 @@ protected: // Attributes
 
 	glm::vec4 m_colorRGBA = glm::vec4(1);
 	int m_shininess = 70;
+	
+	OV_BlendMode_e m_blendMode;
+	bool m_lighting;
+	bool m_culling;
+	bool m_depthWrite;
 
 public: // Getters & Setters
 	RenderProgramPtr getRenderProgram()
@@ -50,6 +55,30 @@ public: // Getters & Setters
 
 	void setShininess(const int shininess)
 	{ m_shininess = shininess; }
+	
+	OV_BlendMode_e getBlendMode() const
+	{ return m_blendMode; }
+	
+	void setBlendMode(OV_BlendMode_e blendMode)
+	{ m_blendMode = blendMode; }
+	
+	bool getLighting() const
+	{ return m_lighting; }
+	
+	void setLighting(bool lighting)
+	{ m_lighting = lighting; }
+	
+	bool getCulling() const
+	{ return m_culling; }
+	
+	void setCulling(bool culling)
+	{ m_culling = culling; }
+	
+	bool getDepthWrite() const
+	{ return m_depthWrite; }
+	
+	void setDepthWrite(bool depthWrite)
+	{ m_depthWrite = depthWrite; }
 
 public: // Virtual methods
 	virtual void loadPrograms(std::vector<std::string> shaderFileNames) = 0;

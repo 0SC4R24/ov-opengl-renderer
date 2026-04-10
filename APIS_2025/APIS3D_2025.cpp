@@ -11,7 +11,7 @@
 
 int main(int argc, char** argv)
 {
-    System::setParameters("OV OpenGL Renderer v5.0", 640, 480);
+    System::setParameters("OV OpenGL Renderer v6.0", 640, 480);
     System::initSystem(OV_RENDER_ENGINE_TYPE_GL4, OV_INPUT_MANAGER_TYPE_GLFW);
 
     auto camera = std::make_shared<CameraFPS>(
