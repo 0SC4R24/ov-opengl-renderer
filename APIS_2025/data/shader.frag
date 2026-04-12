@@ -6,6 +6,7 @@ struct light_t
 	vec4 color;
 	vec4 direction;
 	int type;
+	float linearAttenuation;
 	bool enabled;
 };
 
@@ -49,8 +50,10 @@ void main()
 		if (!lights[i].enabled) continue;
 
 		vec3 L;
+		float attenuation = 1.0;
 		if (light.type == 0) // Point
 		{
+			attenuation = 1 / (light.linearAttenuation);
 			L = normalize(light.position.xyz - fPos);
 		}
 		else if (light.type == 1) // Directional
@@ -58,13 +61,13 @@ void main()
 			L = normalize(-light.direction.xyz);
 		}
 
-		float diffuse = max(dot(N, L), 0.0);
+		float diffuse = max(dot(N, L), 0.0) * attenuation;
 		vec3 R = reflect(-L, N);
 		float specular = 0.0;
 		if (diffuse > 0.0)
 		{
 			float shin = max(material.shiny, 1);
-			specular = pow(max(dot(R, V), 0.0), shin);
+			specular = pow(max(dot(R, V), 0.0), shin) * attenuation;
 		}
 
 		vec3 lightCol = light.color.rgb;

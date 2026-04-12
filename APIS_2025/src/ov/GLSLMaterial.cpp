@@ -75,6 +75,7 @@ void GLSLMaterial::prepareLights()
 			m_program->setVec4("lights[" + strI + "].color", light->getColor());
 			m_program->setVec4("lights[" + strI + "].direction", light->getDirection());
 			m_program->setInt("lights[" + strI + "].type", light->getType());
+			m_program->setFloat("lights[" + strI + "].linearAttenuation", light->getLinearAttenuation());
 			m_program->setInt("lights[" + strI + "].enabled", light->isEnabled());
 		}
 		else
