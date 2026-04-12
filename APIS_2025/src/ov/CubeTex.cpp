@@ -66,10 +66,10 @@ CubeTex::CubeTex()
 
     // TOP (Y+), in mesh2
     glm::vec4 nT(0.0f, 1.0f, 0.0f, 0.0f);
-    addV2({  h,  h,  h, 1.0f }, {1, 1}, nT); // 16
-    addV2({ -h,  h,  h, 1.0f }, {0, 1}, nT); // 17
-    addV2({ -h,  h, -h, 1.0f }, {0, 0}, nT); // 18
-    addV2({  h,  h, -h, 1.0f }, {1, 0}, nT); // 19
+    addV2({  h,  h, -h, 1.0f }, {1, 0}, nT); // 16
+    addV2({ -h,  h, -h, 1.0f }, {0, 0}, nT); // 17
+    addV2({ -h,  h,  h, 1.0f }, {0, 1}, nT); // 18
+    addV2({  h,  h,  h, 1.0f }, {1, 1}, nT); // 19
 
     // BOTTOM (Y-), in mesh2
     glm::vec4 nBo(0.0f, -1.0f, 0.0f, 0.0f);
@@ -78,7 +78,7 @@ CubeTex::CubeTex()
     addV2({ -h, -h, -h, 1.0f }, {0, 1}, nBo); // 22
     addV2({  h, -h, -h, 1.0f }, {1, 1}, nBo); // 23
 
-    // ---------- Indices for triangles (if your Mesh3D needs them) ----------
+    // ---------- Indices for triangles ----------
     // Front
     mesh1->addTriangle(0, 1, 2);  mesh1->addTriangle(0, 2, 3);
     // Back

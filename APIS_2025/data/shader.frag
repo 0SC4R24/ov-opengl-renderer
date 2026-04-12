@@ -53,7 +53,7 @@ void main()
 		float attenuation = 1.0;
 		if (light.type == 0) // Point
 		{
-			attenuation = 1 / (light.linearAttenuation);
+			attenuation = 1 / (1 + light.linearAttenuation * length(light.position.xyz - fPos));
 			L = normalize(light.position.xyz - fPos);
 		}
 		else if (light.type == 1) // Directional
@@ -62,12 +62,11 @@ void main()
 		}
 
 		float diffuse = max(dot(N, L), 0.0) * attenuation;
-		vec3 R = reflect(-L, N);
+		vec3 R = reflect(L, N);
 		float specular = 0.0;
 		if (diffuse > 0.0)
 		{
-			float shin = max(material.shiny, 1);
-			specular = pow(max(dot(R, V), 0.0), shin) * attenuation;
+			specular = pow(max(dot(R, V), 0.0), material.shiny) * attenuation;
 		}
 
 		vec3 lightCol = light.color.rgb;
