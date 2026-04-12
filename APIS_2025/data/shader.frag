@@ -1,5 +1,8 @@
 #version 330
 
+#define POINT 0
+#define DIRECTIONAL 1
+
 struct light_t 
 {
 	vec4 position;
@@ -51,12 +54,12 @@ void main()
 
 		vec3 L;
 		float attenuation = 1.0;
-		if (light.type == 0) // Point
+		if (light.type == POINT)
 		{
 			attenuation = 1 / (1 + light.linearAttenuation * length(light.position.xyz - fPos));
 			L = normalize(light.position.xyz - fPos);
 		}
-		else if (light.type == 1) // Directional
+		else if (light.type == DIRECTIONAL)
 		{
 			L = normalize(-light.direction.xyz);
 		}
