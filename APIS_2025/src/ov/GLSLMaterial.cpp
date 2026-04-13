@@ -60,9 +60,11 @@ void GLSLMaterial::prepareLights()
 	auto lights = System::getWorld()->getLights();
 	
 	m_program->setInt("activeLights", std::min((int)lights.size(), 8));
-	m_program->setInt("material.shiny", m_shininess);
 	m_program->setFloat("ambiental", System::getWorld()->getAmbient());
 	m_program->setVec4("eyePos", System::getWorld()->getActiveCamera()->getPosition());
+	
+	m_program->setInt("material.shiny", m_shininess);
+	m_program->setInt("material.light", m_lighting);
 	
 	for (size_t i = 0; i < lights.size(); i++)
 	{

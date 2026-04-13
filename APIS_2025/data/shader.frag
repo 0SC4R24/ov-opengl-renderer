@@ -16,6 +16,7 @@ struct light_t
 struct material_t
 {
 	int shiny;
+	bool light;
 };
 
 uniform light_t lights[8];
@@ -33,18 +34,11 @@ in vec4 fColor;
 in vec2 fTexCoord;
 in vec3 fNormal;
 
-void main()
+vec3 getLight()
 {
-	vec4 finalColor = fColor;
-
-	if (useColorText)
-	{
-		finalColor = fColor * texture(textureColor, fTexCoord);
-	}
-
 	vec3 N = normalize(fNormal);
 	vec3 V = normalize(eyePos.xyz - fPos);
-
+	
 	vec3 lighting = vec3(ambiental);
 
 	for (int i = 0; i < activeLights; i++)
@@ -74,6 +68,24 @@ void main()
 
 		vec3 lightCol = light.color.rgb;
 		lighting += (diffuse + specular) * lightCol;
+	}
+	
+	return lighting;
+}
+
+void main()
+{
+	vec4 finalColor = fColor;
+
+	if (useColorText)
+	{
+		finalColor = fColor * texture(textureColor, fTexCoord);
+	}
+
+	vec3 lighting = vec3(1,1,1);
+	if (material.light)
+	{
+		lighting = getLight();
 	}
 
 	vec3 finalRGB = finalColor.rgb * lighting;

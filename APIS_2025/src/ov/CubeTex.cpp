@@ -3,6 +3,7 @@
 #include "FactoryEngine.h"
 #include "Mesh3D.h"
 #include "GLTexture.h"
+#include "System.h"
 
 CubeTex::CubeTex()
 {
@@ -106,4 +107,10 @@ CubeTex::CubeTex()
 	
 	addMesh(mesh1);
 	addMesh(mesh2);
+}
+
+void CubeTex::step(double deltaTime)
+{
+	auto inputManager = System::getInputManager();
+	for (auto mesh : m_meshes) mesh->getMaterial()->setLighting(inputManager->isKeyPressed(GLFW_KEY_SPACE));
 }

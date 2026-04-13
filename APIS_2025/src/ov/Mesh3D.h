@@ -48,9 +48,7 @@ public: // Getters & Setters
 	{ m_material = material; }
 
 	void setVertList(std::shared_ptr<std::vector<vertex_t>> vertList)
-	{
-		m_vVertList = vertList;
-	}
+	{ m_vVertList = vertList; }
 
 	void setVTriangleIdxList(std::shared_ptr<std::vector<glm::uint32>> vTriangleIdxList)
 	{ m_vTriangleIdxList = vTriangleIdxList; }

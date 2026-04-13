@@ -13,4 +13,5 @@ class CubeTex : public Object3D
 {
 public: // Constructor
 	CubeTex();
+	void step(double deltaTime) override;
 };
