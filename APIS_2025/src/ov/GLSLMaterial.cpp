@@ -23,24 +23,9 @@ void GLSLMaterial::prepare()
 	prepareLights();
 	prepareTextures();
 
-	// Set blend mode
-	switch (m_blendMode)
-	{
-	case OV_BLEND_MODE_ALPHA:
-	case OV_BLEND_MODE_ADD:
-	case OV_BLEND_MODE_MULTIPLY:
-	case OV_BLEND_MODE_NONE:
-	default:
-		std::cout << "[ERROR] Blend mode activation not implemented\n";
-		break;
-	}
-	
-	// Set culling face
-	if (m_culling) glEnable(GL_CULL_FACE);
-	else		   glDisable(GL_CULL_FACE);
-	
-	// Set depth write
-	glDepthMask(m_depthWrite ? GL_TRUE : GL_FALSE);
+	m_program->setBlendMode(m_blendMode);
+	m_program->setCullingFaces(m_culling);
+	m_program->setDepthWrite(m_depthWrite);
 }
 
 void GLSLMaterial::prepareCamera()

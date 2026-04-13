@@ -185,3 +185,28 @@ void GLSLProgram::clean()
 		s->clean();
 	}
 }
+
+void GLSLProgram::setBlendMode(OV_BlendMode_e blendMode)
+{
+	switch (blendMode)
+	{
+		case OV_BLEND_MODE_ALPHA:
+		case OV_BLEND_MODE_ADD:
+		case OV_BLEND_MODE_MULTIPLY:
+		case OV_BLEND_MODE_NONE:
+		default:
+			std::cout << "[ERROR] Blend mode activation not implemented\n";
+			break;
+	}
+}
+
+void GLSLProgram::setCullingFaces(bool value)
+{
+	if (value) glEnable(GL_CULL_FACE);
+	else	   glDisable(GL_CULL_FACE);
+}
+
+void GLSLProgram::setDepthWrite(bool value)
+{
+	glDepthMask(value ? GL_TRUE : GL_FALSE);
+}

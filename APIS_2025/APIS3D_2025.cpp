@@ -113,6 +113,25 @@ void textured_cube()
     
 	System::getWorld()->addCamera(camera);
 	
+	auto center = glm::vec4(0);
+	float radius = 10.0f;
+	float speed = 2.0f;
+
+	System::getWorld()->setAmbient(0.2f);
+    
+	auto light = std::make_shared<OrbitalLight>(
+		OV_LIGHT_TYPE_POINT,
+		glm::vec4(-10, 3, 0, 1),
+		glm::vec4(1, 1, 1, 1),
+		glm::vec4(0, -1, 0, 0),
+		center,
+		radius,
+		speed,
+		0.2f
+	);
+	
+	System::getWorld()->addLight(light);
+	
 	auto cube = std::make_shared<CubeTex>();
 	
 	System::addObject(cube);

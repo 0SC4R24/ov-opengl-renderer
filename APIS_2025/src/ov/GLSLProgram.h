@@ -37,4 +37,8 @@ public: // Virtual methods
 	void use() override;
 	void checkLinkerErrors() override;
 	void clean() override;
+	
+	void setBlendMode(OV_BlendMode_e blendMode) override;
+	void setCullingFaces(bool value) override;
+	void setDepthWrite(bool value) override;
 };

@@ -49,4 +49,8 @@ public: // Virtual methods
 	virtual void use() = 0;
 	virtual void checkLinkerErrors() = 0;
 	virtual void clean() = 0;
+	
+	virtual void setBlendMode(OV_BlendMode_e blendMode) = 0;
+	virtual void setCullingFaces(bool value) = 0;
+	virtual void setDepthWrite(bool value) = 0;
 };
