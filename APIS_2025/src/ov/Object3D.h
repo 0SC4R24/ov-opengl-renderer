@@ -20,5 +20,5 @@ public:
 
 	void recomputeNormals();
 
-	virtual void step(double deltaTime) {};
+	virtual void step(double deltaTime) {}
 };

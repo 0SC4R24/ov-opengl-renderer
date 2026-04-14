@@ -19,7 +19,7 @@ protected: // Attributes
     float m_spin;
     
 public: // Constructor
-    Billboard();
+    Billboard(std::string fileName, float spin);
     
 public: // Getters & Setters
     float getSpin() const
@@ -28,7 +28,12 @@ public: // Getters & Setters
     void setSpin(float spin)
     { m_spin = spin; }
     
+public: // Methods
+    void loadDataFromObjFile(std::string file, MaterialPtr material);
+    void recomputeNormals();
+    
 public: // Virtual Methods
-    virtual void computeModelMatrix() override;
+    void loadDataFromMshFile(std::string file) override;
+    void computeModelMatrix() override;
     virtual void step(double deltaTime) = 0;
 };

@@ -1,5 +1,3 @@
-#include "common.h"
-
 #include <pugixml.hpp>
 
 #include "ov/InputManager.h"
@@ -119,7 +117,7 @@ void Object3D::loadDataFromMshFile(std::string file)
     else
     {
         // Could not load xml
-        std::cout << result.description() << std::endl;
+        std::cout << result.description() << "\n";
     }
 }
 
@@ -230,9 +228,9 @@ void Object3D::recomputeNormals()
         for (auto it = vertIndexListCopy.begin(); it != vertIndexListCopy.end();)
         {
             // Each three vertices, one face
-            vertex_t& v1 = vertListCopy[*it]; it++; //cada tres v�rtices, una faceta
-            vertex_t& v2 = vertListCopy[*it]; it++;
-            vertex_t& v3 = vertListCopy[*it]; it++;
+            vertex_t& v1 = vertListCopy[*it++]; //cada tres v�rtices, una faceta
+            vertex_t& v2 = vertListCopy[*it++];
+            vertex_t& v3 = vertListCopy[*it++];
 
             // Get two edges
             glm::vec3 l1 = glm::normalize(v2.vertexPosition - v1.vertexPosition);

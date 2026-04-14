@@ -160,6 +160,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="APIS3D_2025.cpp" />
+    <ClCompile Include="src\ov\Billboard.cpp" />
     <ClCompile Include="src\ov\Camera.cpp" />
     <ClCompile Include="src\ov\CameraFPS.cpp" />
     <ClCompile Include="src\ov\CameraKeyboard.cpp" />
