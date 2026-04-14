@@ -185,6 +185,7 @@
     <ClInclude Include="src\mapi\common.h" />
     <ClInclude Include="src\mapi\stb_image.h" />
     <ClInclude Include="src\mapi\vertex.h" />
+    <ClInclude Include="src\ov\Billboard.h" />
     <ClInclude Include="src\ov\bufferObject.h" />
     <ClInclude Include="src\ov\Camera.h" />
     <ClInclude Include="src\ov\CameraFPS.h" />
