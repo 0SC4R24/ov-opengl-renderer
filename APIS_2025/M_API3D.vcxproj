@@ -177,6 +177,7 @@
     <ClCompile Include="src\ov\Mesh3D.cpp" />
     <ClCompile Include="src\ov\Object3D.cpp" />
     <ClCompile Include="src\ov\OrbitalLight.cpp" />
+    <ClCompile Include="src\ov\Particle.cpp" />
     <ClCompile Include="src\ov\System.cpp" />
     <ClCompile Include="src\ov\Texture.cpp" />
     <ClCompile Include="src\ov\TrianguloRot.cpp" />
@@ -207,6 +208,7 @@
     <ClInclude Include="src\ov\Object.h" />
     <ClInclude Include="src\ov\Object3D.h" />
     <ClInclude Include="src\ov\OrbitalLight.h" />
+    <ClInclude Include="src\ov\Particle.h" />
     <ClInclude Include="src\ov\Program.h" />
     <ClInclude Include="src\ov\Render.h" />
     <ClInclude Include="src\ov\RenderProgram.h" />
