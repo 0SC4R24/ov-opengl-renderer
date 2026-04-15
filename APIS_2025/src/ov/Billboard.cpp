@@ -2,6 +2,8 @@
 
 #include <pugixml.hpp>
 #include "FactoryEngine.h"
+#include "System.h"
+#include "World.h"
 
 Billboard::Billboard(std::string fileName, float spin)
 {
@@ -244,5 +246,11 @@ void Billboard::loadDataFromMshFile(std::string file)
 
 void Billboard::computeModelMatrix()
 {
-    Object::computeModelMatrix();
+    m_modelMatrix = glm::transpose(System::getWorld()->getActiveCamera()->getViewMatrix());
+    
+    m_modelMatrix[0][3] = 0;
+    m_modelMatrix[1][3] = 0;
+    m_modelMatrix[2][3] = 0;
+    
+    m_modelMatrix[3] = getPosition();
 }
