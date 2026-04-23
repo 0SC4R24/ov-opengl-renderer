@@ -165,6 +165,7 @@
     <ClCompile Include="src\ov\CameraFPS.cpp" />
     <ClCompile Include="src\ov\CameraKeyboard.cpp" />
     <ClCompile Include="src\ov\CubeTex.cpp" />
+    <ClCompile Include="src\ov\Emitter.cpp" />
     <ClCompile Include="src\ov\FactoryEngine.cpp" />
     <ClCompile Include="src\ov\GL4Render.cpp" />
     <ClCompile Include="src\ov\GLFWInputManager.cpp" />
@@ -193,6 +194,7 @@
     <ClInclude Include="src\ov\CameraFPS.h" />
     <ClInclude Include="src\ov\CameraKeyboard.h" />
     <ClInclude Include="src\ov\CubeTex.h" />
+    <ClInclude Include="src\ov\Emitter.h" />
     <ClInclude Include="src\ov\Entity.h" />
     <ClInclude Include="src\ov\FactoryEngine.h" />
     <ClInclude Include="src\ov\GL4Render.h" />
